@@ -51,6 +51,7 @@ private:
     RGBAcolor fontColor = KWhite;
     RGBAcolor bgColor;
     keyMap keyboardMap;
+    bool exitRequested;
 
 
     // Ce dont on a besoin pour Glut
@@ -69,6 +70,7 @@ private:
     void callKeyboardUp(unsigned char key, int x = 0, int y = 0);
     void callKeyboardSpecial(int key, int x = 0, int y = 0);
     void callKeyboardUpSpecial(int key, int x = 0, int y = 0);
+    void callClose();
 
 public:
     static void initGlut()
@@ -96,6 +98,8 @@ public:
     void setBackgroundColor(const RGBAcolor & backgroundColor);
 
     const Vec2D getWindowSize() const;
+
+    bool isExitRequested() const;
 
 };
 
