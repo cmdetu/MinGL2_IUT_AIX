@@ -5,6 +5,8 @@
 
 #include "../tools/myexception.h"
 
+namespace nsFigure {
+
 class Rectangle : public BaseFig
 {
 public:
@@ -32,5 +34,7 @@ private:
     Vec2D pos1;
     Vec2D pos2;
 };
+
+}
 
 #endif // RECTANGLE_H

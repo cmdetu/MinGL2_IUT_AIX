@@ -6,6 +6,8 @@
 #include "../tools/myexception.h"
 #include "../graph/iminglinjectable.h"
 
+namespace nsFigure {
+
 class Triangle : public BaseFig
 {
 public:
@@ -33,5 +35,7 @@ private:
     Vec2D pos2;
     Vec2D pos3;
 };
+
+}
 
 #endif // TRIANGLE_H

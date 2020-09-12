@@ -8,7 +8,7 @@
 using namespace std;
 using namespace nsUtil;
 
-void Line::draw(MinGL &window)
+void nsFigure::Line::draw(MinGL &window)
 {
     UNUSED(window);
 
@@ -26,7 +26,7 @@ void Line::draw(MinGL &window)
     glEnd();
 }
 
-Line::Line(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor &fillCol_, const float &lineWidth_)
+nsFigure::Line::Line(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor &fillCol_, const float &lineWidth_)
     : BaseFig(fillCol_, fillCol_, "line")
     , pos1(pos1_)
     , pos2(pos2_)
@@ -35,13 +35,13 @@ Line::Line(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor &fillCol_, 
 
 }
 
-Line::Line(const BaseFig & b)
+nsFigure::Line::Line(const BaseFig & b)
     : BaseFig(b.getInColor(), b.getBorderColor(), b.getName())
 {
 
 }
 
-std::unique_ptr<IDrawable> Line::clone() const
+std::unique_ptr<IDrawable> nsFigure::Line::clone() const
 {
     return std::unique_ptr<Line>(new Line(*this));
 }

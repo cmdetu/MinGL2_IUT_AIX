@@ -5,6 +5,8 @@
 
 #include "../tools/myexception.h"
 
+namespace nsFigure {
+
 class Circle : public BaseFig
 {
 public:
@@ -31,5 +33,7 @@ private:
     Vec2D pos;
     unsigned radius;
 };
+
+}
 
 #endif // CIRCLE_H

@@ -5,6 +5,8 @@
 
 #include "../tools/myexception.h"
 
+namespace nsFigure {
+
 class Line : public BaseFig
 {
 public:
@@ -32,5 +34,7 @@ private:
     Vec2D pos2;
     float lineWidth;
 };
+
+}
 
 #endif // LINE_H

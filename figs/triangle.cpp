@@ -11,7 +11,7 @@
 using namespace std;
 using namespace nsUtil;
 
-void Triangle::draw(MinGL &window)
+void nsFigure::Triangle::draw(MinGL &window)
 {
     UNUSED(window);
 
@@ -39,7 +39,7 @@ void Triangle::draw(MinGL &window)
     }
 }
 
-Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, const RGBAcolor &fillCol_, const RGBAcolor &borderCol_)
+nsFigure::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, const RGBAcolor &fillCol_, const RGBAcolor &borderCol_)
     : BaseFig(fillCol_, borderCol_, "triangle")
     , pos1(pos1_)
     , pos2(pos2_)
@@ -48,13 +48,13 @@ Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, c
 
 }
 
-Triangle::Triangle(const BaseFig & b)
+nsFigure::Triangle::Triangle(const BaseFig & b)
     : BaseFig(b.getInColor(), b.getBorderColor(), b.getName())
 {
 
 }
 
-std::unique_ptr<IDrawable> Triangle::clone() const
+std::unique_ptr<IDrawable> nsFigure::Triangle::clone() const
 {
     return std::unique_ptr<Triangle>(new Triangle(*this));
 }

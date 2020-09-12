@@ -6,46 +6,46 @@
 
 using namespace std;
 
-BaseFig::BaseFig()
+nsFigure::BaseFig::BaseFig()
 {}
 
-void BaseFig::draw(MinGL &window)
+void nsFigure::BaseFig::draw(MinGL &window)
 {
     UNUSED(window);
 }
 
-BaseFig::BaseFig(const RGBAcolor & inCol_, const RGBAcolor & bdCol_, const std::string &name_)
+nsFigure::BaseFig::BaseFig(const RGBAcolor & inCol_, const RGBAcolor & bdCol_, const std::string &name_)
     : inColor (inCol_)
     , borderColor (bdCol_)
     , name (name_)
 {}
 
-std::unique_ptr<IDrawable> BaseFig::clone() const
+std::unique_ptr<IDrawable> nsFigure::BaseFig::clone() const
 {
     return std::unique_ptr<BaseFig>(new BaseFig(*this));
 }
 
-const RGBAcolor BaseFig::getBorderColor() const
+const RGBAcolor nsFigure::BaseFig::getBorderColor() const
 {
     return borderColor;
 }
 
-const RGBAcolor BaseFig::getInColor() const
+const RGBAcolor nsFigure::BaseFig::getInColor() const
 {
     return inColor;
 }
 
-const string BaseFig::getName() const
+const string nsFigure::BaseFig::getName() const
 {
     return name;
 }
 
-void BaseFig::setInColor(const RGBAcolor &inColor_)
+void nsFigure::BaseFig::setInColor(const RGBAcolor &inColor_)
 {
     inColor = inColor_;
 }
 
-void BaseFig::setBorderColor(const RGBAcolor &borderColor_)
+void nsFigure::BaseFig::setBorderColor(const RGBAcolor &borderColor_)
 {
     borderColor = borderColor_;
 }

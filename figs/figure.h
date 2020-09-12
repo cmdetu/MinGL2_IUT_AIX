@@ -9,6 +9,8 @@
 #include "basefig.h"
 #include "circle.h"
 
+namespace nsFigure {
+
 class Figure : public BaseFig
 {
 protected:
@@ -33,5 +35,7 @@ public:
     // Fonction de clonage
     virtual std::unique_ptr<IDrawable> clone() const override;
 };
+
+}
 
 #endif // FIGURE_H

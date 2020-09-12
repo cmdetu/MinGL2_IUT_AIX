@@ -8,6 +8,8 @@
 #include "../graph/rgbacolor.h"
 #include "../graph/iminglinjectable.h"
 
+namespace nsFigure {
+
 class BaseFig : public IminGlInjectable
 {
 protected:
@@ -33,5 +35,7 @@ private:
     RGBAcolor inColor, borderColor;
     const std::string name; // ajouter pour l'introspection
 };
+
+}
 
 #endif // BASEFIG_H
