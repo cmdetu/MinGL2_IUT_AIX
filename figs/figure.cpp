@@ -8,14 +8,14 @@
 using namespace std;
 using namespace nsUtil;
 
-void Figure::draw(MinGL &window)
+void nsFigure::Figure::draw(MinGL &window)
 {
     for (const std::shared_ptr<BaseFig> &fig : vFig) {
         fig->draw(window);
     }
 }
 
-BaseFig Figure::operator *(const float &f) const
+nsFigure::BaseFig nsFigure::Figure::operator *(const float &f) const
 {
     Figure tmp;
     for (unsigned i = 0; i < this->vFig.size(); ++i)
@@ -33,7 +33,7 @@ BaseFig Figure::operator *(const float &f) const
     return tmp;
 }
 
-BaseFig Figure::operator +(const Vec2D &pos_) const
+nsFigure::BaseFig nsFigure::Figure::operator +(const Vec2D &pos_) const
 {
     Figure tmp;
     for (unsigned i = 0; i < this->vFig.size(); ++i)
@@ -51,7 +51,7 @@ BaseFig Figure::operator +(const Vec2D &pos_) const
     return tmp;
 }
 
-std::unique_ptr<IDrawable> Figure::clone() const
+std::unique_ptr<IDrawable> nsFigure::Figure::clone() const
 {
     return std::unique_ptr<Figure>(new Figure(*this));
 }

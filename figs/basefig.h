@@ -8,30 +8,33 @@
 #include "../graph/rgbacolor.h"
 #include "../graph/iminglinjectable.h"
 
-class BaseFig : public IminGlInjectable
+namespace nsFigure
 {
-protected:
-    BaseFig (const RGBAcolor &, const RGBAcolor &, const std::string &);
+    class BaseFig : public IminGlInjectable
+    {
+    protected:
+        BaseFig (const RGBAcolor &, const RGBAcolor &, const std::string &);
 
-public:
-    BaseFig();
-     ~BaseFig() {}
+    public:
+        BaseFig();
+         ~BaseFig() {}
 
-    virtual void draw(MinGL &window) override;
+        virtual void draw(MinGL &window) override;
 
-    // Fonction de clonage
-    virtual std::unique_ptr<IDrawable> clone() const override;
+        // Fonction de clonage
+        virtual std::unique_ptr<IDrawable> clone() const override;
 
-    const RGBAcolor getInColor() const;
-    const RGBAcolor getBorderColor() const;
-    const std::string getName() const;
+        const RGBAcolor getInColor() const;
+        const RGBAcolor getBorderColor() const;
+        const std::string getName() const;
 
-    void setInColor(const RGBAcolor &inColor_);
-    void setBorderColor(const RGBAcolor &borderColor_);
+        void setInColor(const RGBAcolor &inColor_);
+        void setBorderColor(const RGBAcolor &borderColor_);
 
-private:
-    RGBAcolor inColor, borderColor;
-    const std::string name; // ajouter pour l'introspection
-};
+    private:
+        RGBAcolor inColor, borderColor;
+        const std::string name; // ajouter pour l'introspection
+    };
+}
 
 #endif // BASEFIG_H

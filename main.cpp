@@ -1,9 +1,8 @@
-#include <thread>
+#include <thread> // framerate management
 
 #include "audio/minglaudioengine.h"
 #include "gui/text.h"
 #include "transition/transition_engine.h"
-
 /**
  * @brief FPS_LIMIT : The framerate limit for the game
  */

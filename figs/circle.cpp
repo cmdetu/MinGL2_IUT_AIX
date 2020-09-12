@@ -7,7 +7,7 @@
 using namespace std;
 using namespace nsUtil;
 
-void Circle::draw(MinGL &window)
+void nsFigure::Circle::draw(MinGL &window)
 {
     UNUSED(window);
 
@@ -49,7 +49,7 @@ void Circle::draw(MinGL &window)
     }
 }
 
-Circle::Circle(const Vec2D &pos_, const unsigned &rad_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
+nsFigure::Circle::Circle(const Vec2D &pos_, const unsigned &rad_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
     : BaseFig(inCol_, borderCol_, "circle")
     , pos(pos_)
     , radius(rad_)
@@ -57,13 +57,13 @@ Circle::Circle(const Vec2D &pos_, const unsigned &rad_, const RGBAcolor &inCol_,
 
 }
 
-Circle::Circle(const BaseFig & b)
+nsFigure::Circle::Circle(const BaseFig & b)
     : BaseFig(b.getInColor(), b.getBorderColor(), b.getName())
 {
 
 }
 
-std::unique_ptr<IDrawable> Circle::clone() const
+std::unique_ptr<IDrawable> nsFigure::Circle::clone() const
 {
     return std::unique_ptr<Circle>(new Circle(*this));
 }
