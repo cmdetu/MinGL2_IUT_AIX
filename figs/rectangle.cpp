@@ -8,7 +8,7 @@
 using namespace std;
 using namespace nsUtil;
 
-void Rectangle::draw(MinGL &window)
+void nsFigure::Rectangle::draw(MinGL &window)
 {
     UNUSED(window);
 
@@ -33,7 +33,7 @@ void Rectangle::draw(MinGL &window)
     }
 }
 
-Rectangle::Rectangle(const Vec2D &pos1_, const Vec2D &pos2_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
+nsFigure::Rectangle::Rectangle(const Vec2D &pos1_, const Vec2D &pos2_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
     : BaseFig(inCol_, borderCol_, "rectangle")
     , pos1(pos1_)
     , pos2(pos2_)
@@ -41,7 +41,7 @@ Rectangle::Rectangle(const Vec2D &pos1_, const Vec2D &pos2_, const RGBAcolor &in
 
 }
 
-Rectangle::Rectangle(const Vec2D &pos_, const unsigned &width_, const unsigned &height_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
+nsFigure::Rectangle::Rectangle(const Vec2D &pos_, const unsigned &width_, const unsigned &height_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
     : BaseFig(inCol_, borderCol_, "rectangle")
     , pos1(pos_)
     , pos2(Vec2D(pos_.x + width_, pos_.y + height_))
@@ -49,13 +49,13 @@ Rectangle::Rectangle(const Vec2D &pos_, const unsigned &width_, const unsigned &
 
 }
 
-Rectangle::Rectangle(const BaseFig & b)
+nsFigure::Rectangle::Rectangle(const BaseFig & b)
     : BaseFig(b.getInColor(), b.getBorderColor(), b.getName())
 {
 
 }
 
-std::unique_ptr<IDrawable> Rectangle::clone() const
+std::unique_ptr<IDrawable> nsFigure::Rectangle::clone() const
 {
     return std::unique_ptr<Rectangle>(new Rectangle(*this));
 }
