@@ -57,9 +57,10 @@ private:
     short glutWindowId = 0;
     std::vector<std::unique_ptr<IDrawable>> drawStack;
 
+    nsEvent::EventManager eventManager;
+    bool windowIsOpen;
 
     // Les handlers
-    nsEvent::EventManager eventManager;
     void callReshape(int h, int w);
     void callDisplay();
     void callMouse(int button, int state, int x = 0, int y = 0);
@@ -69,13 +70,13 @@ private:
     void callKeyboardUp(unsigned char key, int x = 0, int y = 0);
     void callKeyboardSpecial(int key, int x = 0, int y = 0);
     void callKeyboardUpSpecial(int key, int x = 0, int y = 0);
+    void callClose();
 
 public:
     static void initGlut()
     {
         int tmp=0;
         glutInit(&tmp, NULL);
-
     }
 
     void initGraphic();
@@ -96,6 +97,7 @@ public:
     void setBackgroundColor(const RGBAcolor & backgroundColor);
 
     const Vec2D getWindowSize() const;
+    bool isOpen() const;
 
 };
 

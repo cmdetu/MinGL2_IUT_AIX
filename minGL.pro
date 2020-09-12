@@ -16,7 +16,6 @@ SOURCES += \
     figs/triangle.cpp \
     graph/mingl.cpp \
     graph/rgbacolor.cpp \
-    gui/button.cpp \
     gui/sprite.cpp \
     gui/text.cpp \
     tools/CException.cxx \
@@ -56,7 +55,6 @@ HEADERS += \
     graph/mingl.h \
     graph/rgbacolor.h \
     graph/vec2d.h \
-    gui/button.h \
     gui/sprite.h \
     gui/text.h \
     tools/CException.h \

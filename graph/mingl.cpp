@@ -35,6 +35,7 @@ MinGL::MinGL(const std::string &name_, const Vec2D &windowSize_, const RGBAcolor
     , windowName(name_)
     , bgColor(backgroundColor)
     , eventManager()
+    , windowIsOpen(false)
 {}
 
 MinGL::~MinGL()
@@ -87,6 +88,8 @@ void MinGL::initGraphic()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
+
     // Initialisation handlers
     glutReshapeFunc(BIND_CALLBACK(&MinGL::callReshape));
     glutDisplayFunc(BIND_CALLBACK(&MinGL::callDisplay));
@@ -95,6 +98,7 @@ void MinGL::initGraphic()
     glutPassiveMotionFunc(BIND_CALLBACK(&MinGL::callPassiveMotion));
     glutKeyboardFunc(BIND_CALLBACK(&MinGL::callKeyboard));
     glutSpecialFunc(BIND_CALLBACK(&MinGL::callKeyboardSpecial));
+    glutCloseFunc(BIND_CALLBACK(&MinGL::callClose));
 
     // On set la couleur d'effacement (prend des float, donc obligé de diviser par la taille d'un GLuint)
     glClearColor(bgColor.Red / 256.f, bgColor.Green / 256.f, bgColor.Blue / 256.f, 1.f);
@@ -105,6 +109,7 @@ void MinGL::initGraphic()
     // Un tour de boucle pour lancer l'affichage
     glutMainLoopEvent();
     glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF); // on désactive la répétition des touches
+    windowIsOpen = true;
 }
 
 void MinGL::stopGaphic()
@@ -202,7 +207,17 @@ void MinGL::callKeyboardUpSpecial(int k, int x, int y)
     keyboardMap[key] = false;
 }
 
+void MinGL::callClose()
+{
+    windowIsOpen = false;
+}
+
 const Vec2D MinGL::getWindowSize() const
 {
     return windowSize;
+}
+
+bool MinGL::isOpen() const
+{
+    return windowIsOpen;
 }

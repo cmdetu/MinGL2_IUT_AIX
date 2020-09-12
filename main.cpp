@@ -40,7 +40,7 @@ int main()
     Ae.startMusicFromBeginning();
 
     chrono::microseconds frameTime = chrono::microseconds::zero();
-    while (true)
+    while(Window.isOpen())
     {
         // Gets system clock at the beginning of the loop
         chrono::time_point<chrono::steady_clock> start = chrono::steady_clock::now();
