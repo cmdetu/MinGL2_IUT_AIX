@@ -34,8 +34,10 @@ nsShape::Rectangle::Rectangle(const Vec2D& position, const unsigned& width, cons
 
 }
 
-void nsShape::Rectangle::draw()
+void nsShape::Rectangle::draw(MinGL& window) const
 {
+    UNUSED(window);
+
     // On règle la couleur du rectangle
     const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
@@ -55,9 +57,4 @@ void nsShape::Rectangle::draw()
         glVertex2i(m_secondPosition.x, m_firstPosition.y);
         glEnd();
     }
-}
-
-std::unique_ptr<IDrawable> nsShape::Rectangle::clone() const
-{
-    return std::unique_ptr<Rectangle>(new Rectangle(*this));
 }

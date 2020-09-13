@@ -26,11 +26,6 @@ TEXT::Text(const Vec2D &position, const std::string &content,
     , m_verticalAlignment(verticalAlignment)
 {} // Text()
 
-std::unique_ptr<IDrawable> TEXT::clone() const
-{
-    return std::unique_ptr<Text>(new Text(*this));
-} // clone()
-
 void TEXT::getValues(const int &id, std::vector<float> &values)
 {
     switch (id) {
@@ -133,8 +128,10 @@ void nsGui::Text::setContent(const std::string &content)
     m_content = content;
 } // setContent()
 
-void TEXT::draw()
+void TEXT::draw(MinGL& window) const
 {
+    UNUSED(window);
+
     // Draw the text with the right color using Glut
     glColor4ub(m_textColor.Red, m_textColor.Green, m_textColor.Blue, m_textColor.Alpha);
 

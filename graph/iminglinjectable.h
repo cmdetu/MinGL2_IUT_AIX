@@ -15,18 +15,19 @@
 #include "idrawable.h"
 #include "../tools/myexception.h"
 
-class IminGlInjectable : public IDrawable
+class IminGLInjectable : public IDrawable
 {
 
 public:
-    virtual ~IminGlInjectable() {};
+    virtual ~IminGLInjectable() {};
 
-    friend MinGL & operator << (MinGL & Window, const IminGlInjectable & Obj)
+    friend MinGL& operator<<(MinGL& window, const IminGLInjectable& drawable)
     {
-        Window.addDrawable(std::unique_ptr<IDrawable>(Obj.clone()));
-        return Window;
+        drawable.draw(window);
+
+        return window;
     }
 
-}; // IminGlInjectable
+}; // IminGLInjectable
 
 #endif // IMINGLINJECTABLE_H

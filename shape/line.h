@@ -42,7 +42,7 @@ public:
      */
     virtual ~Line() override = default;
 
-    virtual void draw() override;
+    virtual void draw(MinGL& window) const override;
 
     /**
      * @brief Opérateur de décalage
@@ -63,9 +63,6 @@ public:
     {
         return Line(m_firstPosition * f, m_secondPosition * f, getFillColor());
     }
-
-    // Fonction de clonage
-    virtual std::unique_ptr<IDrawable> clone() const override;
 
 private:
     /**

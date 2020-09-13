@@ -69,8 +69,8 @@ public:
     MinGL(const std::string &name_ = std::string(), const Vec2D &windowSize_ = Vec2D(640, 480), const RGBAcolor & backgroundColor = KWhite);
     ~MinGL();
 
-    void addDrawable(std::unique_ptr<IDrawable> drawable);
-    void updateGraphic();
+    void addDrawable(const IDrawable* drawable);
+    void finishFrame();
     void clearScreen();
 
     nsEvent::EventManager &getEventManager();
@@ -92,7 +92,7 @@ private:
 
     // Ce dont on a besoin pour Glut
     short glutWindowId = 0;
-    std::vector<std::unique_ptr<IDrawable>> drawStack;
+    std::vector<const IDrawable*> drawStack;
 
     nsEvent::EventManager eventManager;
     bool windowIsOpen;

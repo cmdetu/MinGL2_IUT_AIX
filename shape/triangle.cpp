@@ -32,8 +32,10 @@ nsShape::Triangle::Triangle(const Vec2D& firstPosition, const Vec2D& secondPosit
 
 }
 
-void nsShape::Triangle::draw()
+void nsShape::Triangle::draw(MinGL& window) const
 {
+    UNUSED(window);
+
     // On règle la couleur du triangle
     const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
@@ -56,9 +58,4 @@ void nsShape::Triangle::draw()
         glVertex2i(m_thirdPosition.x, m_thirdPosition.y);
         glEnd();
     }
-}
-
-std::unique_ptr<IDrawable> nsShape::Triangle::clone() const
-{
-    return std::unique_ptr<Triangle>(new Triangle(*this));
 }

@@ -56,13 +56,10 @@ nsGui::Sprite::Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &r
 
 }
 
-std::unique_ptr<IDrawable> SPRITE::clone() const
+void SPRITE::draw(MinGL& window) const
 {
-    return std::unique_ptr<Sprite>(new Sprite(*this));
-}
+    UNUSED(window);
 
-void SPRITE::draw()
-{
     glBegin(GL_POINTS);
 
     for (unsigned i = 0; i < m_pixelData.size(); ++i)

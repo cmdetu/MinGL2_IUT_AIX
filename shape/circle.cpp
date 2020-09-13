@@ -25,8 +25,10 @@ nsShape::Circle::Circle(const Vec2D &position, const unsigned &radius, const RGB
 
 }
 
-void nsShape::Circle::draw()
+void nsShape::Circle::draw(MinGL& window) const
 {
+    UNUSED(window);
+
     // Source: https://gist.github.com/linusthe3rd/803118
 
     int i;
@@ -63,9 +65,4 @@ void nsShape::Circle::draw()
 
         glEnd();
     }
-}
-
-std::unique_ptr<IDrawable> nsShape::Circle::clone() const
-{
-    return std::unique_ptr<Circle>(new Circle(*this));
 }

@@ -18,8 +18,19 @@
 using namespace std;
 using namespace nsUtil;
 
-void nsShape::Line::draw()
+nsShape::Line::Line(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor &fillCol_, const float &lineWidth_)
+    : Shape(fillCol_, fillCol_)
+    , m_firstPosition(pos1_)
+    , m_secondPosition(pos2_)
+    , m_lineWidth(lineWidth_)
 {
+
+}
+
+void nsShape::Line::draw(MinGL& window) const
+{
+    UNUSED(window);
+
     // On met la couleur de la ligne
     const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
@@ -32,18 +43,4 @@ void nsShape::Line::draw()
     glVertex2i(m_firstPosition.x, m_firstPosition.y);
     glVertex2i(m_secondPosition.x, m_secondPosition.y);
     glEnd();
-}
-
-nsShape::Line::Line(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor &fillCol_, const float &lineWidth_)
-    : Shape(fillCol_, fillCol_)
-    , m_firstPosition(pos1_)
-    , m_secondPosition(pos2_)
-    , m_lineWidth(lineWidth_)
-{
-
-}
-
-std::unique_ptr<IDrawable> nsShape::Line::clone() const
-{
-    return std::unique_ptr<Line>(new Line(*this));
 }

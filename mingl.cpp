@@ -57,12 +57,12 @@ MinGL::~MinGL()
     stopGaphic();
 }
 
-void MinGL::addDrawable(std::unique_ptr<IDrawable> drawable)
+void MinGL::addDrawable(const IDrawable* drawable)
 {
-    drawStack.push_back(std::move(drawable));
+    drawStack.push_back(drawable);
 }
 
-void MinGL::updateGraphic()
+void MinGL::finishFrame()
 {
     glutPostRedisplay();
     glutMainLoopEvent();
@@ -161,16 +161,6 @@ void MinGL::callReshape(int h, int w)
 
 void MinGL::callDisplay()
 {
-    clearScreen();
-    glRasterPos2i(0,0);
-    glShadeModel(GL_FLAT);
-
-    for (unsigned i = 0; i < drawStack.size(); ++i)
-    {
-        drawStack[i]->draw();
-    }
-    drawStack.clear();
-
     glFlush();
     glutSwapBuffers();
 }

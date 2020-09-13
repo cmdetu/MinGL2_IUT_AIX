@@ -21,7 +21,7 @@ namespace nsGui {
  * @class Sprite
  * @brief Permet de charger une image depuis un format créé pour l'occasion, le .si2
  */
-class Sprite : public IminGlInjectable
+class Sprite : public IminGLInjectable
 {
 public:
     /**
@@ -41,8 +41,7 @@ public:
      */
     Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &rowSize, const Vec2D &position = Vec2D());
 
-    virtual std::unique_ptr<IDrawable> clone() const override;
-    virtual void draw() override;
+    virtual void draw(MinGL& window) const override;
 
     /**
      * @brief Récupère le nombre de pixels par ligne

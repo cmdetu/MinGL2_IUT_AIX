@@ -24,7 +24,7 @@ namespace nsShape
  * @class Shape
  * @brief Classe de base pour une forme
  */
-class Shape: public IminGlInjectable
+class Shape: public IminGLInjectable
 {
 
 public:

@@ -53,7 +53,7 @@ public:
      */
     virtual ~Rectangle() override = default;
 
-    virtual void draw() override;
+    virtual void draw(MinGL& window) const override;
 
     /**
      * @brief Opérateur de décalage
@@ -74,9 +74,6 @@ public:
     {
         return Rectangle(m_firstPosition * f, m_secondPosition * f, getFillColor(), getBorderColor());
     }
-
-    // Fonction de clonage
-    virtual std::unique_ptr<IDrawable> clone() const override;
 
 private:
     /**

@@ -42,7 +42,7 @@ public:
      */
     virtual ~Circle() override = default;
 
-    virtual void draw() override;
+    virtual void draw(MinGL& window) const override;
 
     /**
      * @brief Opérateur de décalage
@@ -63,9 +63,6 @@ public:
     {
         return Circle(m_position * f, m_radius, getFillColor(), getBorderColor());
     }
-
-    // Fonction de clonage
-    virtual std::unique_ptr<IDrawable> clone() const override;
 
 private:
     /**
