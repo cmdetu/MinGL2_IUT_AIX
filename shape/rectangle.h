@@ -18,23 +18,60 @@
 namespace nsShape
 {
 
+/**
+ * @class Rectangle
+ * @brief Classe représentant un rectangle
+ */
 class Rectangle : public Shape
 {
 
 public:
-    Rectangle(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor & inCol_, const RGBAcolor & borderCol_ = RGBAcolor ());
-    Rectangle(const Vec2D & Vec2D_, const unsigned & width_, const unsigned & height_, const RGBAcolor & inCol_, const RGBAcolor & borderCol_ = KTransparent);
+    /**
+     * @brief Constructeur pour la classe Rectangle
+     * @param[in] firstPosition : Position du coin haut-gauche
+     * @param[in] secondPosition : Position du coin bas-droit
+     * @param[in] fillColor : Couleur de remplissage
+     * @param[in] borderColor : Couleur de bord
+     * @fn Rectangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+     */
+    Rectangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+
+    /**
+     * @brief Constructeur pour la classe Rectangle
+     * @param[in] position : Position du coin haut-gauche
+     * @param[in] width : Largeur du rectangle
+     * @param[in] height : Hauteur du rectangle
+     * @param[in] fillColor : Couleur de remplissage
+     * @param[in] borderColor : Couleur de bord
+     * @fn Rectangle(const Vec2D& position, const unsigned& width, const unsigned& height, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+     */
+    Rectangle(const Vec2D& position, const unsigned& width, const unsigned& height, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+
+    /**
+     * @brief Destructeur virtuel pour la classe Line
+     * @fn virtual ~Line() override = default;
+     */
     virtual ~Rectangle() override = default;
 
     virtual void draw(MinGL &window) override;
 
-    // Opérateur de décalage +
-    Rectangle operator + (const Vec2D & pos_) const {
-        return Rectangle(m_firstPosition + pos_, m_secondPosition + pos_, getFillColor(), getBorderColor());
+    /**
+     * @brief Opérateur de décalage
+     * @param[in] position : Position a additionner
+     * @fn Rectangle operator+(const Vec2D& position) const
+     */
+    Rectangle operator+(const Vec2D& position) const
+    {
+        return Rectangle(m_firstPosition + position, m_secondPosition + position, getFillColor(), getBorderColor());
     }
 
-    // Opérateur de réduction *
-    Rectangle operator * (const float & f) const {
+    /**
+     * @brief Opérateur de réduction
+     * @param[in] f : Nombre avec lequel multiplier la position actuelle
+     * @fn Rectangle operator*(const float& f) const
+     */
+    Rectangle operator*(const float& f) const
+    {
         return Rectangle(m_firstPosition * f, m_secondPosition * f, getFillColor(), getBorderColor());
     }
 
@@ -42,7 +79,14 @@ public:
     virtual std::unique_ptr<IDrawable> clone() const override;
 
 private:
+    /**
+     * @brief m_firstPosition : Position du premier sommet
+     */
     Vec2D m_firstPosition;
+
+    /**
+     * @brief m_secondPosition : Position du second sommet
+     */
     Vec2D m_secondPosition;
 
 };

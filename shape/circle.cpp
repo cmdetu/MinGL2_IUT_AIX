@@ -17,6 +17,14 @@
 using namespace std;
 using namespace nsUtil;
 
+nsShape::Circle::Circle(const Vec2D &position, const unsigned &radius, const RGBAcolor &fillColor, const RGBAcolor &borderColor)
+    : Shape(fillColor, borderColor)
+    , m_position(position)
+    , m_radius(radius)
+{
+
+}
+
 void nsShape::Circle::draw(MinGL &window)
 {
     UNUSED(window);
@@ -57,14 +65,6 @@ void nsShape::Circle::draw(MinGL &window)
 
         glEnd();
     }
-}
-
-nsShape::Circle::Circle(const Vec2D &pos_, const unsigned &rad_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
-    : Shape(inCol_, borderCol_)
-    , m_position(pos_)
-    , m_radius(rad_)
-{
-
 }
 
 std::unique_ptr<IDrawable> nsShape::Circle::clone() const

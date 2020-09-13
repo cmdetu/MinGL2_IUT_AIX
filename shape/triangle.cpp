@@ -21,6 +21,17 @@
 using namespace std;
 using namespace nsUtil;
 
+
+nsShape::Triangle::Triangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const Vec2D& thirdPosition,
+                            const RGBAcolor& fillColor, const RGBAcolor& borderColor)
+    : Shape(fillColor, borderColor)
+    , m_firstPosition(firstPosition)
+    , m_secondPosition(secondPosition)
+    , m_thirdPosition(thirdPosition)
+{
+
+}
+
 void nsShape::Triangle::draw(MinGL &window)
 {
     UNUSED(window);
@@ -47,15 +58,6 @@ void nsShape::Triangle::draw(MinGL &window)
         glVertex2i(m_thirdPosition.x, m_thirdPosition.y);
         glEnd();
     }
-}
-
-nsShape::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, const RGBAcolor &fillCol_, const RGBAcolor &borderCol_)
-    : Shape(fillCol_, borderCol_)
-    , m_firstPosition(pos1_)
-    , m_secondPosition(pos2_)
-    , m_thirdPosition(pos3_)
-{
-
 }
 
 std::unique_ptr<IDrawable> nsShape::Triangle::clone() const

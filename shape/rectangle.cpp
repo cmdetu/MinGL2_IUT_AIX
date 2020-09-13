@@ -18,6 +18,22 @@
 using namespace std;
 using namespace nsUtil;
 
+nsShape::Rectangle::Rectangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const RGBAcolor& borderColor)
+    : Shape(fillColor, borderColor)
+    , m_firstPosition(firstPosition)
+    , m_secondPosition(secondPosition)
+{
+
+}
+
+nsShape::Rectangle::Rectangle(const Vec2D& position, const unsigned& width, const unsigned& height, const RGBAcolor& fillColor, const RGBAcolor& borderColor)
+    : Shape(fillColor, borderColor)
+    , m_firstPosition(position)
+    , m_secondPosition(Vec2D(position.x + width, position.y + height))
+{
+
+}
+
 void nsShape::Rectangle::draw(MinGL &window)
 {
     UNUSED(window);
@@ -41,22 +57,6 @@ void nsShape::Rectangle::draw(MinGL &window)
         glVertex2i(m_secondPosition.x, m_firstPosition.y);
         glEnd();
     }
-}
-
-nsShape::Rectangle::Rectangle(const Vec2D &pos1_, const Vec2D &pos2_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
-    : Shape(inCol_, borderCol_)
-    , m_firstPosition(pos1_)
-    , m_secondPosition(pos2_)
-{
-
-}
-
-nsShape::Rectangle::Rectangle(const Vec2D &pos_, const unsigned &width_, const unsigned &height_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
-    : Shape(inCol_, borderCol_)
-    , m_firstPosition(pos_)
-    , m_secondPosition(Vec2D(pos_.x + width_, pos_.y + height_))
-{
-
 }
 
 std::unique_ptr<IDrawable> nsShape::Rectangle::clone() const
