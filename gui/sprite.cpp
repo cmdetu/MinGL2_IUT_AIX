@@ -61,10 +61,8 @@ std::unique_ptr<IDrawable> SPRITE::clone() const
     return std::unique_ptr<Sprite>(new Sprite(*this));
 }
 
-void SPRITE::draw(MinGL &window)
+void SPRITE::draw()
 {
-    UNUSED(window);
-
     glBegin(GL_POINTS);
 
     for (unsigned i = 0; i < m_pixelData.size(); ++i)

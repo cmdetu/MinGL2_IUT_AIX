@@ -32,10 +32,8 @@ nsShape::Triangle::Triangle(const Vec2D& firstPosition, const Vec2D& secondPosit
 
 }
 
-void nsShape::Triangle::draw(MinGL &window)
+void nsShape::Triangle::draw()
 {
-    UNUSED(window);
-
     // On règle la couleur du triangle
     const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);

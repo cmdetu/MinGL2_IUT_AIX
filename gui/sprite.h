@@ -42,7 +42,7 @@ public:
     Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &rowSize, const Vec2D &position = Vec2D());
 
     virtual std::unique_ptr<IDrawable> clone() const override;
-    virtual void draw(MinGL &window) override;
+    virtual void draw() override;
 
     /**
      * @brief Récupère le nombre de pixels par ligne

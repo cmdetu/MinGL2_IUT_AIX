@@ -18,10 +18,8 @@
 using namespace std;
 using namespace nsUtil;
 
-void nsShape::Line::draw(MinGL &window)
+void nsShape::Line::draw()
 {
-    UNUSED(window);
-
     // On met la couleur de la ligne
     const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);

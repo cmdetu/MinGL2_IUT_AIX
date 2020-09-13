@@ -133,10 +133,8 @@ void nsGui::Text::setContent(const std::string &content)
     m_content = content;
 } // setContent()
 
-void TEXT::draw(MinGL &window)
+void TEXT::draw()
 {
-    UNUSED(window);
-
     // Draw the text with the right color using Glut
     glColor4ub(m_textColor.Red, m_textColor.Green, m_textColor.Blue, m_textColor.Alpha);
 

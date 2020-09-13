@@ -167,7 +167,7 @@ void MinGL::callDisplay()
 
     for (unsigned i = 0; i < drawStack.size(); ++i)
     {
-        drawStack[i]->draw(*this);
+        drawStack[i]->draw();
     }
     drawStack.clear();
 

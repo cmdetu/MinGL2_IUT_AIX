@@ -74,7 +74,7 @@ public:
          const VerticalAlignment &verticalAlignment = ALIGNV_BOTTOM);
 
     virtual std::unique_ptr<IDrawable> clone() const override;
-    virtual void draw(MinGL &window) override;
+    virtual void draw() override;
 
     virtual void getValues(const int &id, std::vector<float> &values) override;
     virtual void setValues(const int &id, const std::vector<float> &values) override;

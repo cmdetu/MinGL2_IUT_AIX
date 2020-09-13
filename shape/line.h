@@ -42,7 +42,7 @@ public:
      */
     virtual ~Line() override = default;
 
-    virtual void draw(MinGL &window) override;
+    virtual void draw() override;
 
     /**
      * @brief Opérateur de décalage

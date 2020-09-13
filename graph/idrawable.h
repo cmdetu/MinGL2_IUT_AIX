@@ -37,10 +37,9 @@ public:
 
     /**
      * @brief Fonction pour afficher l'objet
-     * @param[in, out] window : La fenêtre d'affichage
-     * @fn virtual void draw(MinGL &window);
+     * @fn virtual void draw();
      */
-    virtual void draw(MinGL &window) = 0;
+    virtual void draw() = 0;
 };
 
 #endif // DRAWABLE_H

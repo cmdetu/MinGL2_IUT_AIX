@@ -25,10 +25,8 @@ nsShape::Circle::Circle(const Vec2D &position, const unsigned &radius, const RGB
 
 }
 
-void nsShape::Circle::draw(MinGL &window)
+void nsShape::Circle::draw()
 {
-    UNUSED(window);
-
     // Source: https://gist.github.com/linusthe3rd/803118
 
     int i;

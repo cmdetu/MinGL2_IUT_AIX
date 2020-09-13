@@ -34,10 +34,8 @@ nsShape::Rectangle::Rectangle(const Vec2D& position, const unsigned& width, cons
 
 }
 
-void nsShape::Rectangle::draw(MinGL &window)
+void nsShape::Rectangle::draw()
 {
-    UNUSED(window);
-
     // On règle la couleur du rectangle
     const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
