@@ -1,3 +1,11 @@
+/**
+ *
+ * @file    libgraphique_fonts.h
+ * @version 1.0
+ * @brief   Polices d'écriture pour freeglut/minGL
+ *
+ **/
+
 #ifndef _LIBGRAPHIQUE_FONTS_
 #define _LIBGRAPHIQUE_FONTS_
 

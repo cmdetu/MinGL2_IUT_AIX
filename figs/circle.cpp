@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    circle.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente un cercle
+ *
+ **/
+
 #include <cmath>
 
 #include "../macros.h"

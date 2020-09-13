@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    sprite.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Image pouvant être chargé depuis un fichier
+ *
+ **/
+
 #include "sprite.h"
 
 #include <unistd.h>

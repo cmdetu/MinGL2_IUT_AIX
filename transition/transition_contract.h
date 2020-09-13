@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    transition_contract.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Création de la transition
+ *
+ **/
+
 #ifndef TRANSITION_CONTRACT_H
 #define TRANSITION_CONTRACT_H
 

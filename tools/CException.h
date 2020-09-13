@@ -11,6 +11,7 @@
  * @brief   Declaration de la classe CException
  *
  **/
+
 #if ! defined __CEXCEPTION_H__
 #define       __CEXCEPTION_H__
 

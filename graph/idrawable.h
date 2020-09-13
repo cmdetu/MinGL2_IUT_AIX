@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    idrawable.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Interface pour un objet affichable
+ *
+ **/
+
 #ifndef DRAWABLE_H
 #define DRAWABLE_H
 

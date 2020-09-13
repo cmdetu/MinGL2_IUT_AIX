@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    mingl.h
+ * @author  Alexandre Sollier, Clément Mathieu--Drif, Alain Casali
+ * @date    Janvier 2020
+ * @version 2.0
+ * @brief   La bête
+ *
+ **/
+
 #ifndef MINGL_H
 #define MINGL_H
 

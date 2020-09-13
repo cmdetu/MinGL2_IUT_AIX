@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    rectangle.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente un rectangle
+ *
+ **/
+
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 

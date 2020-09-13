@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    line.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente une ligne
+ *
+ **/
+
 #ifndef LINE_H
 #define LINE_H
 

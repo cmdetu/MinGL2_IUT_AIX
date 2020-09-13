@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    shape.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente une forme
+ *
+ **/
+
 #include "shape.h"
 
 nsShape::Shape::Shape(const RGBAcolor &inColor, const RGBAcolor &borderColor)

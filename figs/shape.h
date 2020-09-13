@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    shape.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente une forme
+ *
+ **/
+
 #ifndef FIG2_H
 #define FIG2_H
 

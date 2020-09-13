@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    transition_engine.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Gestionnaire de transition de minGL
+ *
+ **/
+
 #include "transition_engine.h"
 
 #define TRANSITIONENGINE nsTransition::TransitionEngine

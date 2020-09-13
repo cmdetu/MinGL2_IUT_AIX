@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    event_manager.cpp
+ * @author  Alexandre Sollier
+ * @date    Décembre 2019
+ * @version 1.0
+ * @brief   Gestionnaire d'événements de minGL
+ *
+ **/
+
 #include "event_manager.h"
 
 #define EVENTMANAGER nsEvent::EventManager

@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    event.hpp
+ * @author  Alexandre Sollier
+ * @date    Décembre 2019
+ * @version 1.0
+ * @brief   Différents types utile pour le gestionnaire d'événements
+ *
+ **/
+
 #ifndef EVENT_HPP
 #define EVENT_HPP
 

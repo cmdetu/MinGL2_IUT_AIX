@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    minglaudioengine.h
+ * @author  Clément Mathieu--Drif
+ * @date    Septembre 2020
+ * @version 1.0
+ * @brief   Gestionnaire audio de minGL
+ *
+ **/
+
 #include "minglaudioengine.h"
 #include "../tools/CException.h"
 #include "../tools/fonctoroldsound.h"

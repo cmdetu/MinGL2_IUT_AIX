@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    line.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente une ligne
+ *
+ **/
+
 #include "line.h"
 
 #include <cmath>

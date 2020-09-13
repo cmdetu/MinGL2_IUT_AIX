@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    transition_types.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Définit quelques types pour les transitions
+ *
+ **/
+
 #ifndef TRANSITION_TYPES_H
 #define TRANSITION_TYPES_H
 

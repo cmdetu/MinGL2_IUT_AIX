@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    rgbacolor.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.1
+ * @brief   Représente une couleur RGBA
+ *
+ **/
+
 #include "rgbacolor.h"
 
 std::ostream &RGBAcolor::_Edit(std::ostream &os) const

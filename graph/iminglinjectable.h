@@ -1,3 +1,11 @@
+/**
+ *
+ * @file    iminglinjectable.h
+ * @version 1.0
+ * @brief   Interface pour un objet injectable dans une fenêtre minGL
+ *
+ **/
+
 #ifndef IMINGLINJECTABLE_H
 #define IMINGLINJECTABLE_H
 

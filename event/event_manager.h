@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    event_manager.h
+ * @author  Alexandre Sollier
+ * @date    Décembre 2019
+ * @version 1.0
+ * @brief   Gestionnaire d'événements de minGL
+ *
+ **/
+
 #ifndef EVENTMANAGER_H
 #define EVENTMANAGER_H
 

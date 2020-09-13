@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    itransitionable.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Interface pour objet "transitionable"
+ *
+ **/
+
 #ifndef ITRANSITIONABLE_H
 #define ITRANSITIONABLE_H
 

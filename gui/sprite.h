@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    sprite.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Image pouvant être chargé depuis un fichier
+ *
+ **/
+
 #ifndef DISPLAY_SPRITE_H
 #define DISPLAY_SPRITE_H
 
