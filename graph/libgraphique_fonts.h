@@ -1,7 +1,7 @@
 #ifndef _LIBGRAPHIQUE_FONTS_
 #define _LIBGRAPHIQUE_FONTS_
 
-#include <freeglut.h>
+#include <GL/freeglut.h>
 
 struct font {
   int height;

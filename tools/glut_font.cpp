@@ -8,7 +8,7 @@
 
 #include "../tools/glut_font.h"
 
-#include <freeglut_std.h>
+#include <GL/freeglut_std.h>
 
 GlutFont::GlutFont(const GlutFont::GlutFonts &font)
     : m_font(font)

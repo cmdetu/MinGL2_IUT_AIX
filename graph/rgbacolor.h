@@ -1,7 +1,7 @@
 #ifndef RGBACOLOR_H
 #define RGBACOLOR_H
 
-#include <freeglut.h> // GLubyte
+#include <GL/freeglut.h> // GLubyte
 #include "../tools/IEditable.h"
 
 class RGBAcolor : public nsUtil::IEditable

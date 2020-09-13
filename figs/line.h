@@ -1,39 +1,42 @@
 #ifndef LINE_H
 #define LINE_H
 
-#include "basefig.h"
+#include "shape.h"
 
 #include "../tools/myexception.h"
 
-namespace nsFigure
+namespace nsShape
 {
-    class Line : public BaseFig
-    {
-    public:
-        Line (const Vec2D& pos1_, const Vec2D & pos2_, const RGBAcolor & fillCol_ = RGBAcolor (), const float &lineWidth_ = 1.f);
-        Line (const BaseFig &);
-        virtual ~Line() {}
 
-        virtual void draw(MinGL &window) override;
+class Line : public Shape
+{
 
-        // Opérateur de décalage +
-        Line operator + (const Vec2D & pos_) const {
-            return Line(pos1 + pos_, pos2 + pos_, getInColor());
-        }
+public:
+    Line(const Vec2D& pos1_, const Vec2D & pos2_, const RGBAcolor & fillCol_ = RGBAcolor (), const float &lineWidth_ = 1.f);
+    virtual ~Line() override = default;
 
-        // Opérateur de réduction *
-        Line operator * (const float & f) const {
-            return Line(pos1 * f, pos2 * f, getInColor());
-        }
+    virtual void draw(MinGL &window) override;
 
-        // Fonction de clonage
-        virtual std::unique_ptr<IDrawable> clone() const override;
+    // Opérateur de décalage +
+    Line operator + (const Vec2D & pos_) const {
+        return Line(pos1 + pos_, pos2 + pos_, getInColor());
+    }
 
-    private:
-        Vec2D pos1;
-        Vec2D pos2;
-        float lineWidth;
-    };
+    // Opérateur de réduction *
+    Line operator * (const float & f) const {
+        return Line(pos1 * f, pos2 * f, getInColor());
+    }
+
+    // Fonction de clonage
+    virtual std::unique_ptr<IDrawable> clone() const override;
+
+private:
+    Vec2D pos1;
+    Vec2D pos2;
+    float lineWidth;
+
+};
+
 }
 
 #endif // LINE_H

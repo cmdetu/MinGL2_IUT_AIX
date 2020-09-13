@@ -6,17 +6,16 @@
 #include <queue>
 #include <memory> // shared_ptr
 
-#include "freeglut.h"
+#include <GL/freeglut.h>
 
-#include "idrawable.h"
-#include "libgraphique_fonts.h"
-#include "rgbacolor.h"
+#include "graph/idrawable.h"
+#include "graph/libgraphique_fonts.h"
+#include "graph/rgbacolor.h"
+#include "graph/vec2d.h"
 
-#include "../graph/vec2d.h"
-
-#include "../event/event_manager.h"
-#include "../tools/myexception.h"
-#include "../tools/pixelexception.h"
+#include "event/event_manager.h"
+#include "tools/myexception.h"
+#include "tools/pixelexception.h"
 
 /*!
  * \brief keyType : custom type representing a key of the keyboard

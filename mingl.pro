@@ -1,20 +1,35 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
 CONFIG -= qt
 
-LIBS += -lsfml-audio
+TEMPLATE = lib
+CONFIG += staticlib
+
+CONFIG += c++11
+
+LIBS +=  -lglut -lGLU -lGL -lsfml-audio
+
+QMAKE_CFLAGS += -Wall
+QMAKE_CXXFLAGS += -Wall
+
+# The following define makes your compiler emit warnings if you use
+# any Qt feature that has been marked deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# You can also make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    figs/shape.cpp \
+    mingl.cpp \
     audio/minglaudioengine.cpp \
     event/event_manager.cpp \
-    figs/basefig.cpp \
     figs/circle.cpp \
-    figs/figure.cpp \
     figs/line.cpp \
     figs/rectangle.cpp \
     figs/triangle.cpp \
-    graph/mingl.cpp \
     graph/rgbacolor.cpp \
     gui/sprite.cpp \
     gui/text.cpp \
@@ -22,37 +37,26 @@ SOURCES += \
     tools/fonctoroldsound.cpp \
     tools/glut_font.cpp \
     tools/myexception.cpp \
-    tools/tools.cpp \
     tools/pixelexception.cpp \
+    tools/tools.cpp \
     transition/transition.cpp \
     transition/transition_contract.cpp \
-    transition/transition_engine.cpp \
-    main.cpp
-
-QT += opengl core gui
-
-#LIBS +=  -lglut -lGLU -lGL -lGLEW
-LIBS +=  -lglut -lGLU -lGL
-
-#INCLUDEPATH += /opt/local/include/GL/
-INCLUDEPATH += /usr/include/GL/
-
-QMAKE_CXXFLAGS += -Wall
+    transition/transition_engine.cpp
 
 HEADERS += \
+    figs/shape.h \
+    macros.h \
+    mingl.h \
     audio/minglaudioengine.h \
     event/event.hpp \
     event/event_manager.h \
-    figs/basefig.h \
     figs/circle.h \
-    figs/figure.h \
     figs/line.h \
     figs/rectangle.h \
     figs/triangle.h \
     graph/idrawable.h \
     graph/iminglinjectable.h \
     graph/libgraphique_fonts.h \
-    graph/mingl.h \
     graph/rgbacolor.h \
     graph/vec2d.h \
     gui/sprite.h \
@@ -67,32 +71,16 @@ HEADERS += \
     tools/glut_font.h \
     tools/myexception.h \
     tools/pixel.h \
-    tools/tools.h \
     tools/pixelexception.h \
+    tools/tools.h \
     transition/itransitionable.h \
     transition/transition.h \
     transition/transition_contract.h \
     transition/transition_engine.h \
-    transition/transition_types.h \
-    macros.h
+    transition/transition_types.h
 
-# https://retifrav.github.io/blog/2018/06/08/qmake-copy-files/
-# Pour copier les fichiers de ressources directement dans le répertoire de build
-# copies the given files to the destination directory
-defineTest(copyToDestDir) {
-    files = $$1
-    dir = $$2
-    # replace slashes in destination path for Windows
-    win32:dir ~= s,/,\\,g
-
-    for(file, files) {
-        # replace slashes in source path for Windows
-        win32:file ~= s,/,\\,g
-
-        QMAKE_POST_LINK += $$QMAKE_COPY_DIR $$shell_quote($$file) $$shell_quote($$dir) $$escape_expand(\\n\\t)
-    }
-
-    export(QMAKE_POST_LINK)
+# Default rules for deployment.
+unix {
+    target.path = $$[QT_INSTALL_PLUGINS]/generic
 }
-
-copyToDestDir($$PWD/resources, $$OUT_PWD/)
+!isEmpty(target.path): INSTALLS += target

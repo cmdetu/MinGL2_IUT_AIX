@@ -1,17 +1,17 @@
 #include "triangle.h"
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 
+#include "line.h"
 #include "../macros.h"
 #include "../tools/CstCodErr.h"
 #include "../tools/tools.h"
-#include "line.h"
 
 using namespace std;
 using namespace nsUtil;
 
-void nsFigure::Triangle::draw(MinGL &window)
+void nsShape::Triangle::draw(MinGL &window)
 {
     UNUSED(window);
 
@@ -39,8 +39,8 @@ void nsFigure::Triangle::draw(MinGL &window)
     }
 }
 
-nsFigure::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, const RGBAcolor &fillCol_, const RGBAcolor &borderCol_)
-    : BaseFig(fillCol_, borderCol_, "triangle")
+nsShape::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, const RGBAcolor &fillCol_, const RGBAcolor &borderCol_)
+    : Shape(fillCol_, borderCol_)
     , pos1(pos1_)
     , pos2(pos2_)
     , pos3(pos3_)
@@ -48,13 +48,7 @@ nsFigure::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D
 
 }
 
-nsFigure::Triangle::Triangle(const BaseFig & b)
-    : BaseFig(b.getInColor(), b.getBorderColor(), b.getName())
-{
-
-}
-
-std::unique_ptr<IDrawable> nsFigure::Triangle::clone() const
+std::unique_ptr<IDrawable> nsShape::Triangle::clone() const
 {
     return std::unique_ptr<Triangle>(new Triangle(*this));
 }

@@ -1,18 +1,17 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "basefig.h"
+#include "shape.h"
 
 #include "../tools/myexception.h"
 
-namespace nsFigure
+namespace nsShape
 {
-    class Circle : public BaseFig
+    class Circle : public Shape
     {
     public:
         Circle(const Vec2D & pos_, const unsigned & rad_, const RGBAcolor & inCol_, const RGBAcolor & borderCol_ = RGBAcolor ());
-        Circle(const BaseFig &);
-        virtual ~Circle() {}
+        virtual ~Circle() override = default;
 
         virtual void draw(MinGL &window) override;
 

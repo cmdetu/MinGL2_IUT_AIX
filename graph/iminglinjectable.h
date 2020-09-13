@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include "mingl.h"
+#include "../mingl.h"
 #include "idrawable.h"
 #include "../tools/myexception.h"
 
