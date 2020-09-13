@@ -30,21 +30,21 @@ public:
 
     // Opérateur de décalage +
     Triangle operator + (const Vec2D & pos_) const {
-        return Triangle(pos1 + pos_, pos2 + pos_, pos3 + pos_, getFillColor(), getBorderColor());
+        return Triangle(m_firstPosition + pos_, m_secondPosition + pos_, m_thirdPosition + pos_, getFillColor(), getBorderColor());
     }
 
     // Opérateur de réduction *
     Triangle operator * (const float & f) const {
-        return Triangle(pos1 * f, pos2 * f, pos3 * f, getFillColor(), getBorderColor());
+        return Triangle(m_firstPosition * f, m_secondPosition * f, m_thirdPosition * f, getFillColor(), getBorderColor());
     }
 
     // Fonction de clonage
     virtual std::unique_ptr<IDrawable> clone() const override;
 
 private:
-    Vec2D pos1;
-    Vec2D pos2;
-    Vec2D pos3;
+    Vec2D m_firstPosition;
+    Vec2D m_secondPosition;
+    Vec2D m_thirdPosition;
 
 };
 

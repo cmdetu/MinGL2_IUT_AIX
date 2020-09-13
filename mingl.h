@@ -52,6 +52,34 @@ typedef std::map<keyType, bool> keyMap;
 
 class MinGL
 {
+
+public:
+    static void initGlut()
+    {
+        int tmp=0;
+        glutInit(&tmp, NULL);
+    }
+
+    void initGraphic();
+    void stopGaphic();
+
+    bool isPressed(const keyType &key);
+    void resetKey(const keyType &key);
+
+    MinGL(const std::string &name_ = std::string(), const Vec2D &windowSize_ = Vec2D(640, 480), const RGBAcolor & backgroundColor = KWhite);
+    ~MinGL();
+
+    void addDrawable(std::unique_ptr<IDrawable> drawable);
+    void updateGraphic();
+    void clearScreen();
+
+    nsEvent::EventManager &getEventManager();
+
+    void setBackgroundColor(const RGBAcolor & backgroundColor);
+
+    const Vec2D getWindowSize() const;
+    bool isOpen() const;
+
 private:
     // Les données membres en tant que tel
     const Vec2D windowSize;
@@ -80,33 +108,6 @@ private:
     void callKeyboardSpecial(int key, int x = 0, int y = 0);
     void callKeyboardUpSpecial(int key, int x = 0, int y = 0);
     void callClose();
-
-public:
-    static void initGlut()
-    {
-        int tmp=0;
-        glutInit(&tmp, NULL);
-    }
-
-    void initGraphic();
-    void stopGaphic();
-
-    bool isPressed(const keyType &key);
-    void resetKey(const keyType &key);
-
-    MinGL(const std::string &name_ = std::string(), const Vec2D &windowSize_ = Vec2D(640, 480), const RGBAcolor & backgroundColor = KWhite);
-    ~MinGL();
-
-    void addDrawable(std::unique_ptr<IDrawable> drawable);
-    void updateGraphic();
-    void clearScreen();
-
-    nsEvent::EventManager &getEventManager();
-
-    void setBackgroundColor(const RGBAcolor & backgroundColor);
-
-    const Vec2D getWindowSize() const;
-    bool isOpen() const;
 
 };
 

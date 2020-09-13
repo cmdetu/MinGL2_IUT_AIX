@@ -29,21 +29,21 @@ public:
 
     // Opérateur de décalage +
     Line operator + (const Vec2D & pos_) const {
-        return Line(pos1 + pos_, pos2 + pos_, getInColor());
+        return Line(m_firstPosition + pos_, m_secondPosition + pos_, getFillColor());
     }
 
     // Opérateur de réduction *
     Line operator * (const float & f) const {
-        return Line(pos1 * f, pos2 * f, getInColor());
+        return Line(m_firstPosition * f, m_secondPosition * f, getFillColor());
     }
 
     // Fonction de clonage
     virtual std::unique_ptr<IDrawable> clone() const override;
 
 private:
-    Vec2D pos1;
-    Vec2D pos2;
-    float lineWidth;
+    Vec2D m_firstPosition;
+    Vec2D m_secondPosition;
+    float m_lineWidth;
 
 };
 

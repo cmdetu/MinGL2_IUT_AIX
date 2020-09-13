@@ -11,6 +11,7 @@
  * @brief   declaration de la classe CEditable dans nsUtil
  *
  **/
+
 #if !defined __CEDITABLE_H__
 #define      __CEDITABLE_H__
 

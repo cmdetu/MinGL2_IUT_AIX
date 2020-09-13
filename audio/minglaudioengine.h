@@ -26,15 +26,15 @@ class MinGLAudioEngine
 {
 
 public:
-    void setMusic(const std::string & fileName, bool loop = true);
+    void setMusic(const std::string& fileName, bool loop = true);
     void toggleMusic();
     void startMusicFromBeginning();
 
-    void playSoundEffects(const std::string & fileName);
+    void playSoundEffects(const std::string& fileName);
 
 private:
-    std::list<std::unique_ptr<sf::Music>> sounds;
-    sf::Music music;
+    std::list<std::unique_ptr<sf::Music>> m_sounds;
+    sf::Music m_music;
 
     void removeOldSounds();
 

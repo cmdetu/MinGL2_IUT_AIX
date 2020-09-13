@@ -16,6 +16,7 @@
 
 class RGBAcolor : public nsUtil::IEditable
 {
+
 public:
     GLubyte Red;
     GLubyte Green;
@@ -45,8 +46,9 @@ public:
         return RGBAcolor(Red + rhs.Red, Green + rhs.Green, Blue + rhs.Blue, Alpha + rhs.Alpha);
     }
 
-protected :
+protected:
    virtual std::ostream & _Edit (std::ostream & os = std::cout) const;
+
 };
 
 // Quelques couleurs trouvées sur:

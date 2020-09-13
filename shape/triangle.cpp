@@ -62,13 +62,3 @@ std::unique_ptr<IDrawable> nsShape::Triangle::clone() const
 {
     return std::unique_ptr<Triangle>(new Triangle(*this));
 }
-
-Vec2D Triangle::getPos2() const
-{
-    return pos2;
-}
-
-void Triangle::setPos2(const Vec2D &value)
-{
-    pos2 = value;
-}

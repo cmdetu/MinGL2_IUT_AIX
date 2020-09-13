@@ -22,14 +22,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    figs/shape.cpp \
     mingl.cpp \
     audio/minglaudioengine.cpp \
     event/event_manager.cpp \
-    figs/circle.cpp \
-    figs/line.cpp \
-    figs/rectangle.cpp \
-    figs/triangle.cpp \
+    shape/circle.cpp \
+    shape/line.cpp \
+    shape/rectangle.cpp \
+    shape/triangle.cpp \
+    shape/shape.cpp \
     graph/rgbacolor.cpp \
     gui/sprite.cpp \
     gui/text.cpp \
@@ -44,7 +44,6 @@ SOURCES += \
     transition/transition_engine.cpp
 
 HEADERS += \
-    figs/shape.h \
     graph/rgbacolor.hpp \
     graph/vec2d.hpp \
     macros.h \
@@ -52,10 +51,11 @@ HEADERS += \
     audio/minglaudioengine.h \
     event/event.hpp \
     event/event_manager.h \
-    figs/circle.h \
-    figs/line.h \
-    figs/rectangle.h \
-    figs/triangle.h \
+    shape/circle.h \
+    shape/line.h \
+    shape/rectangle.h \
+    shape/triangle.h \
+    shape/shape.h \
     graph/idrawable.h \
     graph/iminglinjectable.h \
     graph/libgraphique_fonts.h \

@@ -175,20 +175,36 @@ void MinGL::callDisplay()
     glutSwapBuffers();
 }
 
-
 void MinGL::callMouse(int button, int state, int x, int y)
 {
-    eventManager.pushEvent(nsEvent::Event_t(nsEvent::EventType_t::MouseClick, nsEvent::EventData_t{.clickData = nsEvent::MouseClickData_t(button, state, x, y)}));
+    nsEvent::Event_t event;
+    event.eventType = nsEvent::EventType_t::MouseClick;
+    event.eventData.clickData.button = button;
+    event.eventData.clickData.state = state;
+    event.eventData.clickData.x = x;
+    event.eventData.clickData.y = y;
+
+    eventManager.pushEvent(event);
 }
 
 void MinGL::callMotion(int x, int y)
 {
-    eventManager.pushEvent(nsEvent::Event_t(nsEvent::EventType_t::MouseDrag, nsEvent::EventData_t{.moveData = nsEvent::MouseMoveData_t(x, y)}));
+    nsEvent::Event_t event;
+    event.eventType = nsEvent::EventType_t::MouseDrag;
+    event.eventData.moveData.x = x;
+    event.eventData.moveData.y = y;
+
+    eventManager.pushEvent(event);
 }
 
 void MinGL::callPassiveMotion(int x, int y)
 {
-    eventManager.pushEvent(nsEvent::Event_t(nsEvent::EventType_t::MouseMove, nsEvent::EventData_t{.moveData = nsEvent::MouseMoveData_t(x, y)}));
+    nsEvent::Event_t event;
+    event.eventType = nsEvent::EventType_t::MouseMove;
+    event.eventData.moveData.x = x;
+    event.eventData.moveData.y = y;
+
+    eventManager.pushEvent(event);
 }
 
 void MinGL::callKeyboard(unsigned char k, int x, int y)

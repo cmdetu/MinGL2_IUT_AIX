@@ -17,6 +17,7 @@
 
 class IminGlInjectable : public IDrawable
 {
+
 public:
     virtual ~IminGlInjectable() {};
 
@@ -25,6 +26,7 @@ public:
         Window.addDrawable(std::unique_ptr<IDrawable>(Obj.clone()));
         return Window;
     }
+
 }; // IminGlInjectable
 
 #endif // IMINGLINJECTABLE_H
