@@ -2,8 +2,8 @@
 #define PIXELEXCEPTION_H
 
 #include <exception>
-#include "../graph/vec2d.h"
-#include "../graph/rgbacolor.h"
+#include "../graph/vec2d.hpp"
+#include "../graph/rgbacolor.hpp"
 
 class PixelException : public std::exception
 {

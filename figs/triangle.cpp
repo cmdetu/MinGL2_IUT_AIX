@@ -26,14 +26,14 @@ void nsShape::Triangle::draw(MinGL &window)
     UNUSED(window);
 
     // On règle la couleur du triangle
-    const RGBAcolor inColor = getInColor();
+    const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
 
     // On dessine le triangle
     glBegin(GL_TRIANGLES);
-    glVertex2i(pos1.x, pos1.y);
-    glVertex2i(pos2.x, pos2.y);
-    glVertex2i(pos3.x, pos3.y);
+    glVertex2i(m_firstPosition.x, m_firstPosition.y);
+    glVertex2i(m_secondPosition.x, m_secondPosition.y);
+    glVertex2i(m_thirdPosition.x, m_thirdPosition.y);
     glEnd();
 
     if (getBorderColor() != KTransparent) {
@@ -42,18 +42,18 @@ void nsShape::Triangle::draw(MinGL &window)
         glColor4ub(borderColor.Red, borderColor.Green, borderColor.Blue, borderColor.Alpha);
 
         glBegin(GL_LINE_LOOP);
-        glVertex2i(pos1.x, pos1.y);
-        glVertex2i(pos2.x, pos2.y);
-        glVertex2i(pos3.x, pos3.y);
+        glVertex2i(m_firstPosition.x, m_firstPosition.y);
+        glVertex2i(m_secondPosition.x, m_secondPosition.y);
+        glVertex2i(m_thirdPosition.x, m_thirdPosition.y);
         glEnd();
     }
 }
 
 nsShape::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D &pos3_, const RGBAcolor &fillCol_, const RGBAcolor &borderCol_)
     : Shape(fillCol_, borderCol_)
-    , pos1(pos1_)
-    , pos2(pos2_)
-    , pos3(pos3_)
+    , m_firstPosition(pos1_)
+    , m_secondPosition(pos2_)
+    , m_thirdPosition(pos3_)
 {
 
 }
@@ -61,4 +61,14 @@ nsShape::Triangle::Triangle(const Vec2D &pos1_, const Vec2D &pos2_, const Vec2D 
 std::unique_ptr<IDrawable> nsShape::Triangle::clone() const
 {
     return std::unique_ptr<Triangle>(new Triangle(*this));
+}
+
+Vec2D Triangle::getPos2() const
+{
+    return pos2;
+}
+
+void Triangle::setPos2(const Vec2D &value)
+{
+    pos2 = value;
 }

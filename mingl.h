@@ -20,8 +20,8 @@
 
 #include "graph/idrawable.h"
 #include "graph/libgraphique_fonts.h"
-#include "graph/rgbacolor.h"
-#include "graph/vec2d.h"
+#include "graph/rgbacolor.hpp"
+#include "graph/vec2d.hpp"
 
 #include "event/event_manager.h"
 #include "tools/myexception.h"

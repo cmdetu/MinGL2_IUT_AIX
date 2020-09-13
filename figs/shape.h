@@ -20,14 +20,14 @@ class Shape: public IminGlInjectable
 {
 
 public:
-    Shape(const RGBAcolor& inColor, const RGBAcolor& borderColor);
+    Shape(const RGBAcolor& fillColor, const RGBAcolor& borderColor);
     virtual ~Shape() = default;
 
-    const RGBAcolor& getInColor() const;
+    const RGBAcolor& getFillColor() const;
     const RGBAcolor& getBorderColor() const;
 
 private:
-    RGBAcolor m_inColor;
+    RGBAcolor m_fillColor;
     RGBAcolor m_borderColor;
 
 };

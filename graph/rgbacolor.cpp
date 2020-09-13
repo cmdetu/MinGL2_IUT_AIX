@@ -8,7 +8,7 @@
  *
  **/
 
-#include "rgbacolor.h"
+#include "rgbacolor.hpp"
 
 std::ostream &RGBAcolor::_Edit(std::ostream &os) const
 {

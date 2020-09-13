@@ -11,15 +11,15 @@
 #include "shape.h"
 
 nsShape::Shape::Shape(const RGBAcolor &inColor, const RGBAcolor &borderColor)
-    : m_inColor(inColor)
+    : m_fillColor(inColor)
     , m_borderColor(borderColor)
 {
 
 }
 
-const RGBAcolor &nsShape::Shape::getInColor() const
+const RGBAcolor &nsShape::Shape::getFillColor() const
 {
-    return m_inColor;
+    return m_fillColor;
 }
 
 const RGBAcolor &nsShape::Shape::getBorderColor() const

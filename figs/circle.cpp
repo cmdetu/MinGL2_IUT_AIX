@@ -27,18 +27,18 @@ void nsShape::Circle::draw(MinGL &window)
     int triangleAmount = 20; // Nombre de triangles a dessiner
 
     // On règle la couleur du cercle
-    const RGBAcolor inColor = getInColor();
+    const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha); // Couleur du cercle
 
     GLfloat twicePi = 2.0f * M_PI;
 
     glBegin(GL_TRIANGLE_FAN);
 
-    glVertex2f(pos.x, pos.y); // Centre du cercle
+    glVertex2f(m_position.x, m_position.y); // Centre du cercle
 
     for(i = 0; i <= triangleAmount;i++) {
-        glVertex2f(pos.x + (radius * cos(i * twicePi / triangleAmount)),
-                   pos.y + (radius * sin(i * twicePi / triangleAmount)));
+        glVertex2f(m_position.x + (m_radius * cos(i * twicePi / triangleAmount)),
+                   m_position.y + (m_radius * sin(i * twicePi / triangleAmount)));
     }
 
     glEnd();
@@ -51,8 +51,8 @@ void nsShape::Circle::draw(MinGL &window)
         glBegin(GL_LINE_LOOP);
 
         for(i = 0; i <= triangleAmount;i++) {
-            glVertex2f(pos.x + (radius * cos(i * twicePi / triangleAmount)),
-                       pos.y + (radius * sin(i * twicePi / triangleAmount)));
+            glVertex2f(m_position.x + (m_radius * cos(i * twicePi / triangleAmount)),
+                       m_position.y + (m_radius * sin(i * twicePi / triangleAmount)));
         }
 
         glEnd();
@@ -61,8 +61,8 @@ void nsShape::Circle::draw(MinGL &window)
 
 nsShape::Circle::Circle(const Vec2D &pos_, const unsigned &rad_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
     : Shape(inCol_, borderCol_)
-    , pos(pos_)
-    , radius(rad_)
+    , m_position(pos_)
+    , m_radius(rad_)
 {
 
 }

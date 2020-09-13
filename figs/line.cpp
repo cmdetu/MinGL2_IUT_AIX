@@ -23,24 +23,24 @@ void nsShape::Line::draw(MinGL &window)
     UNUSED(window);
 
     // On met la couleur de la ligne
-    const RGBAcolor inColor = getInColor();
+    const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
 
     // On règle le volume de la ligne
-    glLineWidth(lineWidth);
+    glLineWidth(m_lineWidth);
 
     // On dessine la ligne
     glBegin(GL_LINES);
-    glVertex2i(pos1.x, pos1.y);
-    glVertex2i(pos2.x, pos2.y);
+    glVertex2i(m_firstPosition.x, m_firstPosition.y);
+    glVertex2i(m_secondPosition.x, m_secondPosition.y);
     glEnd();
 }
 
 nsShape::Line::Line(const Vec2D & pos1_, const Vec2D & pos2_, const RGBAcolor &fillCol_, const float &lineWidth_)
     : Shape(fillCol_, fillCol_)
-    , pos1(pos1_)
-    , pos2(pos2_)
-    , lineWidth(lineWidth_)
+    , m_firstPosition(pos1_)
+    , m_secondPosition(pos2_)
+    , m_lineWidth(lineWidth_)
 {
 
 }

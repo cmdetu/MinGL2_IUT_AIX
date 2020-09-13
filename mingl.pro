@@ -45,6 +45,8 @@ SOURCES += \
 
 HEADERS += \
     figs/shape.h \
+    graph/rgbacolor.hpp \
+    graph/vec2d.hpp \
     macros.h \
     mingl.h \
     audio/minglaudioengine.h \
@@ -57,8 +59,6 @@ HEADERS += \
     graph/idrawable.h \
     graph/iminglinjectable.h \
     graph/libgraphique_fonts.h \
-    graph/rgbacolor.h \
-    graph/vec2d.h \
     gui/sprite.h \
     gui/text.h \
     tools/CException.h \
