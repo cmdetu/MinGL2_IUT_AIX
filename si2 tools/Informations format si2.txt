@@ -1,0 +1,25 @@
+Informations:
+Extension: .si2
+
+0x00 => 0x01 : Magic number (constante "SI")
+
+0x02 => 0x05 : Debut de l'en-tête (constante "HEAD")
+0x06 => 0x07 : Versionnement (2 octets)
+0x08 => 0x0B : Taille d'une ligne (4 octets)
+
+0x0C => 0x0F : Debut des donées (constante "DATA")
+0x10 => ???? : Pixels (Voir format d'un pixel)
+
+Format d'un pixel(4 octets):
+	- +0x00 R(1octet)
+	- +0x01 G(1octet)
+	- +0X02 B(1octet)
+	- +0x03 A(1octet)
+
+
+le script img2si.py permet de convertir les fichiers png en si2 et si2 en png.
+exemple :
+	python3 ./img2si.py source.png dest.si2
+	python3 ./img2si.py source.si2 dest.png
+
+Ce script nécessite python3-pil
