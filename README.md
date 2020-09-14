@@ -18,6 +18,10 @@ installation des dépendances (Debian) :
 ```
 sudo apt-get install freeglut3-dev libsfml-dev
 ```
+installation des dépendances (Arch linux & manjaro) : 
+```
+sudo pacman -S freeglut sfml
+```
 
 Testé sous Debian 10 et Ubuntu 20.04
 
