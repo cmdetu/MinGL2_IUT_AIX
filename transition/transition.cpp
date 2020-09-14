@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    transition.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Definition d'une transition
+ *
+ **/
+
 #include "transition.h"
 
 #include <algorithm>

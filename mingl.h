@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    mingl.h
+ * @author  Alexandre Sollier, Clément Mathieu--Drif, Alain Casali
+ * @date    Janvier 2020
+ * @version 2.0
+ * @brief   La bête
+ *
+ **/
+
 #ifndef MINGL_H
 #define MINGL_H
 
@@ -6,17 +16,16 @@
 #include <queue>
 #include <memory> // shared_ptr
 
-#include "freeglut.h"
+#include <GL/freeglut.h>
 
-#include "idrawable.h"
-#include "libgraphique_fonts.h"
-#include "rgbacolor.h"
+#include "graph/idrawable.h"
+#include "graph/libgraphique_fonts.h"
+#include "graph/rgbacolor.hpp"
+#include "graph/vec2d.hpp"
 
-#include "../graph/vec2d.h"
-
-#include "../event/event_manager.h"
-#include "../tools/myexception.h"
-#include "../tools/pixelexception.h"
+#include "event/event_manager.h"
+#include "tools/myexception.h"
+#include "tools/pixelexception.h"
 
 /*!
  * \brief keyType : custom type representing a key of the keyboard
@@ -43,34 +52,6 @@ typedef std::map<keyType, bool> keyMap;
 
 class MinGL
 {
-private:
-    // Les données membres en tant que tel
-    const Vec2D windowSize;
-    const std::string windowName;
-    std::shared_ptr<font> windowFont = std::make_shared<font>(FONT_HELVETICA_10);
-    RGBAcolor fontColor = KWhite;
-    RGBAcolor bgColor;
-    keyMap keyboardMap;
-
-
-    // Ce dont on a besoin pour Glut
-    short glutWindowId = 0;
-    std::vector<std::unique_ptr<IDrawable>> drawStack;
-
-    nsEvent::EventManager eventManager;
-    bool windowIsOpen;
-
-    // Les handlers
-    void callReshape(int h, int w);
-    void callDisplay();
-    void callMouse(int button, int state, int x = 0, int y = 0);
-    void callMotion(int x, int y);
-    void callPassiveMotion(int x, int y);
-    void callKeyboard(unsigned char key, int x = 0, int y = 0);
-    void callKeyboardUp(unsigned char key, int x = 0, int y = 0);
-    void callKeyboardSpecial(int key, int x = 0, int y = 0);
-    void callKeyboardUpSpecial(int key, int x = 0, int y = 0);
-    void callClose();
 
 public:
     static void initGlut()
@@ -88,8 +69,8 @@ public:
     MinGL(const std::string &name_ = std::string(), const Vec2D &windowSize_ = Vec2D(640, 480), const RGBAcolor & backgroundColor = KWhite);
     ~MinGL();
 
-    void addDrawable(std::unique_ptr<IDrawable> drawable);
-    void updateGraphic();
+    void addDrawable(const IDrawable* drawable);
+    void finishFrame();
     void clearScreen();
 
     nsEvent::EventManager &getEventManager();
@@ -98,6 +79,35 @@ public:
 
     const Vec2D getWindowSize() const;
     bool isOpen() const;
+
+private:
+    // Les données membres en tant que tel
+    const Vec2D windowSize;
+    const std::string windowName;
+    std::shared_ptr<font> windowFont = std::make_shared<font>(FONT_HELVETICA_10);
+    RGBAcolor fontColor = KWhite;
+    RGBAcolor bgColor;
+    keyMap keyboardMap;
+
+
+    // Ce dont on a besoin pour Glut
+    short glutWindowId = 0;
+    std::vector<const IDrawable*> drawStack;
+
+    nsEvent::EventManager eventManager;
+    bool windowIsOpen;
+
+    // Les handlers
+    void callReshape(int h, int w);
+    void callDisplay();
+    void callMouse(int button, int state, int x = 0, int y = 0);
+    void callMotion(int x, int y);
+    void callPassiveMotion(int x, int y);
+    void callKeyboard(unsigned char key, int x = 0, int y = 0);
+    void callKeyboardUp(unsigned char key, int x = 0, int y = 0);
+    void callKeyboardSpecial(int key, int x = 0, int y = 0);
+    void callKeyboardUpSpecial(int key, int x = 0, int y = 0);
+    void callClose();
 
 };
 

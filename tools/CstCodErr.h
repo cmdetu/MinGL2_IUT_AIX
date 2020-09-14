@@ -11,6 +11,7 @@
  * @brief   Codes d'erreurs
  *
  **/
+
 #if ! defined __CSTCODERR_H__
 #define       __CSTCODERR_H__
 

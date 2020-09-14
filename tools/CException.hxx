@@ -11,6 +11,7 @@
  * @brief   classe CException
  *
  **/
+
 #if ! defined __CEXCEPTION_HXX__
 #define       __CEXCEPTION_HXX__
 

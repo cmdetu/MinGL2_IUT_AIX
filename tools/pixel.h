@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../graph/rgbacolor.h"
+#include "../graph/rgbacolor.hpp"
 #include "tools.h"
 
 class Pixel

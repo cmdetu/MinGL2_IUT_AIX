@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    sprite.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Image pouvant être chargé depuis un fichier
+ *
+ **/
+
 #include "sprite.h"
 
 #include <unistd.h>
@@ -46,12 +56,7 @@ nsGui::Sprite::Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &r
 
 }
 
-std::unique_ptr<IDrawable> SPRITE::clone() const
-{
-    return std::unique_ptr<Sprite>(new Sprite(*this));
-}
-
-void SPRITE::draw(MinGL &window)
+void SPRITE::draw(MinGL& window) const
 {
     UNUSED(window);
 

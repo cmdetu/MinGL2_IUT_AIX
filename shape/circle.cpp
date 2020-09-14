@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    circle.cpp
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Représente un cercle
+ *
+ **/
+
 #include <cmath>
 
 #include "../macros.h"
@@ -7,7 +17,15 @@
 using namespace std;
 using namespace nsUtil;
 
-void nsFigure::Circle::draw(MinGL &window)
+nsShape::Circle::Circle(const Vec2D &position, const unsigned &radius, const RGBAcolor &fillColor, const RGBAcolor &borderColor)
+    : Shape(fillColor, borderColor)
+    , m_position(position)
+    , m_radius(radius)
+{
+
+}
+
+void nsShape::Circle::draw(MinGL& window) const
 {
     UNUSED(window);
 
@@ -17,18 +35,18 @@ void nsFigure::Circle::draw(MinGL &window)
     int triangleAmount = 20; // Nombre de triangles a dessiner
 
     // On règle la couleur du cercle
-    const RGBAcolor inColor = getInColor();
+    const RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha); // Couleur du cercle
 
     GLfloat twicePi = 2.0f * M_PI;
 
     glBegin(GL_TRIANGLE_FAN);
 
-    glVertex2f(pos.x, pos.y); // Centre du cercle
+    glVertex2f(m_position.x, m_position.y); // Centre du cercle
 
     for(i = 0; i <= triangleAmount;i++) {
-        glVertex2f(pos.x + (radius * cos(i * twicePi / triangleAmount)),
-                   pos.y + (radius * sin(i * twicePi / triangleAmount)));
+        glVertex2f(m_position.x + (m_radius * cos(i * twicePi / triangleAmount)),
+                   m_position.y + (m_radius * sin(i * twicePi / triangleAmount)));
     }
 
     glEnd();
@@ -41,29 +59,10 @@ void nsFigure::Circle::draw(MinGL &window)
         glBegin(GL_LINE_LOOP);
 
         for(i = 0; i <= triangleAmount;i++) {
-            glVertex2f(pos.x + (radius * cos(i * twicePi / triangleAmount)),
-                       pos.y + (radius * sin(i * twicePi / triangleAmount)));
+            glVertex2f(m_position.x + (m_radius * cos(i * twicePi / triangleAmount)),
+                       m_position.y + (m_radius * sin(i * twicePi / triangleAmount)));
         }
 
         glEnd();
     }
-}
-
-nsFigure::Circle::Circle(const Vec2D &pos_, const unsigned &rad_, const RGBAcolor &inCol_, const RGBAcolor &borderCol_)
-    : BaseFig(inCol_, borderCol_, "circle")
-    , pos(pos_)
-    , radius(rad_)
-{
-
-}
-
-nsFigure::Circle::Circle(const BaseFig & b)
-    : BaseFig(b.getInColor(), b.getBorderColor(), b.getName())
-{
-
-}
-
-std::unique_ptr<IDrawable> nsFigure::Circle::clone() const
-{
-    return std::unique_ptr<Circle>(new Circle(*this));
 }

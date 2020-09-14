@@ -9,6 +9,7 @@
  * @version V2.0
  *
  **/
+
 #if !defined __CEDITABLE_HXX__
 #define      __CEDITABLE_HXX__
 

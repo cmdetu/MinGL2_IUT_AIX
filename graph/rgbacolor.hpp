@@ -1,11 +1,22 @@
+/**
+ *
+ * @file    rgbacolor.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.1
+ * @brief   Représente une couleur RGBA
+ *
+ **/
+
 #ifndef RGBACOLOR_H
 #define RGBACOLOR_H
 
-#include <freeglut.h> // GLubyte
+#include <GL/freeglut.h> // GLubyte
 #include "../tools/IEditable.h"
 
 class RGBAcolor : public nsUtil::IEditable
 {
+
 public:
     GLubyte Red;
     GLubyte Green;
@@ -35,10 +46,12 @@ public:
         return RGBAcolor(Red + rhs.Red, Green + rhs.Green, Blue + rhs.Blue, Alpha + rhs.Alpha);
     }
 
-protected :
+protected:
    virtual std::ostream & _Edit (std::ostream & os = std::cout) const;
+
 };
 
+// Quelques couleurs trouvées sur:
 // https://www.rapidtables.com/web/color/RGB_Color.html
 const RGBAcolor KBlack       {  0,   0,   0};
 const RGBAcolor KWhite       {255, 255, 255};

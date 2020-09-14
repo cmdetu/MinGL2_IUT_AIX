@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    mingl.cpp
+ * @author  Alexandre Sollier, Clément Mathieu--Drif, Alain Casali
+ * @date    Janvier 2020
+ * @version 2.0
+ * @brief   La bête
+ *
+ **/
+
 #include <map>
 
 #include "mingl.h"
@@ -47,12 +57,12 @@ MinGL::~MinGL()
     stopGaphic();
 }
 
-void MinGL::addDrawable(std::unique_ptr<IDrawable> drawable)
+void MinGL::addDrawable(const IDrawable* drawable)
 {
-    drawStack.push_back(std::move(drawable));
+    drawStack.push_back(drawable);
 }
 
-void MinGL::updateGraphic()
+void MinGL::finishFrame()
 {
     glutPostRedisplay();
     glutMainLoopEvent();
@@ -151,34 +161,40 @@ void MinGL::callReshape(int h, int w)
 
 void MinGL::callDisplay()
 {
-    clearScreen();
-    glRasterPos2i(0,0);
-    glShadeModel(GL_FLAT);
-
-    for (unsigned i = 0; i < drawStack.size(); ++i)
-    {
-        drawStack[i]->draw(*this);
-    }
-    drawStack.clear();
-
     glFlush();
     glutSwapBuffers();
 }
 
-
 void MinGL::callMouse(int button, int state, int x, int y)
 {
-    eventManager.pushEvent(nsEvent::Event_t(nsEvent::EventType_t::MouseClick, nsEvent::EventData_t{.clickData = nsEvent::MouseClickData_t(button, state, x, y)}));
+    nsEvent::Event_t event;
+    event.eventType = nsEvent::EventType_t::MouseClick;
+    event.eventData.clickData.button = button;
+    event.eventData.clickData.state = state;
+    event.eventData.clickData.x = x;
+    event.eventData.clickData.y = y;
+
+    eventManager.pushEvent(event);
 }
 
 void MinGL::callMotion(int x, int y)
 {
-    eventManager.pushEvent(nsEvent::Event_t(nsEvent::EventType_t::MouseDrag, nsEvent::EventData_t{.moveData = nsEvent::MouseMoveData_t(x, y)}));
+    nsEvent::Event_t event;
+    event.eventType = nsEvent::EventType_t::MouseDrag;
+    event.eventData.moveData.x = x;
+    event.eventData.moveData.y = y;
+
+    eventManager.pushEvent(event);
 }
 
 void MinGL::callPassiveMotion(int x, int y)
 {
-    eventManager.pushEvent(nsEvent::Event_t(nsEvent::EventType_t::MouseMove, nsEvent::EventData_t{.moveData = nsEvent::MouseMoveData_t(x, y)}));
+    nsEvent::Event_t event;
+    event.eventType = nsEvent::EventType_t::MouseMove;
+    event.eventData.moveData.x = x;
+    event.eventData.moveData.y = y;
+
+    eventManager.pushEvent(event);
 }
 
 void MinGL::callKeyboard(unsigned char k, int x, int y)

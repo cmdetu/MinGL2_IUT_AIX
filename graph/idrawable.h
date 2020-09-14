@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    idrawable.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Interface pour un objet affichable
+ *
+ **/
+
 #ifndef DRAWABLE_H
 #define DRAWABLE_H
 
@@ -14,23 +24,16 @@ class IDrawable
 public:
     /**
      * @brief Destructeur pour la classe IDrawable
-     * @fn virtual ~IDrawable() {}
+     * @fn virtual ~IDrawable() = default;
      */
-    virtual ~IDrawable() {}
+    virtual ~IDrawable() = default;
 
     /**
-     * @brief Fonction pour cloner une instance
-     * @return Un pointeur unique vers l'objet cloné
-     * @fn virtual std::unique_ptr<IDrawable> clone() const;
+     * @brief Fonction pour afficher l'objet.
+     * **Attention**: L'objet doit être toujours vivant quand la fonction MinGL::updateGraphic() est appelée.
+     * @fn virtual void draw(MinGL& window) const = 0;
      */
-    virtual std::unique_ptr<IDrawable> clone() const = 0;
-
-    /**
-     * @brief Fonction pour afficher l'objet
-     * @param[in, out] window : La fenêtre d'affichage
-     * @fn virtual void draw(MinGL &window);
-     */
-    virtual void draw(MinGL &window) = 0;
+    virtual void draw(MinGL& window) const = 0;
 };
 
 #endif // DRAWABLE_H

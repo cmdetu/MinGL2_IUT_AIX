@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    text.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Du texte
+ *
+ **/
+
 #ifndef GUITEXT_H
 #define GUITEXT_H
 
@@ -15,7 +25,7 @@ namespace nsGui {
  * @class Text
  * @brief Gère l'affichage d'un texte
  */
-class Text : public IminGlInjectable, public nsTransition::ITransitionable
+class Text : public IminGLInjectable, public nsTransition::ITransitionable
 {
 public:
     /**
@@ -63,8 +73,7 @@ public:
          const HorizontalAlignment &horizontalAlignment = ALIGNH_LEFT,
          const VerticalAlignment &verticalAlignment = ALIGNV_BOTTOM);
 
-    virtual std::unique_ptr<IDrawable> clone() const override;
-    virtual void draw(MinGL &window) override;
+    virtual void draw(MinGL& window) const override;
 
     virtual void getValues(const int &id, std::vector<float> &values) override;
     virtual void setValues(const int &id, const std::vector<float> &values) override;

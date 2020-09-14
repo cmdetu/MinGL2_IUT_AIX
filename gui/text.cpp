@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    text.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Du texte
+ *
+ **/
+
 #include "text.h"
 
 #include "../macros.h"
@@ -15,11 +25,6 @@ TEXT::Text(const Vec2D &position, const std::string &content,
     , m_horizontalAlignment(horizontalAlignment)
     , m_verticalAlignment(verticalAlignment)
 {} // Text()
-
-std::unique_ptr<IDrawable> TEXT::clone() const
-{
-    return std::unique_ptr<Text>(new Text(*this));
-} // clone()
 
 void TEXT::getValues(const int &id, std::vector<float> &values)
 {
@@ -123,7 +128,7 @@ void nsGui::Text::setContent(const std::string &content)
     m_content = content;
 } // setContent()
 
-void TEXT::draw(MinGL &window)
+void TEXT::draw(MinGL& window) const
 {
     UNUSED(window);
 

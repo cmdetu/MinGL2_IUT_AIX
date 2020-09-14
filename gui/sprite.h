@@ -1,3 +1,13 @@
+/**
+ *
+ * @file    sprite.h
+ * @author  Alexandre Sollier
+ * @date    Janvier 2020
+ * @version 1.0
+ * @brief   Image pouvant être chargé depuis un fichier
+ *
+ **/
+
 #ifndef DISPLAY_SPRITE_H
 #define DISPLAY_SPRITE_H
 
@@ -11,7 +21,7 @@ namespace nsGui {
  * @class Sprite
  * @brief Permet de charger une image depuis un format créé pour l'occasion, le .si2
  */
-class Sprite : public IminGlInjectable
+class Sprite : public IminGLInjectable
 {
 public:
     /**
@@ -31,8 +41,7 @@ public:
      */
     Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &rowSize, const Vec2D &position = Vec2D());
 
-    virtual std::unique_ptr<IDrawable> clone() const override;
-    virtual void draw(MinGL &window) override;
+    virtual void draw(MinGL& window) const override;
 
     /**
      * @brief Récupère le nombre de pixels par ligne
