@@ -17,18 +17,41 @@
 
 #include <iostream>
 
+/**
+ * @namespace nsUtil
+ * @brief Espace de nom pour les utilitaires lambda
+ */
 namespace nsUtil
 {
 
+/**
+ * @class IEditable
+ * @brief Interface pour un objet injectable
+ */
 class IEditable
 {
 
 public:
+    /**
+     * @brief Destructeur pour la classe IEditable
+     * @fn virtual ~IEditable() = default;
+     */
     virtual ~IEditable() = default;
 
+    /**
+     * @brief Surcharge de l'opérateur d'injection
+     * @param[in] os : Flux dans lequel injecter
+     * @param[in] Obj : Objet a injecter
+     * @fn friend std::ostream& operator<<(std::ostream& os, const IEditable& Obj);
+     */
     friend std::ostream& operator<<(std::ostream& os, const IEditable& Obj);
 
 protected:
+    /**
+     * @brief Fonction appelée pour injecter l'objet courant dans un flux
+     * @param[in] os : Flux dans lequel injecter
+     * @fn virtual std::ostream& _Edit(std::ostream& os) const = 0;
+     */
     virtual std::ostream& _Edit(std::ostream& os) const = 0;
 
 }; // class IEditable
