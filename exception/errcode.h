@@ -22,28 +22,24 @@ namespace nsException
 {
 
 enum {
-    KNoExc          = 0,
-    KNoError        = 0,
+    KNoExc          = 0, /**< Pas d'exception */
+    KNoError        = 0, /**< Pas d'exception */
 
-    kColorOutOfBounds = 100,
+    kColorOutOfBounds = 100, /**< Couleur hors des bornes */
 
-    KFileError      = 252, // Erreur a l'ouverture du fichier
-    KErrArg         = 253, // Erreur des arguments (nombre ou types)
-    KExcStd         = 254,
-    kExcInconnue    = -1,
+    KFileError      = 252, /**< Erreur lors de l'ouverture du fichier */
+    KErrArg         = 253, /**< Erreur d'argument (Nombre ou types) */
+    KExcStd         = 254, /**< Erreur standard */
+    kExcInconnue    = -1, /**< Erreur inconnue */
 
-    kErrTooHight    = 300,
-    kErrTooRight    = 301,
-    kErrFontSize    = 302,
-    kNoTriangle     = 303,
-    kNoLine         = 304,
-    kNoRectangle    = 305,
-    kNoCircle       = 306,
-    kTypeNotFound   = 307,
-
-    kScreenNotFound     = 400,
-    kDifficultyNotFound = 401,
-    kFileNotFound       = 402,
+    kErrTooHight    = 300, /**< Position trop haute */
+    kErrTooRight    = 301, /**< Position trop a droite */
+    kErrFontSize    = 302, /**< Erreur sur la taille de la police */
+    kNoTriangle     = 303, /**< Pas de triangle */
+    kNoLine         = 304, /**< Pas de ligne */
+    kNoRectangle    = 305, /**< Pas de rectangle */
+    kNoCircle       = 306, /**< Pas de cercle */
+    kTypeNotFound   = 307, /**< Type non trouvé */
 };
 
 const std::map <unsigned, std::string> kError
@@ -56,9 +52,6 @@ const std::map <unsigned, std::string> kError
     {kNoRectangle, "Nombre incorrect de points pour la construction d'un rectangle"},
     {kNoCircle, "Nombre incorrect de points pour la construction d'un cercle"},
     {kTypeNotFound, "Instanciation impossible: Pas le bon type"},
-    {kScreenNotFound, "Impossible de trouver l'écran via son identifiant."},
-    {kDifficultyNotFound, "Impossible de trouver la difficulté spécifiée."},
-    {kFileNotFound, "Le fichier spécifié est introuvable."}
 };
 
 } // namespace nsException
