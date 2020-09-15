@@ -56,11 +56,6 @@ MinGL::~MinGL()
     stopGaphic();
 } //~MinGL()
 
-void MinGL::addDrawable(const nsGraphics::IDrawable* drawable)
-{
-    drawStack.push_back(drawable);
-} // addDrawable()
-
 void MinGL::finishFrame()
 {
     glutPostRedisplay();
