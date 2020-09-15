@@ -38,7 +38,7 @@ public:
 
     /**
      * @brief Fonction pour afficher l'objet.
-     * **Attention**: L'objet doit être toujours vivant quand la fonction MinGL::updateGraphic() est appelée.
+     * **Attention**: L'objet doit être toujours vivant quand la fonction MinGL::finishFrame() est appelée.
      * @fn virtual void draw(MinGL& window) const = 0;
      */
     virtual void draw(MinGL& window) const = 0;
