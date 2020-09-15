@@ -2,19 +2,19 @@
  * @file glut_font.cpp
  * @brief Classe utilitaire pour utiliser facilement les polices de Glut
  * @author SOLLIER Alexandre
- * @version 1.0
+ * @version 1.1
  * @date 28 décembre 2019
  */
 
-#include "../tools/glut_font.h"
-
 #include <GL/freeglut_std.h>
 
-GlutFont::GlutFont(const GlutFont::GlutFonts &font)
+#include "glut_font.h"
+
+nsGui::GlutFont::GlutFont(const GlutFont::GlutFonts &font)
     : m_font(font)
 {} // GlutFont()
 
-void *GlutFont::convertForGlut() const
+void* nsGui::GlutFont::convertForGlut() const
 {
     // Check the current font and return the right Glut identifier
     switch (m_font)

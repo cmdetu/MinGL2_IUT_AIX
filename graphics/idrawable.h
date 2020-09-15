@@ -16,11 +16,19 @@
 class MinGL;
 
 /**
+ * @namespace nsGraphics
+ * @brief Espace de nom pour les utilitaires graphiques
+ */
+namespace nsGraphics
+{
+
+/**
  * @class IDrawable
  * @brief Interface pour un objet affichable
  */
 class IDrawable
 {
+
 public:
     /**
      * @brief Destructeur pour la classe IDrawable
@@ -34,6 +42,9 @@ public:
      * @fn virtual void draw(MinGL& window) const = 0;
      */
     virtual void draw(MinGL& window) const = 0;
-};
+
+}; // class IDrawable
+
+} // namespace nsGraphics
 
 #endif // DRAWABLE_H

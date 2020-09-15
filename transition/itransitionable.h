@@ -33,18 +33,18 @@ public:
      * @brief Récupère des valeurs dans un vecteur de float pour l'ID spécifié
      * @param[in] id: ID des valeurs a récupérer
      * @param[in, out] values: Vecteur de valeurs a peupler
-     * @fn virtual void getValues(const int &id, std::vector<float> &values);
+     * @fn virtual void getValues(const int& id, std::vector<float>& values);
      */
-    virtual void getValues(const int &id, std::vector<float> &values) = 0;
+    virtual void getValues(const int& id, std::vector<float>& values) = 0;
 
     /**
      * @brief Définit les nouvelles valeurs pour l'ID spécifié
      * @param[in] id: ID des valeurs a définir
      * @param[in] values: Vecteur des nouvelles valeurs a appliquer
-     * @fn virtual void setValues(const int &id, const std::vector<float> &values);
+     * @fn virtual void setValues(const int& id, const std::vector<float>& values);
      */
-    virtual void setValues(const int &id, const std::vector<float> &values) = 0;
-};
+    virtual void setValues(const int& id, const std::vector<float>& values) = 0;
+}; // class ITransitionable
 
 } // namespace nsTransition
 

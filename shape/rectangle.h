@@ -13,8 +13,6 @@
 
 #include "shape.h"
 
-#include "../tools/myexception.h"
-
 namespace nsShape
 {
 
@@ -32,9 +30,11 @@ public:
      * @param[in] secondPosition : Position du coin bas-droit
      * @param[in] fillColor : Couleur de remplissage
      * @param[in] borderColor : Couleur de bord
-     * @fn Rectangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+     * @fn Rectangle(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::RGBAcolor& fillColor,
+              const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
      */
-    Rectangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+    Rectangle(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::RGBAcolor& fillColor,
+              const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
 
     /**
      * @brief Constructeur pour la classe Rectangle
@@ -43,9 +43,11 @@ public:
      * @param[in] height : Hauteur du rectangle
      * @param[in] fillColor : Couleur de remplissage
      * @param[in] borderColor : Couleur de bord
-     * @fn Rectangle(const Vec2D& position, const unsigned& width, const unsigned& height, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+     * @fn Rectangle(const nsGraphics::Vec2D& position, const unsigned& width, const unsigned& height, const nsGraphics::RGBAcolor& fillColor,
+              const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
      */
-    Rectangle(const Vec2D& position, const unsigned& width, const unsigned& height, const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+    Rectangle(const nsGraphics::Vec2D& position, const unsigned& width, const unsigned& height, const nsGraphics::RGBAcolor& fillColor,
+              const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
 
     /**
      * @brief Destructeur virtuel pour la classe Line
@@ -58,36 +60,30 @@ public:
     /**
      * @brief Opérateur de décalage
      * @param[in] position : Position a additionner
-     * @fn Rectangle operator+(const Vec2D& position) const
+     * @fn Rectangle operator+(const nsGraphics::Vec2D& position) const
      */
-    Rectangle operator+(const Vec2D& position) const
-    {
-        return Rectangle(m_firstPosition + position, m_secondPosition + position, getFillColor(), getBorderColor());
-    }
+    Rectangle operator+(const nsGraphics::Vec2D& position) const;
 
     /**
      * @brief Opérateur de réduction
      * @param[in] f : Nombre avec lequel multiplier la position actuelle
      * @fn Rectangle operator*(const float& f) const
      */
-    Rectangle operator*(const float& f) const
-    {
-        return Rectangle(m_firstPosition * f, m_secondPosition * f, getFillColor(), getBorderColor());
-    }
+    Rectangle operator*(const float& f) const;
 
 private:
     /**
      * @brief m_firstPosition : Position du premier sommet
      */
-    Vec2D m_firstPosition;
+    nsGraphics::Vec2D m_firstPosition;
 
     /**
      * @brief m_secondPosition : Position du second sommet
      */
-    Vec2D m_secondPosition;
+    nsGraphics::Vec2D m_secondPosition;
 
-};
+}; // class Rectangle
 
-}
+} // namespace nsShape
 
 #endif // RECTANGLE_H

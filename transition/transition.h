@@ -39,9 +39,9 @@ public:
     /**
      * @brief Constructeur pour la classe Transition
      * @param[in] contract : Contrat utilisé pour initialiser cette Transition
-     * @fn Transition(const TransitionContract &contract);
+     * @fn Transition(const TransitionContract& contract);
      */
-    Transition(const TransitionContract &contract);
+    Transition(const TransitionContract& contract);
 
     /**
      * @brief Retourne le temps écoulé pour cette Transition
@@ -54,16 +54,16 @@ public:
      * @brief Définit un nouveau temps écoulé pour cette Transition,
      * puis met a jour les valeurs de la cible
      * @param[in] elapsed : Nouveau temps écoulé
-     * @fn void setElapsed(const SystemDuration_t &elapsed);
+     * @fn void setElapsed(const SystemDuration_t& elapsed);
      */
-    void setElapsed(const SystemDuration_t &elapsed);
+    void setElapsed(const SystemDuration_t& elapsed);
 
     /**
      * @brief Rajoute une durée au temps écoulé actuel
      * @param[in] addedTime : Durée a rajouter
-     * @fn void addToElapsed(const SystemDuration_t &addedTime);
+     * @fn void addToElapsed(const SystemDuration_t& addedTime);
      */
-    void addToElapsed(const SystemDuration_t &addedTime);
+    void addToElapsed(const SystemDuration_t& addedTime);
 
     /**
      * @brief Indique si cette Transition est en train de se jouer a l'envers
@@ -77,7 +77,7 @@ public:
      * @param[in] finishMode : Mode utilisé pour finir cette Transition (Valeurs d'arrivé par défaut)
      * @fn void finish();
      */
-    void finish(const TransitionFinishModes &finishMode = TransitionFinishModes::FINISH_DESTINATION);
+    void finish(const TransitionFinishModes& finishMode = TransitionFinishModes::FINISH_DESTINATION);
 
     /**
      * @brief Indique si cette Transition est marquée comme terminée
@@ -121,7 +121,7 @@ private:
      * @fn void handleEndlife();
      */
     void handleEndlife();
-};
+}; // class Transition
 
 } // namespace nsTransition
 

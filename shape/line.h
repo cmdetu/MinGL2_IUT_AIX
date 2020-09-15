@@ -13,8 +13,6 @@
 
 #include "shape.h"
 
-#include "../tools/myexception.h"
-
 namespace nsShape
 {
 
@@ -32,9 +30,9 @@ public:
      * @param[in] secondPosition : Position du second sommet
      * @param[in] fillColor : Couleur de remplissage
      * @param[in] lineWidth : Epaisseur de la ligne
-     * @fn Line(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const float& lineWidth = 1.f);
+     * @fn Line(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::RGBAcolor& fillColor, const float& lineWidth = 1.f);
      */
-    Line(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const float& lineWidth = 1.f);
+    Line(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::RGBAcolor& fillColor, const float& lineWidth = 1.f);
 
     /**
      * @brief Destructeur virtuel pour la classe Line
@@ -47,41 +45,35 @@ public:
     /**
      * @brief Opérateur de décalage
      * @param[in] position : Position a additionner
-     * @fn Line operator+(const Vec2D& position) const
+     * @fn Line operator+(const nsGraphics::Vec2D& position) const
      */
-    Line operator+(const Vec2D& position) const
-    {
-        return Line(m_firstPosition + position, m_secondPosition + position, getFillColor());
-    }
+    Line operator+(const nsGraphics::Vec2D& position) const;
 
     /**
      * @brief Opérateur de réduction
      * @param[in] f : Nombre avec lequel multiplier la position actuelle
      * @fn Line operator*(const float& f) const
      */
-    Line operator*(const float& f) const
-    {
-        return Line(m_firstPosition * f, m_secondPosition * f, getFillColor());
-    }
+    Line operator*(const float& f) const;
 
 private:
     /**
      * @brief m_firstPosition : Position du premier sommet
      */
-    Vec2D m_firstPosition;
+    nsGraphics::Vec2D m_firstPosition;
 
     /**
      * @brief m_position : Position du second sommet
      */
-    Vec2D m_secondPosition;
+    nsGraphics::Vec2D m_secondPosition;
 
     /**
      * @brief m_position : Epaisseur de la ligne
      */
     float m_lineWidth;
 
-};
+}; // class Line
 
-}
+} // namespace nsShape
 
 #endif // LINE_H

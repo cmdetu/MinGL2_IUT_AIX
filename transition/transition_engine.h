@@ -35,21 +35,21 @@ public:
      * Cette fonction rajoute la valeur de delta aux temps écoulés des différentes transitions,
      * et supprime les transitions terminées de la liste.
      */
-    void update(const std::chrono::microseconds &delta);
+    void update(const std::chrono::microseconds& delta);
 
     /**
      * @brief Démarre un contrat
      * @param[in] contract : Contrat de transition a démarrer
      * @fn void startContract(const TransitionContract &contract);
      */
-    void startContract(const TransitionContract &contract);
+    void startContract(const TransitionContract& contract);
 
     /**
      * @brief Termine toutes les transitions de la liste
      * @param[in] finishMode : finishMode : Mode utilisé pour finir cette Transition (Valeurs d'arrivé par défaut)
      * @fn void finishEveryTransition();
      */
-    void finishEveryTransition(const Transition::TransitionFinishModes &finishMode = Transition::FINISH_DESTINATION);
+    void finishEveryTransition(const Transition::TransitionFinishModes& finishMode = Transition::FINISH_DESTINATION);
 
     /**
      * @brief Termine toutes les transitions d'une certaine cible de la liste
@@ -57,7 +57,7 @@ public:
      * @param[in] finishMode : finishMode : Mode utilisé pour finir cette Transition (Valeurs d'arrivé par défaut)
      * @fn void finishEveryTransitionOfTarget(const ITransitionable &transitionable);
      */
-    void finishEveryTransitionOfTarget(const ITransitionable &transitionable, const Transition::TransitionFinishModes &finishMode = Transition::FINISH_DESTINATION);
+    void finishEveryTransitionOfTarget(const ITransitionable& transitionable, const Transition::TransitionFinishModes& finishMode = Transition::FINISH_DESTINATION);
 
 private:
     /**
@@ -69,7 +69,7 @@ private:
      * @brief m_transitionList : Liste des transitions que ce moteur gère
      */
     TransitionVector_t m_transitionList;
-};
+}; // class TransitionEngine
 
 } // namespace nsTransition
 

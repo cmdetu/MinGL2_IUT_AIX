@@ -12,12 +12,10 @@
 
 #include "mingl.h"
 
-using namespace std;
-using namespace nsUtil;
-
 // Astuce pour faire passer les handlers en fonction static dans initGraphic()
 namespace {
-map<int, MinGL *> anyWindow;
+
+std::map<int, MinGL *> anyWindow;
 
 template<typename T, T oHandler>
 struct callBackBuilder;
@@ -36,17 +34,18 @@ struct callBackBuilder<void(Obj::*)(Arg...), oHandler>
         }
     }
 };
-}
+
+} // namespace
 
 #define BIND_CALLBACK(HANDLER) callBackBuilder<decltype(HANDLER), HANDLER>::callback
 
-MinGL::MinGL(const std::string &name_, const Vec2D &windowSize_, const RGBAcolor & backgroundColor)
-    : windowSize(windowSize_)
-    , windowName(name_)
+MinGL::MinGL(const std::string& name, const nsGraphics::Vec2D& windowSize, const nsGraphics::RGBAcolor& backgroundColor)
+    : windowSize(windowSize)
+    , windowName(name)
     , bgColor(backgroundColor)
     , eventManager()
     , windowIsOpen(false)
-{}
+{} // MinGL()
 
 MinGL::~MinGL()
 {
@@ -55,40 +54,45 @@ MinGL::~MinGL()
         anyWindow.erase(it);
 
     stopGaphic();
-}
+} //~MinGL()
 
-void MinGL::addDrawable(const IDrawable* drawable)
+void MinGL::addDrawable(const nsGraphics::IDrawable* drawable)
 {
     drawStack.push_back(drawable);
-}
+} // addDrawable()
 
 void MinGL::finishFrame()
 {
     glutPostRedisplay();
     glutMainLoopEvent();
-}
+} // finishFrame()
 
 void MinGL::clearScreen()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-}
+} // clearScreen()
 
-nsEvent::EventManager &MinGL::getEventManager()
+nsEvent::EventManager& MinGL::getEventManager()
 {
     return eventManager;
-}
+} // getEventManager()
 
-void MinGL::setBackgroundColor(const RGBAcolor & backgroundColor)
+const nsGraphics::RGBAcolor& MinGL::getBackgroundColor() const
+{
+    return bgColor;
+} // getBackgroundColor()
+
+void MinGL::setBackgroundColor(const nsGraphics::RGBAcolor& backgroundColor)
 {
     bgColor = backgroundColor;
-    glClearColor(bgColor.Red / 256.f, bgColor.Green / 256.f, bgColor.Blue / 256.f, 1.f);
-}
+    glClearColor(bgColor.getRed() / 256.f, bgColor.getGreen() / 256.f, bgColor.getBlue() / 256.f, bgColor.getAlpha() / 256.f);
+} // setBackgroundColor()
 
 void MinGL::initGraphic()
 {
     // Initialisation GLUT
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowSize(int(windowSize.x), int(windowSize.y));
+    glutInitWindowSize(int(windowSize.getX()), int(windowSize.getY()));
     glutInitWindowPosition(200, 100);
 
     glutWindowId = glutCreateWindow(windowName.c_str());
@@ -111,7 +115,7 @@ void MinGL::initGraphic()
     glutCloseFunc(BIND_CALLBACK(&MinGL::callClose));
 
     // On set la couleur d'effacement (prend des float, donc obligé de diviser par la taille d'un GLuint)
-    glClearColor(bgColor.Red / 256.f, bgColor.Green / 256.f, bgColor.Blue / 256.f, 1.f);
+    glClearColor(bgColor.getRed() / 256.f, bgColor.getGreen() / 256.f, bgColor.getBlue() / 256.f, bgColor.getAlpha() / 256.f);
 
     // Efface écran
     clearScreen();
@@ -120,13 +124,13 @@ void MinGL::initGraphic()
     glutMainLoopEvent();
     glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF); // on désactive la répétition des touches
     windowIsOpen = true;
-}
+} // initGraphic()
 
 void MinGL::stopGaphic()
 {
     glutDestroyWindow(glutWindowId);
     glutMainLoopEvent();
-}
+} // stopGraphic()
 
 /*!
  *  \brief      Tell if the key is pressed (true) or not (false)
@@ -137,7 +141,7 @@ void MinGL::stopGaphic()
 bool MinGL::isPressed(const keyType &key)
 {
     return keyboardMap[key];
-}
+} // isPressed()
 
 /*!
  *
@@ -147,23 +151,23 @@ bool MinGL::isPressed(const keyType &key)
 void MinGL::resetKey(const keyType &key)
 {
     keyboardMap[key] = false;
-}
+} // resetKey()
 
 void MinGL::callReshape(int h, int w)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0.0, GLfloat (windowSize.x), GLfloat (windowSize.y), 0.0);
+    gluOrtho2D(0.0, GLfloat (windowSize.getX()), GLfloat (windowSize.getY()), 0.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glViewport(0, 0, h, w);
-}
+} // callReshape()
 
 void MinGL::callDisplay()
 {
     glFlush();
     glutSwapBuffers();
-}
+} // callDisplay()
 
 void MinGL::callMouse(int button, int state, int x, int y)
 {
@@ -175,7 +179,7 @@ void MinGL::callMouse(int button, int state, int x, int y)
     event.eventData.clickData.y = y;
 
     eventManager.pushEvent(event);
-}
+} // calMouse()
 
 void MinGL::callMotion(int x, int y)
 {
@@ -185,7 +189,7 @@ void MinGL::callMotion(int x, int y)
     event.eventData.moveData.y = y;
 
     eventManager.pushEvent(event);
-}
+} // callMotion()
 
 void MinGL::callPassiveMotion(int x, int y)
 {
@@ -195,45 +199,47 @@ void MinGL::callPassiveMotion(int x, int y)
     event.eventData.moveData.y = y;
 
     eventManager.pushEvent(event);
-}
+} // callPassiveMotion()
 
 void MinGL::callKeyboard(unsigned char k, int x, int y)
 {
     (void)(x); (void)(y);
     keyType key(k, false);
     keyboardMap[key] = true;
-}
+} // callKeyboard()
+
 void MinGL::callKeyboardUp(unsigned char k, int x, int y)
 {
     (void)(x); (void)(y);
     keyType key(k, false);
     keyboardMap[key] = false;
-}
+} // callKeyboardUp()
 
 void MinGL::callKeyboardSpecial(int k, int x, int y)
 {
     (void)(x); (void)(y);
     keyType key(k, true);
     keyboardMap[key] = true;
-}
+} // callKeyboardSpecial()
+
 void MinGL::callKeyboardUpSpecial(int k, int x, int y)
 {
     (void)(x); (void)(y);
     keyType key(k, true);
     keyboardMap[key] = false;
-}
+} // callKeyboardUpSpecial()
 
 void MinGL::callClose()
 {
     windowIsOpen = false;
-}
+} // callClose()
 
-const Vec2D MinGL::getWindowSize() const
+const nsGraphics::Vec2D MinGL::getWindowSize() const
 {
     return windowSize;
-}
+} // getWindowSize()
 
 bool MinGL::isOpen() const
 {
     return windowIsOpen;
-}
+} // isOpen()

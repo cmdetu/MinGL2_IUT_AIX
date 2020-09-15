@@ -45,15 +45,15 @@ public:
      * @param[in] destination : Les valeurs d'arrivée
      * @param[in] delay : Délai avant que la transition commence (Zéro par défaut)
      * @param[in] transitionMode : Mode de transition (Transition finie par défaut)
-     * @fn TransitionContract(ITransitionable& target, const int &id,
-                       const SystemDuration_t &duration, const std::vector<float> &destination,
-                       const SystemDuration_t &delay = std::chrono::seconds::zero(),
-                       const TransitionMode &transitionMode = TransitionMode::MODE_FINITE);
+     * @fn TransitionContract(ITransitionable& target, const int& id,
+                       const SystemDuration_t& duration, const std::vector<float>& destination,
+                       const SystemDuration_t& delay = std::chrono::seconds::zero(),
+                       const TransitionMode& transitionMode = TransitionMode::MODE_FINITE);
      */
-    TransitionContract(ITransitionable& target, const int &id,
-                       const SystemDuration_t &duration, const std::vector<float> &destination,
-                       const SystemDuration_t &delay = std::chrono::seconds::zero(),
-                       const TransitionMode &transitionMode = TransitionMode::MODE_FINITE);
+    TransitionContract(ITransitionable& target, const int& id,
+                       const SystemDuration_t& duration, const std::vector<float>& destination,
+                       const SystemDuration_t& delay = std::chrono::seconds::zero(),
+                       const TransitionMode& transitionMode = TransitionMode::MODE_FINITE);
 
     /**
      * @brief Retourne l'ID de transition, utilisé par la cible pour connaitre les valeurs a utiliser
@@ -100,9 +100,9 @@ public:
     /**
      * @brief Définit la fonction de callback a appeler quand la transition est achevée
      * @param[in] callback : La fonction a appeler
-     * @fn void setDestinationCallback(const std::function<void()> &callback);
+     * @fn void setDestinationCallback(const std::function<void()>& callback);
      */
-    void setDestinationCallback(const std::function<void()> &callback);
+    void setDestinationCallback(const std::function<void()>& callback);
 
 protected:
     /**
@@ -151,7 +151,7 @@ protected:
      * @brief m_duration : Un pointeur vers la fonction a appeler une fois la transition achevée
      */
     std::function<void()> m_destinationCallback;
-};
+}; // class TransitionContract
 
 } // namespace nsTransition
 

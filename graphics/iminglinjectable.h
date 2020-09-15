@@ -11,15 +11,17 @@
 
 #include <memory>
 
-#include "../mingl.h"
 #include "idrawable.h"
-#include "../tools/myexception.h"
+#include "../mingl.h"
+
+namespace nsGraphics
+{
 
 class IminGLInjectable : public IDrawable
 {
 
 public:
-    virtual ~IminGLInjectable() {};
+    virtual ~IminGLInjectable() = default;
 
     friend MinGL& operator<<(MinGL& window, const IminGLInjectable& drawable)
     {
@@ -28,6 +30,8 @@ public:
         return window;
     }
 
-}; // IminGLInjectable
+}; // class IminGLInjectable
+
+} // namespace nsGraphics
 
 #endif // IMINGLINJECTABLE_H
