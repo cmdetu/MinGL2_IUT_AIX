@@ -1,32 +1,53 @@
-# MinGL2_IUT_AIX
-
-# Introduction
-
-MinGL2 est un bibliothèque C++, évolution de MinGL par Alain Casali. Elle facilite l'affichage de forme primitives et composées, de texte et la réalisation d'animations. Elle permet également de jouer des fichiers audios et de gérer les saisies clavier.
+# minGL 2
+MinGL 2 est un bibliothèque écrite en C++, évolution de MinGL par Alain Casali, professeur d'algo a l'IUT Informatique d'Aix-en-Provence.  
+Elle facilite l'affichage de forme primitives et composées, de texte et la réalisation d'animations. Elle permet également de jouer des fichiers audios et de gérer les saisies clavier et souris.
 
 Développé dans un but pédagogique.
 
-# Installation
-
-*à venir...*
-
-Dépendances : 
+## Installation
+Les dépendances suivantes sont requises pour utiliser minGL 2: 
 * freeglut
 * sfml (audio)
 
-installation des dépendances (Debian) :
+Installation sous **Debian et dérivés**:
 ```
 sudo apt-get install freeglut3-dev libsfml-dev
 ```
-installation des dépendances (Arch linux & manjaro) : 
+
+Installation sous **Arch Linux et Manjaro**: 
 ```
 sudo pacman -S freeglut sfml
 ```
 
-Testé sous Debian 10 et Ubuntu 20.04
+Installation sous **macOS** (avec [Homebrew](https://brew.sh) préalablement installé):
+```
+brew cask install xquartz
+brew install freeglut sfml
+```
+**Important**: Afin de terminer l'installation de XQuartz, macOS doit être redémarré.
 
-# Remerciements
+Testé sous Debian 10, Ubuntu 20.04 et macOS 10.15
 
-Merci à Alain Casali, auteur de MinGL, base de MinGL2 et aux étudiants de 2ème année en DUT Informatique 2020 de l'IUT d'Aix en provence.  
-Alexandre Sollier et Clément Mathieu--Drif
+## Utilisation
+
+### Avec un autre projet qmake
+Pour utiliser minGL 2 dans votre projet qmake, il vous suffit de décompresser (ou encore mieux, mettre en sous-module git) cette bibliothèque dans un sous-répertoire de la où se situe votre fichier ``.pro``.  
+Il vous suffit ensuite de rajouter dans votre ``.pro`` la directive ``include(.../mingl.pri)``, en remplaçant les trois petits points par le chemin où se trouve minGL 2.
+
+Par exemple, si vous avez décompressé minGL 2 dans le sous-répertoire ``minGL2/`` présent dans le même répertoire que votre ``.pro``, alors vous devez écrire dans ce dernier: ``include(minGL2/mingl.pri)``.
+
+### En tant que bibliothèque
+Vous pouvez facilement compiler minGL 2 en tant que bibliothèque afin de récupérer un ``libmingl.a``.  
+Il vous suffit simplement d'ouvrir le fichier de projet ``mingl.pro`` et de compiler, vous trouverez le ``.a`` dans le répertoire de compilation.
+
+### Images .si2
+MinGL 2 supporte le chargement d'images sous le format ``.si2``, qui est un format d'image non-compressé, bitmap-like et supportant la transparence.  
+Un script Python 3 permettant de transformer n'importe quelle image en ``.si2`` (et inversement) vous est fourni dans ``si2 tools/img2si.py``.
+
+Le spécifications de ce format de fichier vous sont écrites dans ce même script Python, en commentaire.
+
+## Remerciements
+* **Alexandre Sollier et Clément Mathieu--Drif**: Développeurs principaux de minGL 2
+* **Alain Casali**: Auteur de la version originale de MinGL
+* La promo 2020-2021 de la 2ème année du Département Informatique de l'IUT d'Aix-en-Provence
 
