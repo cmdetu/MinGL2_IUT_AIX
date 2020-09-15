@@ -68,7 +68,6 @@ public:
     bool isPressed(const keyType& key);
     void resetKey(const keyType& key);
 
-    void addDrawable(const nsGraphics::IDrawable* drawable);
     void finishFrame();
     void clearScreen();
 
@@ -90,7 +89,6 @@ private:
 
     // Ce dont on a besoin pour Glut
     short glutWindowId = 0;
-    std::vector<const nsGraphics::IDrawable*> drawStack;
 
     nsEvent::EventManager eventManager;
     bool windowIsOpen;
