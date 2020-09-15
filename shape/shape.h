@@ -11,7 +11,7 @@
 #ifndef FIG2_H
 #define FIG2_H
 
-#include "../graph/iminglinjectable.h"
+#include "../graphics/iminglinjectable.h"
 
 /**
  * @namespace nsShape
@@ -24,7 +24,7 @@ namespace nsShape
  * @class Shape
  * @brief Classe de base pour une forme
  */
-class Shape: public IminGLInjectable
+class Shape: public nsGraphics::IminGLInjectable
 {
 
 public:
@@ -32,9 +32,9 @@ public:
      * @brief Constructeur pour la classe Shape
      * @param[in] fillColor : Couleur de remplissage de la forme
      * @param[in] borderColor : Couleur de bord de la forme
-     * @fn Shape(const RGBAcolor& fillColor, const RGBAcolor& borderColor);
+     * @fn Shape(const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor);
      */
-    Shape(const RGBAcolor& fillColor, const RGBAcolor& borderColor);
+    Shape(const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor);
 
     /**
      * @brief Destructeur virtuel pour la classe Shape
@@ -44,29 +44,41 @@ public:
 
     /**
      * @brief Retourne la couleur de remplissage
-     * @fn const RGBAcolor& getFillColor() const;
+     * @fn const nsGraphics::RGBAcolor& getFillColor() const;
      */
-    const RGBAcolor& getFillColor() const;
+    const nsGraphics::RGBAcolor& getFillColor() const;
+
+    /**
+     * @brief Règle la couleur de remplissage
+     * @fn cvoid setFillColor(nsGraphics::RGBAcolor& fillColor);
+     */
+    void setFillColor(nsGraphics::RGBAcolor& fillColor);
 
     /**
      * @brief Retourne la couleur de bord
-     * @fn const RGBAcolor& getBorderColor() const;
+     * @fn const nsGraphics::RGBAcolor& getBorderColor() const;
      */
-    const RGBAcolor& getBorderColor() const;
+    const nsGraphics::RGBAcolor& getBorderColor() const;
+
+    /**
+     * @brief Règle la couleur de bord
+     * @fn void setBorderColor(RGBAcolor& borderColor);
+     */
+    void setBorderColor(nsGraphics::RGBAcolor& borderColor);
 
 private:
     /**
      * @brief m_fillColor : Couleur de remplissage
      */
-    RGBAcolor m_fillColor;
+    nsGraphics::RGBAcolor m_fillColor;
 
     /**
      * @brief m_borderColor : Couleur de bord
      */
-    RGBAcolor m_borderColor;
+    nsGraphics::RGBAcolor m_borderColor;
 
-};
+}; // class Shape
 
-}
+} // namespace nsShape
 
 #endif // FIG2_H

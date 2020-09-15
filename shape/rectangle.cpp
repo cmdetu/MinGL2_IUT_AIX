@@ -9,52 +9,51 @@
  **/
 
 #include "rectangle.h"
-
 #include "../macros.h"
-#include "../tools/CstCodErr.h"
-#include "triangle.h"
-#include "line.h"
 
-using namespace std;
-using namespace nsUtil;
-
-nsShape::Rectangle::Rectangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const RGBAcolor& fillColor, const RGBAcolor& borderColor)
+nsShape::Rectangle::Rectangle(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor)
     : Shape(fillColor, borderColor)
     , m_firstPosition(firstPosition)
     , m_secondPosition(secondPosition)
-{
+{} // Rectangle()
 
-}
-
-nsShape::Rectangle::Rectangle(const Vec2D& position, const unsigned& width, const unsigned& height, const RGBAcolor& fillColor, const RGBAcolor& borderColor)
+nsShape::Rectangle::Rectangle(const nsGraphics::Vec2D& position, const unsigned& width, const unsigned& height, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor)
     : Shape(fillColor, borderColor)
     , m_firstPosition(position)
-    , m_secondPosition(Vec2D(position.x + width, position.y + height))
-{
-
-}
+    , m_secondPosition(nsGraphics::Vec2D(position.getX() + width, position.getY() + height))
+{} // Rectangle()
 
 void nsShape::Rectangle::draw(MinGL& window) const
 {
     UNUSED(window);
 
     // On règle la couleur du rectangle
-    const RGBAcolor inColor = getFillColor();
-    glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
+    const nsGraphics::RGBAcolor inColor = getFillColor();
+    glColor4ub(inColor.getRed(), inColor.getGreen(), inColor.getBlue(), inColor.getAlpha());
 
     // Affiche un rectangle via la routine OpenGL
-    glRecti(m_firstPosition.x, m_firstPosition.y, m_secondPosition.x, m_secondPosition.y);
+    glRecti(m_firstPosition.getX(), m_firstPosition.getY(), m_secondPosition.getX(), m_secondPosition.getY());
 
-    if (getBorderColor() != KTransparent) {
+    if (getBorderColor() != nsGraphics::KTransparent) {
         // On a une bordure, on l'affiche
-        const RGBAcolor borderColor = getBorderColor();
-        glColor4ub(borderColor.Red, borderColor.Green, borderColor.Blue, borderColor.Alpha);
+        const nsGraphics::RGBAcolor borderColor = getBorderColor();
+        glColor4ub(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getAlpha());
 
         glBegin(GL_LINE_LOOP);
-        glVertex2i(m_firstPosition.x, m_firstPosition.y);
-        glVertex2i(m_firstPosition.x, m_secondPosition.y);
-        glVertex2i(m_secondPosition.x, m_secondPosition.y);
-        glVertex2i(m_secondPosition.x, m_firstPosition.y);
+        glVertex2i(m_firstPosition.getX(), m_firstPosition.getY());
+        glVertex2i(m_firstPosition.getX(), m_secondPosition.getY());
+        glVertex2i(m_secondPosition.getX(), m_secondPosition.getY());
+        glVertex2i(m_secondPosition.getX(), m_firstPosition.getY());
         glEnd();
     }
-}
+} // draw()
+
+nsShape::Rectangle nsShape::Rectangle::operator+(const nsGraphics::Vec2D& position) const
+{
+    return Rectangle(m_firstPosition + position, m_secondPosition + position, getFillColor(), getBorderColor());
+} // operator+()
+
+nsShape::Rectangle nsShape::Rectangle::operator*(const float& f) const
+{
+    return Rectangle(m_firstPosition * f, m_secondPosition * f, getFillColor(), getBorderColor());
+} // operator*()

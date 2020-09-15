@@ -11,21 +11,19 @@
 #ifndef MINGL_H
 #define MINGL_H
 
+#include <map>
+#include <memory> // shared_ptr
+#include <queue>
 #include <string>
 #include <vector>
-#include <queue>
-#include <memory> // shared_ptr
 
 #include <GL/freeglut.h>
 
-#include "graph/idrawable.h"
-#include "graph/libgraphique_fonts.h"
-#include "graph/rgbacolor.hpp"
-#include "graph/vec2d.hpp"
+#include "graphics/idrawable.h"
+#include "graphics/rgbacolor.h"
+#include "graphics/vec2d.h"
 
 #include "event/event_manager.h"
-#include "tools/myexception.h"
-#include "tools/pixelexception.h"
 
 /*!
  * \brief keyType : custom type representing a key of the keyboard
@@ -35,6 +33,7 @@
  *
  */
 typedef std::pair<int, bool> keyType; // cle, spécial
+
 /*!
  *
  * \brief   keyMap : map of the pressed keys
@@ -54,6 +53,9 @@ class MinGL
 {
 
 public:
+    MinGL(const std::string& name, const nsGraphics::Vec2D& windowSize = nsGraphics::Vec2D(640, 480), const nsGraphics::RGBAcolor& backgroundColor = nsGraphics::KWhite);
+    ~MinGL();
+
     static void initGlut()
     {
         int tmp=0;
@@ -63,36 +65,32 @@ public:
     void initGraphic();
     void stopGaphic();
 
-    bool isPressed(const keyType &key);
-    void resetKey(const keyType &key);
+    bool isPressed(const keyType& key);
+    void resetKey(const keyType& key);
 
-    MinGL(const std::string &name_ = std::string(), const Vec2D &windowSize_ = Vec2D(640, 480), const RGBAcolor & backgroundColor = KWhite);
-    ~MinGL();
-
-    void addDrawable(const IDrawable* drawable);
+    void addDrawable(const nsGraphics::IDrawable* drawable);
     void finishFrame();
     void clearScreen();
 
-    nsEvent::EventManager &getEventManager();
+    nsEvent::EventManager& getEventManager();
 
-    void setBackgroundColor(const RGBAcolor & backgroundColor);
+    const nsGraphics::RGBAcolor& getBackgroundColor() const;
+    void setBackgroundColor(const nsGraphics::RGBAcolor& backgroundColor);
 
-    const Vec2D getWindowSize() const;
+    const nsGraphics::Vec2D getWindowSize() const;
     bool isOpen() const;
 
 private:
     // Les données membres en tant que tel
-    const Vec2D windowSize;
+    const nsGraphics::Vec2D windowSize;
     const std::string windowName;
-    std::shared_ptr<font> windowFont = std::make_shared<font>(FONT_HELVETICA_10);
-    RGBAcolor fontColor = KWhite;
-    RGBAcolor bgColor;
+    nsGraphics::RGBAcolor fontColor = nsGraphics::KWhite;
+    nsGraphics::RGBAcolor bgColor;
     keyMap keyboardMap;
-
 
     // Ce dont on a besoin pour Glut
     short glutWindowId = 0;
-    std::vector<const IDrawable*> drawStack;
+    std::vector<const nsGraphics::IDrawable*> drawStack;
 
     nsEvent::EventManager eventManager;
     bool windowIsOpen;
@@ -109,6 +107,6 @@ private:
     void callKeyboardUpSpecial(int key, int x = 0, int y = 0);
     void callClose();
 
-};
+}; // class MinGL
 
 #endif // MINGL_H

@@ -2,12 +2,15 @@
  * @file glut_font.h
  * @brief Classe utilitaire pour utiliser facilement les polices de Glut
  * @author SOLLIER Alexandre
- * @version 1.0
+ * @version 1.1
  * @date 28 décembre 2019
  */
 
 #ifndef GLUT_FONTS_H
 #define GLUT_FONTS_H
+
+namespace nsGui
+{
 
 /**
  * @class GlutFont
@@ -15,6 +18,7 @@
  */
 class GlutFont
 {
+
 public:
     /**
      * @brief GlutFonts : Liste de toutes les polices Glut
@@ -33,22 +37,25 @@ public:
     /**
      * @brief Constructeur pour la classe GlutFont
      * @param[in] font_ : Police représentée par cette instance
-     * @fn GlutFont(const GlutFonts &font);
+     * @fn GlutFont(const GlutFonts& font);
      */
-    GlutFont(const GlutFonts &font);
+    GlutFont(const GlutFonts& font);
 
     /**
      * @brief Récupère l'identificateur de police utilisable par Glut
      * @return Un identificateur de police Glut
-     * @fn void *convertForGlut() const;
+     * @fn void* convertForGlut() const;
      */
-    void *convertForGlut() const;
+    void* convertForGlut() const;
 
 private:
     /**
      * @brief m_font : Police représentée par cette instance
      */
     GlutFonts m_font;
-};
+
+}; // class GlutFont
+
+} // namespace nsGui
 
 #endif // GLUT_FONTS_H

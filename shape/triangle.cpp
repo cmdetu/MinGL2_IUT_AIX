@@ -8,54 +8,54 @@
  *
  **/
 
-#include "triangle.h"
-
 #include <algorithm>
 #include <vector>
 
-#include "line.h"
+#include "triangle.h"
 #include "../macros.h"
-#include "../tools/CstCodErr.h"
-#include "../tools/tools.h"
 
-using namespace std;
-using namespace nsUtil;
-
-
-nsShape::Triangle::Triangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const Vec2D& thirdPosition,
-                            const RGBAcolor& fillColor, const RGBAcolor& borderColor)
+nsShape::Triangle::Triangle(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::Vec2D& thirdPosition,
+                            const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor)
     : Shape(fillColor, borderColor)
     , m_firstPosition(firstPosition)
     , m_secondPosition(secondPosition)
     , m_thirdPosition(thirdPosition)
-{
-
-}
+{} // Triangle()
 
 void nsShape::Triangle::draw(MinGL& window) const
 {
     UNUSED(window);
 
     // On règle la couleur du triangle
-    const RGBAcolor inColor = getFillColor();
-    glColor4ub(inColor.Red, inColor.Green, inColor.Blue, inColor.Alpha);
+    const nsGraphics::RGBAcolor inColor = getFillColor();
+    glColor4ub(inColor.getRed(), inColor.getGreen(), inColor.getBlue(), inColor.getAlpha());
 
     // On dessine le triangle
     glBegin(GL_TRIANGLES);
-    glVertex2i(m_firstPosition.x, m_firstPosition.y);
-    glVertex2i(m_secondPosition.x, m_secondPosition.y);
-    glVertex2i(m_thirdPosition.x, m_thirdPosition.y);
+    glVertex2i(m_firstPosition.getX(), m_firstPosition.getY());
+    glVertex2i(m_secondPosition.getX(), m_secondPosition.getY());
+    glVertex2i(m_thirdPosition.getX(), m_thirdPosition.getY());
     glEnd();
 
-    if (getBorderColor() != KTransparent) {
+    if (getBorderColor() != nsGraphics::KTransparent) {
         // On a une bordure, on l'affiche
-        const RGBAcolor borderColor = getBorderColor();
-        glColor4ub(borderColor.Red, borderColor.Green, borderColor.Blue, borderColor.Alpha);
+        const nsGraphics::RGBAcolor borderColor = getBorderColor();
+        glColor4ub(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getAlpha());
 
         glBegin(GL_LINE_LOOP);
-        glVertex2i(m_firstPosition.x, m_firstPosition.y);
-        glVertex2i(m_secondPosition.x, m_secondPosition.y);
-        glVertex2i(m_thirdPosition.x, m_thirdPosition.y);
+        glVertex2i(m_firstPosition.getX(), m_firstPosition.getY());
+        glVertex2i(m_secondPosition.getX(), m_secondPosition.getY());
+        glVertex2i(m_thirdPosition.getX(), m_thirdPosition.getY());
         glEnd();
     }
-}
+} // draw()
+
+nsShape::Triangle nsShape::Triangle::operator+(const nsGraphics::Vec2D& position) const
+{
+    return Triangle(m_firstPosition + position, m_secondPosition + position, m_thirdPosition + position, getFillColor(), getBorderColor());
+} // operator+()
+
+nsShape::Triangle nsShape::Triangle::operator*(const float& f) const
+{
+    return Triangle(m_firstPosition * f, m_secondPosition * f, m_thirdPosition * f, getFillColor(), getBorderColor());
+} // operator*()

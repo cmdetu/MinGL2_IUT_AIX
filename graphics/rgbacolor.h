@@ -12,44 +12,47 @@
 #define RGBACOLOR_H
 
 #include <GL/freeglut.h> // GLubyte
-#include "../tools/IEditable.h"
+
+#include "../tools/ieditable.h"
+
+namespace nsGraphics
+{
 
 class RGBAcolor : public nsUtil::IEditable
 {
 
 public:
-    GLubyte Red;
-    GLubyte Green;
-    GLubyte Blue;
-    GLubyte Alpha;
+    RGBAcolor(const GLubyte& red = 0, const GLubyte& green = 0, const GLubyte& blue = 0, const GLubyte& alpha = 255);
+    virtual ~RGBAcolor() override = default;
 
-    RGBAcolor (const GLubyte & R = 0, const GLubyte & G = 0, const GLubyte & B = 0, const GLubyte & A = 255)
-        : Red (R)
-        , Green (G)
-        , Blue (B)
-        , Alpha(A)
-    {}
+    bool operator==(const RGBAcolor& col) const;
+    bool operator!=(const RGBAcolor& col) const;
 
-    bool operator ==(const RGBAcolor & col) const {
-        return col.Red == Red && col.Green == Green && col.Blue == Blue && col.Alpha == Alpha;
-    }
+    RGBAcolor operator+(const RGBAcolor& rhs) const;
+    RGBAcolor operator*(const float& rhs) const;
 
-    bool operator !=(const RGBAcolor &col) const {
-        return col.Red != Red || col.Green != Green || col.Blue != Blue || col.Alpha != Alpha;
-    }
+    GLubyte getRed() const;
+    void setRed(const GLubyte& red);
 
-    RGBAcolor operator *(const float &rhs) const {
-        return RGBAcolor(Red * rhs, Green * rhs, Blue * rhs, Alpha * rhs);
-    }
+    GLubyte getGreen() const;
+    void setGreen(const GLubyte& green);
 
-    RGBAcolor operator +(const RGBAcolor &rhs) const {
-        return RGBAcolor(Red + rhs.Red, Green + rhs.Green, Blue + rhs.Blue, Alpha + rhs.Alpha);
-    }
+    GLubyte getBlue() const;
+    void setBlue(const GLubyte& blue);
+
+    GLubyte getAlpha() const;
+    void setAlpha(const GLubyte& alpha);
 
 protected:
-   virtual std::ostream & _Edit (std::ostream & os = std::cout) const;
+    virtual std::ostream& _Edit(std::ostream& os = std::cout) const override;
 
-};
+private:
+    GLubyte m_red;
+    GLubyte m_green;
+    GLubyte m_blue;
+    GLubyte m_alpha;
+
+}; // class RGBAcolor
 
 // Quelques couleurs trouvées sur:
 // https://www.rapidtables.com/web/color/RGB_Color.html
@@ -70,5 +73,7 @@ const RGBAcolor KPurple      {128,   0, 128};
 const RGBAcolor KTeal        {  0, 128, 128};
 const RGBAcolor KNavy        {  0,   0, 128};
 const RGBAcolor KTransparent {  0,   0,   0,  0};
+
+} // namespace nsGraphics
 
 #endif // RGBACOLOR_H

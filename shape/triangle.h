@@ -13,9 +13,6 @@
 
 #include "shape.h"
 
-#include "../tools/myexception.h"
-#include "../graph/iminglinjectable.h"
-
 namespace nsShape
 {
 
@@ -34,11 +31,11 @@ public:
      * @param[in] thirdPosition : Position du troisième sommet
      * @param[in] fillColor : Couleur de remplissage
      * @param[in] borderColor : Couleur de bord
-     * @fn Triangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const Vec2D& thirdPosition,
-             const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+     * @fn Triangle(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::Vec2D& thirdPosition,
+             const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
      */
-    Triangle(const Vec2D& firstPosition, const Vec2D& secondPosition, const Vec2D& thirdPosition,
-             const RGBAcolor& fillColor, const RGBAcolor& borderColor = KTransparent);
+    Triangle(const nsGraphics::Vec2D& firstPosition, const nsGraphics::Vec2D& secondPosition, const nsGraphics::Vec2D& thirdPosition,
+             const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
 
     /**
      * @brief Destructeur virtuel pour la classe Triangle
@@ -51,41 +48,35 @@ public:
     /**
      * @brief Opérateur de décalage
      * @param[in] position : Position a additionner
-     * @fn Triangle operator+(const Vec2D& position) const
+     * @fn Triangle operator+(const nsGraphics::Vec2D& position) const
      */
-    Triangle operator+(const Vec2D& position) const
-    {
-        return Triangle(m_firstPosition + position, m_secondPosition + position, m_thirdPosition + position, getFillColor(), getBorderColor());
-    }
+    Triangle operator+(const nsGraphics::Vec2D& position) const;
 
     /**
      * @brief Opérateur de réduction
      * @param[in] f : Nombre avec lequel multiplier la position actuelle
      * @fn Triangle operator*(const float& f) const
      */
-    Triangle operator*(const float& f) const
-    {
-        return Triangle(m_firstPosition * f, m_secondPosition * f, m_thirdPosition * f, getFillColor(), getBorderColor());
-    }
+    Triangle operator*(const float& f) const;
 
 private:
     /**
      * @brief m_firstPosition : Position du premier sommet
      */
-    Vec2D m_firstPosition;
+    nsGraphics::Vec2D m_firstPosition;
 
     /**
      * @brief m_secondPosition : Position du second sommet
      */
-    Vec2D m_secondPosition;
+    nsGraphics::Vec2D m_secondPosition;
 
     /**
      * @brief m_thirdPosition : Position du troisième sommet
      */
-    Vec2D m_thirdPosition;
+    nsGraphics::Vec2D m_thirdPosition;
 
-};
+}; // class Triangle
 
-}
+} // namespace nsShape
 
 #endif // TRIANGLE_H

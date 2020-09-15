@@ -15,18 +15,16 @@
 #include <iostream>
 
 #include "../macros.h"
-#include "../tools/myexception.h"
+#include "../exception/cexception.h"
 
-#define SPRITE nsGui::Sprite
-
-SPRITE::Sprite(const std::string &filename, const Vec2D &position)
+nsGui::Sprite::Sprite(const std::string& filename, const nsGraphics::Vec2D& position)
     : m_position(position)
 {
     int fd = open(filename.c_str(), O_RDONLY);
     if (fd < 0)
     {
         std::cerr << "[DisplaySprite] Sprite file \"" << filename << "\" could not be opened." << std::endl;
-        throw MyException(nsUtil::kFileNotFound);
+        throw nsException::CException(filename + " cannot be loaded", nsException::KFileError);
     }
 
     FileBegin fileBegin;
@@ -34,29 +32,27 @@ SPRITE::Sprite(const std::string &filename, const Vec2D &position)
 
     for (uint32_t i = 0; i < fileBegin.pixelCount; ++i)
     {
-        RGBAcolor color;
-        read(fd, &color.Red,    sizeof(color.Red));
-        read(fd, &color.Green,  sizeof(color.Green));
-        read(fd, &color.Blue,   sizeof(color.Blue));
-        read(fd, &color.Alpha,  sizeof(color.Alpha));
+        GLubyte red, green, blue, alpha;
+        read(fd, &red,    sizeof(red));
+        read(fd, &green,  sizeof(green));
+        read(fd, &blue,   sizeof(blue));
+        read(fd, &alpha,  sizeof(alpha));
 
-        m_pixelData.push_back(color);
+        m_pixelData.push_back(nsGraphics::RGBAcolor(red, green, blue, alpha));
     }
 
     close(fd);
 
     m_rowSize = fileBegin.rowSize;
-}
+} // Sprite()
 
-nsGui::Sprite::Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &rowSize, const Vec2D &position)
+nsGui::Sprite::Sprite(const std::vector<nsGraphics::RGBAcolor>& pixelData, const uint32_t& rowSize, const nsGraphics::Vec2D& position)
     : m_position(position)
     , m_rowSize(rowSize)
     , m_pixelData(pixelData)
-{
+{} // Sprite()
 
-}
-
-void SPRITE::draw(MinGL& window) const
+void nsGui::Sprite::draw(MinGL& window) const
 {
     UNUSED(window);
 
@@ -64,40 +60,38 @@ void SPRITE::draw(MinGL& window) const
 
     for (unsigned i = 0; i < m_pixelData.size(); ++i)
     {
-        const RGBAcolor actualColor = m_pixelData[i];
+        const nsGraphics::RGBAcolor actualColor = m_pixelData[i];
         const unsigned x = i % m_rowSize;
         const unsigned y = i / m_rowSize;
 
-        glColor4ub(actualColor.Red, actualColor.Green, actualColor.Blue, actualColor.Alpha);
-        glVertex2i(x + m_position.x, y + m_position.y);
+        glColor4ub(actualColor.getRed(), actualColor.getGreen(), actualColor.getBlue(), actualColor.getAlpha());
+        glVertex2i(x + m_position.getX(), y + m_position.getY());
     }
 
     glEnd();
-}
+} // draw()
 
-const uint32_t& SPRITE::getRowSize() const
+const uint32_t& nsGui::Sprite::getRowSize() const
 {
     return m_rowSize;
-}
+} // getRowSize()
 
-const std::vector<RGBAcolor>& SPRITE::getPixelData() const
+const std::vector<nsGraphics::RGBAcolor>& nsGui::Sprite::getPixelData() const
 {
     return m_pixelData;
-}
+} // getPixelData()
 
-const Vec2D& SPRITE::getPosition() const
+const nsGraphics::Vec2D& nsGui::Sprite::getPosition() const
 {
     return m_position;
-}
+} // getPosition()
 
-void SPRITE::setPosition(const Vec2D &position)
+void nsGui::Sprite::setPosition(const nsGraphics::Vec2D& position)
 {
     m_position = position;
-}
+} // setPosition()
 
-Vec2D SPRITE::computeSize() const
+nsGraphics::Vec2D nsGui::Sprite::computeSize() const
 {
-    return Vec2D(m_pixelData.size() / m_rowSize, m_rowSize);
-}
-
-#undef SPRITE
+    return nsGraphics::Vec2D(m_pixelData.size() / m_rowSize, m_rowSize);
+} // computeSize()

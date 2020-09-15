@@ -1,7 +1,13 @@
-LIBS +=  -lglut -lGLU -lGL -lsfml-audio
+macos:LIBS += -L"/usr/local/opt/freeglut/lib" -L"/usr/local/opt/sfml/lib" -framework OpenGL
+LIBS += -lglut -lsfml-audio
+!macos:LIBS += -lGLU -lGL
+
+macos:INCLUDEPATH += /usr/local/opt/freeglut/include /usr/local/opt/sfml/include
 
 SOURCES += \
+    $$PWD/exception/cexception.cxx \
     $$PWD/mingl.cpp \
+    $$PWD/audio/fonctoroldsound.cpp \
     $$PWD/audio/minglaudioengine.cpp \
     $$PWD/event/event_manager.cpp \
     $$PWD/shape/circle.cpp \
@@ -9,24 +15,22 @@ SOURCES += \
     $$PWD/shape/rectangle.cpp \
     $$PWD/shape/triangle.cpp \
     $$PWD/shape/shape.cpp \
-    $$PWD/graph/rgbacolor.cpp \
+    $$PWD/graphics/rgbacolor.cpp \
+    $$PWD/graphics/vec2d.cpp \
+    $$PWD/gui/glut_font.cpp \
     $$PWD/gui/sprite.cpp \
     $$PWD/gui/text.cpp \
-    $$PWD/tools/CException.cxx \
-    $$PWD/tools/fonctoroldsound.cpp \
-    $$PWD/tools/glut_font.cpp \
-    $$PWD/tools/myexception.cpp \
-    $$PWD/tools/pixelexception.cpp \
-    $$PWD/tools/tools.cpp \
     $$PWD/transition/transition.cpp \
     $$PWD/transition/transition_contract.cpp \
     $$PWD/transition/transition_engine.cpp
 
 HEADERS += \
-    $$PWD/graph/rgbacolor.hpp \
-    $$PWD/graph/vec2d.hpp \
+    $$PWD/exception/cexception.h \
+    $$PWD/exception/cexception.hxx \
+    $$PWD/exception/errcode.h \
     $$PWD/macros.h \
     $$PWD/mingl.h \
+    $$PWD/audio/fonctoroldsound.h \
     $$PWD/audio/minglaudioengine.h \
     $$PWD/event/event.hpp \
     $$PWD/event/event_manager.h \
@@ -35,23 +39,16 @@ HEADERS += \
     $$PWD/shape/rectangle.h \
     $$PWD/shape/triangle.h \
     $$PWD/shape/shape.h \
-    $$PWD/graph/idrawable.h \
-    $$PWD/graph/iminglinjectable.h \
-    $$PWD/graph/libgraphique_fonts.h \
+    $$PWD/graphics/idrawable.h \
+    $$PWD/graphics/iminglinjectable.h \
+    $$PWD/graphics/rgbacolor.h \
+    $$PWD/graphics/vec2d.h \
+    $$PWD/gui/glut_font.h \
     $$PWD/gui/sprite.h \
     $$PWD/gui/text.h \
-    $$PWD/tools/CException.h \
-    $$PWD/tools/CException.hxx \
-    $$PWD/tools/CstCodErr.h \
-    $$PWD/tools/IEditable.h \
-    $$PWD/tools/IEditable.hxx \
-    $$PWD/tools/IFonctorUnaire.hpp \
-    $$PWD/tools/fonctoroldsound.h \
-    $$PWD/tools/glut_font.h \
-    $$PWD/tools/myexception.h \
-    $$PWD/tools/pixel.h \
-    $$PWD/tools/pixelexception.h \
-    $$PWD/tools/tools.h \
+    $$PWD/tools/ieditable.h \
+    $$PWD/tools/ieditable.hxx \
+    $$PWD/tools/ifonctorunaire.hpp \
     $$PWD/transition/itransitionable.h \
     $$PWD/transition/transition.h \
     $$PWD/transition/transition_contract.h \

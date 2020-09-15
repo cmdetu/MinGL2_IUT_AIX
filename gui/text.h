@@ -8,11 +8,11 @@
  *
  **/
 
-#ifndef GUITEXT_H
-#define GUITEXT_H
+#ifndef TEXT_H
+#define TEXT_H
 
-#include "../tools/glut_font.h"
-#include "../graph/iminglinjectable.h"
+#include "glut_font.h"
+#include "../graphics/iminglinjectable.h"
 #include "../transition/itransitionable.h"
 
 /**
@@ -25,7 +25,7 @@ namespace nsGui {
  * @class Text
  * @brief Gère l'affichage d'un texte
  */
-class Text : public IminGLInjectable, public nsTransition::ITransitionable
+class Text : public nsGraphics::IminGLInjectable, public nsTransition::ITransitionable
 {
 public:
     /**
@@ -63,13 +63,13 @@ public:
      * @param[in] textFont : Police du texte (8x13 Bitmap par défaut)
      * @param[in] horizontalAlignment : Alignement horizontal du texte (Alignement a gauche par défaut)
      * @param[in] verticalAlignment : Alignement vertical du texte (Alignement en bas par défaut)
-     * @fn Text(const Vec2D &position, const std::string &content,
-         const RGBAcolor &textColor, const GlutFont::GlutFonts &textFont = GlutFont::GlutFonts::BITMAP_8_BY_13,
+     * @fn Text(const nsGraphics::Vec2D &position, const std::string &content,
+         const nsGraphics::RGBAcolor &textColor, const GlutFont::GlutFonts &textFont = GlutFont::GlutFonts::BITMAP_8_BY_13,
          const HorizontalAlignment &horizontalAlignment = ALIGNH_LEFT,
          const VerticalAlignment &verticalAlignment = ALIGNV_BOTTOM);
      */
-    Text(const Vec2D &position, const std::string &content,
-         const RGBAcolor &textColor, const GlutFont::GlutFonts &textFont = GlutFont::GlutFonts::BITMAP_8_BY_13,
+    Text(const nsGraphics::Vec2D &position, const std::string &content,
+         const nsGraphics::RGBAcolor &textColor, const GlutFont::GlutFonts &textFont = GlutFont::GlutFonts::BITMAP_8_BY_13,
          const HorizontalAlignment &horizontalAlignment = ALIGNH_LEFT,
          const VerticalAlignment &verticalAlignment = ALIGNV_BOTTOM);
 
@@ -97,14 +97,14 @@ public:
      * @return La position visible, en haut a gauche
      * @fn Vec2D computeVisibleposition() const;
      */
-    Vec2D computeVisiblePosition() const;
+    nsGraphics::Vec2D computeVisiblePosition() const;
 
     /**
      * @brief Calcule la position de fin visible du texte, calculée avec l'alignement vertical et horizontal
      * @return La position visible, en bas a droite
      * @fn Vec2D computeVisibleEndPosition() const;
      */
-    Vec2D computeVisibleEndPosition() const;
+    nsGraphics::Vec2D computeVisibleEndPosition() const;
 
     /**
      * @brief Récupère le contenu du texte
@@ -124,7 +124,7 @@ private:
     /**
      * @brief m_position : Position du texte
      */
-    Vec2D m_position;
+    nsGraphics::Vec2D m_position;
 
     /**
      * @brief m_content : Contenu du texte
@@ -134,7 +134,7 @@ private:
     /**
      * @brief m_textColor : Couleur du texte
      */
-    RGBAcolor m_textColor;
+    nsGraphics::RGBAcolor m_textColor;
 
     /**
      * @brief m_textFont : Police du texte
@@ -150,8 +150,8 @@ private:
      * @brief m_verticalAlignment : Alignement vertical du texte
      */
     VerticalAlignment m_verticalAlignment;
-};
+}; // class Text
 
 } // namespace nsGui
 
-#endif // GUITEXT_H
+#endif // TEXT_H

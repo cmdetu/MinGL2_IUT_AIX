@@ -23,6 +23,7 @@ namespace nsEvent {
  */
 class EventManager
 {
+
 public:
     /**
      * @brief Vérifie si un événement doit être traité
@@ -34,9 +35,9 @@ public:
     /**
      * @brief Pousse un nouvel événement dans la queue
      * @param[in] event : Evénement a pousser
-     * @fn void pushEvent(const Event_t &event);
+     * @fn void pushEvent(const Event_t& event);
      */
-    void pushEvent(const Event_t &event);
+    void pushEvent(const Event_t& event);
 
     /**
      * @brief Tire l'événement le plus ancien, et l'enlève de la queue
@@ -50,7 +51,8 @@ private:
      * @brief m_eventQueue : Queue possèdant des événement entrants
      */
     std::queue<Event_t> m_eventQueue;
-};
+
+}; // class EventManager
 
 } // namespace nsEvent
 

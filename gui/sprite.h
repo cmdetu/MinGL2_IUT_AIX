@@ -13,7 +13,7 @@
 
 #include <cstdint>
 
-#include "../graph/iminglinjectable.h"
+#include "../graphics/iminglinjectable.h"
 
 namespace nsGui {
 
@@ -21,25 +21,25 @@ namespace nsGui {
  * @class Sprite
  * @brief Permet de charger une image depuis un format créé pour l'occasion, le .si2
  */
-class Sprite : public IminGLInjectable
+class Sprite : public nsGraphics::IminGLInjectable
 {
 public:
     /**
      * @brief Constructeur pour la classe Sprite, charge les données depuis un fichier
      * @param[in] filename : Chemin d'accès vers le fichier image
      * @param[in] position : Position du sprite
-     * @fn Sprite(const std::string &filename, const Vec2D &position);
+     * @fn Sprite(const std::string& filename, const Vec2D& position = nsGraphics::Vec2D());
      */
-    Sprite(const std::string &filename, const Vec2D &position = Vec2D());
+    Sprite(const std::string& filename, const nsGraphics::Vec2D& position = nsGraphics::Vec2D());
 
     /**
      * @brief Constructeur pour la classe Sprite, copie les données depuis un vecteur de pixels
      * @param[in] pixelData : Vecteur contenant des données sur les pixels
      * @param[in] rowSize : Nombre de pixels par ligne
      * @param[in] position : Position du sprite
-     * @fn Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &rowSize, const Vec2D &position = Vec2D());
+     * @fn Sprite(const std::vector<nsGraphics::RGBAcolor>& pixelData, const uint32_t& rowSize, const nsGraphics::Vec2D& position = nsGraphics::Vec2D());
      */
-    Sprite(const std::vector<RGBAcolor> &pixelData, const uint32_t &rowSize, const Vec2D &position = Vec2D());
+    Sprite(const std::vector<nsGraphics::RGBAcolor>& pixelData, const uint32_t& rowSize, const nsGraphics::Vec2D& position = nsGraphics::Vec2D());
 
     virtual void draw(MinGL& window) const override;
 
@@ -53,30 +53,30 @@ public:
     /**
      * @brief Récupère le vecteur contenant les pixels de l'image
      * @return Une référence constante vers m_pixelData
-     * @fn const std::vector<RGBAcolor>& getPixelData() const;
+     * @fn const std::vector<nsGraphics::RGBAcolor>& getPixelData() const;
      */
-    const std::vector<RGBAcolor>& getPixelData() const;
+    const std::vector<nsGraphics::RGBAcolor>& getPixelData() const;
 
     /**
      * @brief Récupère la position du sprite
      * @return Une référence const vers m_position
-     * @fn const Vec2D& getPosition() const;
+     * @fn const nsGraphics::Vec2D& getPosition() const;
      */
-    const Vec2D& getPosition() const;
+    const nsGraphics::Vec2D& getPosition() const;
 
     /**
      * @brief Définit la nouvelle position du sprite
      * @param[in] position : Nouvelle position
-     * @fn void setPosition(const Vec2D &position);
+     * @fn void setPosition(const nsGraphics::Vec2D &position);
      */
-    void setPosition(const Vec2D &position);
+    void setPosition(const nsGraphics::Vec2D& position);
 
     /**
      * @brief Calcule la taille du sprite
      * @return La taille calculée
      * @fn Vec2D computeSize() const;
      */
-    Vec2D computeSize() const;
+    nsGraphics::Vec2D computeSize() const;
 
 private:
     /**
@@ -95,7 +95,7 @@ private:
     /**
      * @brief m_position : Position de ce Sprite
      */
-    Vec2D m_position;
+    nsGraphics::Vec2D m_position;
 
     /**
      * @brief m_rowSize : Nombre de pixel par ligne
@@ -105,9 +105,9 @@ private:
     /**
      * @brief m_pixelData : Vecteur contenant tout les pixels composant l'image
      */
-    std::vector<RGBAcolor> m_pixelData;
-};
+    std::vector<nsGraphics::RGBAcolor> m_pixelData;
+}; // class Sprite
 
-}
+} // namespace nsGui
 
 #endif // DISPLAY_SPRITE_H
