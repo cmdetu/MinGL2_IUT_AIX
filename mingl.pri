@@ -1,4 +1,8 @@
-LIBS +=  -lglut -lGLU -lGL -lsfml-audio
+macos:LIBS += -L"/usr/local/opt/freeglut/lib" -L"/usr/local/opt/sfml/lib" -framework OpenGL
+LIBS += -lglut -lsfml-audio
+!macos:LIBS += -lGLU -lGL
+
+macos:INCLUDEPATH += /usr/local/opt/freeglut/include /usr/local/opt/sfml/include
 
 SOURCES += \
     $$PWD/mingl.cpp \
