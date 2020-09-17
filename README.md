@@ -26,7 +26,7 @@ brew install freeglut sfml
 ```
 **Important**: Afin de terminer l'installation de XQuartz, macOS doit être redémarré.
 
-Testé sous Debian 10, Ubuntu 20.04 et macOS 10.15
+Testé sous Debian 10, Ubuntu 20.04, macOS 10.15, Manjaro GNU/Linux (audio non testé)
 
 ## Utilisation
 
