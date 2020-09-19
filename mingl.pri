@@ -7,7 +7,6 @@ macos:INCLUDEPATH += /usr/local/opt/freeglut/include /usr/local/opt/sfml/include
 SOURCES += \
     $$PWD/exception/cexception.cxx \
     $$PWD/mingl.cpp \
-    $$PWD/audio/fonctoroldsound.cpp \
     $$PWD/audio/minglaudioengine.cpp \
     $$PWD/event/event_manager.cpp \
     $$PWD/shape/circle.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     $$PWD/exception/errcode.h \
     $$PWD/macros.h \
     $$PWD/mingl.h \
-    $$PWD/audio/fonctoroldsound.h \
     $$PWD/audio/minglaudioengine.h \
     $$PWD/event/event.hpp \
     $$PWD/event/event_manager.h \

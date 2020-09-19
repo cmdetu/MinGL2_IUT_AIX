@@ -42,28 +42,52 @@ public:
      */
     void toggleMusic();
     /**
+     * @brief Charge un fichier audio dans un buffer
+     * @fn void loadSound(const std::string & fileName);
+     */
+    void loadSound(const std::string& fileName);
+    /**
+     * @brief Retire un buffer de la liste
+     * @fn void removeBuffer(const std::string & fileName);
+     */
+    void removeBuffer(const std::string & fileName);
+    /**
      * @brief Relance la musique depuis le début
      * @fn void startMusicFromBeginning();
      */
     void startMusicFromBeginning();
     /**
-     * @brief Joue un effet audio
+     * @brief Joue un son depuis un buffer
      * @param[in] fileName : nom du fichier
-     * @fn void playSoundEffects(const std::string& fileName);
+     * @fn void playSoundFromBuffer(const std::string& fileName);
      */
-    void playSoundEffects(const std::string& fileName);
+    void playSoundFromBuffer(const std::string& fileName);
+    /**
+     * @brief Joue un son depuis un fichier
+     * @param[in] fileName : nom du fichier
+     * @fn void playSoundFromFile(const std::string& fileName);
+     */
+    void playSoundFromFile(const std::string& fileName);
 
 private:
     /**
-     * @brief m_sounds : Liste des effets audio en cours de lecture
+     * @brief m_buffers : Liste des buffers utilisés par les éléments de m_sounds
      */
-    std::list<std::unique_ptr<sf::Music>> m_sounds;
+    std::list<std::pair<std::string, sf::SoundBuffer>> m_buffers;
+    /**
+     * @brief m_sounds : Liste des effets audio en cours de lecture depuis des buffers
+     */
+    std::list<sf::Sound> m_sounds;
+    /**
+     * @brief m_soundsFromFiles : Liste des effets audio en cours de lecture depuis des fichiers
+     */
+    std::list<sf::Music> m_soundsFromFiles;
     /**
      * @brief m_music : Musique principale
      */
     sf::Music m_music;
     /**
-     * @brief Retire les sons terminés de la liste m_sounds
+     * @brief Retire les sons terminés des listes m_sounds et m_soundsFromFiles
      * @fn void removeOldSounds();
      */
     void removeOldSounds();
