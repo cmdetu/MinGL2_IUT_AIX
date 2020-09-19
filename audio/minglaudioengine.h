@@ -15,13 +15,9 @@
 #include <list>
 #include <SFML/Audio.hpp> // based on SFML
 
-/*
- * Il est conseillé d'utiliser des fichiers .wav
-*/
-
 /**
  * @namespace nsAudio
- * @brief Espace de nom pour les utilitaires audio
+ * @brief Espace de nom pour les utilitaires audio. Il est conseillé d'utiliser des fichiers .wav
  */
 namespace nsAudio
 {
