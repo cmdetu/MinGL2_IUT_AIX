@@ -6,10 +6,10 @@ INCLUDEPATH += $$PWD/include/
 macos:INCLUDEPATH += /usr/local/opt/freeglut/include /usr/local/opt/sfml/include
 
 SOURCES += \
+    $$PWD/src/audio/audioengine.cpp \
     $$PWD/src/exception/cexception.cpp \
     $$PWD/src/mingl.cpp \
     $$PWD/src/audio/fonctoroldsound.cpp \
-    $$PWD/src/audio/minglaudioengine.cpp \
     $$PWD/src/event/event_manager.cpp \
     $$PWD/src/shape/circle.cpp \
     $$PWD/src/shape/line.cpp \
@@ -26,13 +26,13 @@ SOURCES += \
     $$PWD/src/transition/transition_engine.cpp
 
 HEADERS += \
+    $$PWD/include/mingl/audio/audioengine.h \
     $$PWD/include/mingl/exception/cexception.h \
     $$PWD/include/mingl/exception/cexception.hpp \
     $$PWD/include/mingl/exception/errcode.h \
     $$PWD/include/mingl/macros.h \
     $$PWD/include/mingl/mingl.h \
     $$PWD/include/mingl/audio/fonctoroldsound.h \
-    $$PWD/include/mingl/audio/minglaudioengine.h \
     $$PWD/include/mingl/event/event.hpp \
     $$PWD/include/mingl/event/event_manager.h \
     $$PWD/include/mingl/shape/circle.h \

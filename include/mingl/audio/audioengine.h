@@ -1,6 +1,6 @@
 /**
  *
- * @file    minglaudioengine.h
+ * @file    audioengine.h
  * @author  Clément Mathieu--Drif
  * @date    Septembre 2020
  * @version 1.0
@@ -8,8 +8,8 @@
  *
  **/
 
-#ifndef MINGLAUDIOENGINE_H
-#define MINGLAUDIOENGINE_H
+#ifndef AUDIOENGINE_H
+#define AUDIOENGINE_H
 
 #include <memory>
 #include <list>
@@ -22,10 +22,10 @@
 namespace nsAudio
 {
 /**
- * @class MinGLAudioEngine
+ * @class AudioEngine
  * @brief Une classe de gestion des effets audio et de la musique
  */
-class MinGLAudioEngine
+class AudioEngine
 {
 
 public:
@@ -36,16 +36,19 @@ public:
      * @fn void setMusic(const std::string& fileName, bool loop = true);
      */
     void setMusic(const std::string& fileName, bool loop = true);
+
     /**
      * @brief Met en pause ou relance la musique
      * @fn void toggleMusic();
      */
     void toggleMusic();
+
     /**
      * @brief Relance la musique depuis le début
      * @fn void startMusicFromBeginning();
      */
     void startMusicFromBeginning();
+
     /**
      * @brief Joue un effet audio
      * @param[in] fileName : nom du fichier
@@ -58,18 +61,20 @@ private:
      * @brief m_sounds : Liste des effets audio en cours de lecture
      */
     std::list<std::unique_ptr<sf::Music>> m_sounds;
+
     /**
      * @brief m_music : Musique principale
      */
     sf::Music m_music;
+
     /**
      * @brief Retire les sons terminés de la liste m_sounds
      * @fn void removeOldSounds();
      */
     void removeOldSounds();
 
-}; // class MinGLAudioEngine
+}; // class AudioEngine
 
 } // namespace nsAudio
 
-#endif // MINGLAUDIOENGINE_H
+#endif // AUDIOENGINE_H
