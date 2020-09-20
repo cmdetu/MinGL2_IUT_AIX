@@ -45,3 +45,4 @@ doc/
 FreeGlutCppV4.pro.user*
 *.pro.user*
 *.autosave
+build-*

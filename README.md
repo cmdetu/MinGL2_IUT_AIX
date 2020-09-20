@@ -38,13 +38,16 @@ Par exemple, si vous avez décompressé minGL 2 dans le sous-répertoire ``minGL
 
 ### En tant que bibliothèque
 Vous pouvez facilement compiler minGL 2 en tant que bibliothèque afin de générer le fichier ``libmingl.a``.  
-Il vous suffit simplement d'ouvrir le fichier de projet ``mingl.pro`` et de lancer la compilation, vous trouverez le fichier ``.a`` dans le répertoire de compilation.
+Il vous suffit simplement d'ouvrir le fichier de projet ``mingl.pro`` et de lancer la compilation, vous trouverez le fichier ``.a`` dans le répertoire de compilation.  
+Le répertoire ``include/`` contient tout les fichiers d'en-tête de minGL 2.
 
-### Images .si2
-MinGL 2 supporte le chargement d'images sous le format ``.si2``, qui est un format d'image non-compressé, type bitmap avec support de la transparence.  
-Un script Python 3 permettant de transformer n'importe quelle image en ``.si2`` (et inversement) vous est fourni dans ``si2 tools/img2si.py``.
+### Extras
+Si vous avez ``doxygen`` installé sur votre machine, vous pouvez générer, dans le répertoire ``doc/``, une documentation HTML de minGL 2 avec la commande suivante:
+```
+doxygen Doxyfile
+```
 
-Le spécifications de ce format de fichier vous sont écrites dans ce même script Python, en commentaire.
+Dans le répertoire ``tools/``, vous trouverez des outils relatif a l'utilisation de minGL 2.
 
 ## Remerciements
 * **Alexandre Sollier et Clément Mathieu--Drif**: Développeurs principaux de minGL 2
