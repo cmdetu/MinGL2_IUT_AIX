@@ -106,6 +106,7 @@ void MinGL::initGraphic()
     glutMotionFunc(BIND_CALLBACK(&MinGL::callMotion));
     glutPassiveMotionFunc(BIND_CALLBACK(&MinGL::callPassiveMotion));
     glutKeyboardFunc(BIND_CALLBACK(&MinGL::callKeyboard));
+    glutKeyboardUpFunc(BIND_CALLBACK(&MinGL::callKeyboardUp));
     glutSpecialFunc(BIND_CALLBACK(&MinGL::callKeyboardSpecial));
     glutCloseFunc(BIND_CALLBACK(&MinGL::callClose));
 

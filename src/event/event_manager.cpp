@@ -27,3 +27,9 @@ const nsEvent::Event_t nsEvent::EventManager::pullEvent()
     m_eventQueue.pop();
     return event;
 } // pullEvent()
+
+void nsEvent::EventManager::clearEvents()
+{
+    while (!m_eventQueue.empty())
+        m_eventQueue.pop();
+} // clearEvents()

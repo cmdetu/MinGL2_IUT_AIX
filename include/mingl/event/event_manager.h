@@ -46,6 +46,12 @@ public:
      */
     const Event_t pullEvent();
 
+    /**
+     * @brief Vide la queue
+     * @fn void clearEvents();
+     */
+    void clearEvents();
+
 private:
     /**
      * @brief m_eventQueue : Queue possèdant des événement entrants
