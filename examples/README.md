@@ -21,3 +21,12 @@ Les différents paramètres pour afficher le texte vous y seront montrés.
 L'exemple n°03 Clavier vous montre comment récupérer l'état d'une touche du clavier.
 
 La carré bleu peut être déplacé a l'aide des touches ZQSD du clavier.
+
+## ``04-Souris/``
+L'exemple n°4 Souris vous montre comment se servir du gestionnaire d'évènements pour récupérer des évènements souris.
+
+Le carré bleu peut être déplacé a l'aide du curseur de la souris. Sa couleur est changé au clic de souris.  
+**Attention:** Comme nous nous servons du gestionnaire d'évènements, la ligne suivante, provenant du Boilerplate, et permettant de vider le gestionnaire d'évènement périodiquement, a été commentée:
+```C++
+window.getEventManager().clearEvents();
+```
