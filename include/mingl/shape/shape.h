@@ -52,9 +52,9 @@ public:
 
     /**
      * @brief Règle la couleur de remplissage
-     * @fn cvoid setFillColor(nsGraphics::RGBAcolor& fillColor);
+     * @fn cvoid setFillColor(const nsGraphics::RGBAcolor& fillColor);
      */
-    void setFillColor(nsGraphics::RGBAcolor& fillColor);
+    void setFillColor(const nsGraphics::RGBAcolor& fillColor);
 
     /**
      * @brief Retourne la couleur de bord
@@ -64,9 +64,9 @@ public:
 
     /**
      * @brief Règle la couleur de bord
-     * @fn void setBorderColor(RGBAcolor& borderColor);
+     * @fn void setBorderColor(const RGBAcolor& borderColor);
      */
-    void setBorderColor(nsGraphics::RGBAcolor& borderColor);
+    void setBorderColor(const nsGraphics::RGBAcolor& borderColor);
 
 protected:
     /**

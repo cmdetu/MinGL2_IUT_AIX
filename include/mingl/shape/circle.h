@@ -46,7 +46,7 @@ public:
      * @param[in] borderColor : Couleur de bord
      * @fn Circle(const nsGraphics::Vec2D& position, const unsigned& radius, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
      */
-    Circle(const nsGraphics::Vec2D& getPosition, const unsigned& getRadius, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
+    Circle(const nsGraphics::Vec2D& position, const unsigned& radius, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
 
     /**
      * @brief Destructeur virtuel pour la classe Circle
