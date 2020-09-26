@@ -28,7 +28,7 @@ void nsShape::Line::draw(MinGL& window) const
     const nsGraphics::RGBAcolor inColor = getFillColor();
     glColor4ub(inColor.getRed(), inColor.getGreen(), inColor.getBlue(), inColor.getAlpha());
 
-    // On règle le volume de la ligne
+    // On règle l'épaisseur de la ligne
     glLineWidth(m_lineWidth);
 
     // On dessine la ligne

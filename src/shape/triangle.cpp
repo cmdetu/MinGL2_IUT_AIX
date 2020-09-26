@@ -41,6 +41,7 @@ void nsShape::Triangle::draw(MinGL& window) const
         // On a une bordure, on l'affiche
         const nsGraphics::RGBAcolor borderColor = getBorderColor();
         glColor4ub(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getAlpha());
+        glLineWidth(1.f);
 
         glBegin(GL_LINE_LOOP);
         glVertex2i(m_firstPosition.getX(), m_firstPosition.getY());
