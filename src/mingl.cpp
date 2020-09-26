@@ -108,6 +108,7 @@ void MinGL::initGraphic()
     glutKeyboardFunc(BIND_CALLBACK(&MinGL::callKeyboard));
     glutKeyboardUpFunc(BIND_CALLBACK(&MinGL::callKeyboardUp));
     glutSpecialFunc(BIND_CALLBACK(&MinGL::callKeyboardSpecial));
+    glutSpecialUpFunc(BIND_CALLBACK(&MinGL::callKeyboardUpSpecial));
     glutCloseFunc(BIND_CALLBACK(&MinGL::callClose));
 
     // On set la couleur d'effacement (prend des float, donc obligé de diviser par la taille d'un GLuint)
@@ -128,23 +129,12 @@ void MinGL::stopGaphic()
     glutMainLoopEvent();
 } // stopGraphic()
 
-/*!
- *  \brief      Tell if the key is pressed (true) or not (false)
- *
- *  \return     Returns `true` if the key is pressed and `false` if the key is not pressed
- *  \param[in]  key : the keypair (keyType) corresponding to the key you want to check
- */
-bool MinGL::isPressed(const keyType &key)
+bool MinGL::isPressed(const KeyType_t &key)
 {
     return keyboardMap[key];
 } // isPressed()
 
-/*!
- *
- * \brief set the key passed in parameter to not pressed (used in menus)
- *
- */
-void MinGL::resetKey(const keyType &key)
+void MinGL::resetKey(const KeyType_t &key)
 {
     keyboardMap[key] = false;
 } // resetKey()
@@ -200,28 +190,28 @@ void MinGL::callPassiveMotion(int x, int y)
 void MinGL::callKeyboard(unsigned char k, int x, int y)
 {
     (void)(x); (void)(y);
-    keyType key(k, false);
+    KeyType_t key(k, false);
     keyboardMap[key] = true;
 } // callKeyboard()
 
 void MinGL::callKeyboardUp(unsigned char k, int x, int y)
 {
     (void)(x); (void)(y);
-    keyType key(k, false);
+    KeyType_t key(k, false);
     keyboardMap[key] = false;
 } // callKeyboardUp()
 
 void MinGL::callKeyboardSpecial(int k, int x, int y)
 {
     (void)(x); (void)(y);
-    keyType key(k, true);
+    KeyType_t key(k, true);
     keyboardMap[key] = true;
 } // callKeyboardSpecial()
 
 void MinGL::callKeyboardUpSpecial(int k, int x, int y)
 {
     (void)(x); (void)(y);
-    keyType key(k, true);
+    KeyType_t key(k, true);
     keyboardMap[key] = false;
 } // callKeyboardUpSpecial()
 
