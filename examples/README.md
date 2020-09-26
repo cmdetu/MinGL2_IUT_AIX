@@ -35,3 +35,9 @@ window.getEventManager().clearEvents();
 L'exemple n°5 Transition vous montre comment se servir du gestionnaire de transition.
 
 Plusieurs formes géométriques ont des transitions qui sont appliquées sur leur différentes propriétés, avec des paramètres qui diffèrent afin que vous puissiez voir ses possibilités.
+
+## ``06-Sprite/``
+L'exemple n°6 Sprite vous montre comment charger une image externe au format .si2 dans votre programme.
+
+Cet exemple stocke les ressources dans le répertoire ``res/``, qui comprend actuellement une unique image.  
+Afin que le programme puisse retrouver ses ressources, ce répertoire doit **impérativement** être copié dans le même répertoire où se trouve l'exécutable.

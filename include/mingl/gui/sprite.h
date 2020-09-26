@@ -39,7 +39,7 @@ public:
      * @brief Constructeur pour la classe Sprite, charge les données depuis un fichier
      * @param[in] filename : Chemin d'accès vers le fichier image
      * @param[in] position : Position du sprite
-     * @fn Sprite(const std::string& filename, const Vec2D& position = nsGraphics::Vec2D());
+     * @fn Sprite(const std::string& filename, const nsGraphics::Vec2D& position = nsGraphics::Vec2D());
      */
     Sprite(const std::string& filename, const nsGraphics::Vec2D& position = nsGraphics::Vec2D());
 
