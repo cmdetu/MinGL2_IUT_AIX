@@ -59,3 +59,33 @@ nsShape::Triangle nsShape::Triangle::operator*(const float& f) const
 {
     return Triangle(m_firstPosition * f, m_secondPosition * f, m_thirdPosition * f, getFillColor(), getBorderColor());
 } // operator*()
+
+const nsGraphics::Vec2D& nsShape::Triangle::getFirstPosition() const
+{
+    return m_firstPosition;
+} // getFirstPosition()
+
+void nsShape::Triangle::setFirstPosition(const nsGraphics::Vec2D &firstPosition)
+{
+    m_firstPosition = firstPosition;
+} // setFirstPosition()
+
+const nsGraphics::Vec2D& nsShape::Triangle::getSecondPosition() const
+{
+    return m_secondPosition;
+} // getSecondPosition()
+
+void nsShape::Triangle::setSecondPosition(const nsGraphics::Vec2D &secondPosition)
+{
+    m_secondPosition = secondPosition;
+} // setSecondPosition()
+
+const nsGraphics::Vec2D& nsShape::Triangle::getThirdPosition() const
+{
+    return m_thirdPosition;
+} // getThirdPosition()
+
+void nsShape::Triangle::setThirdPosition(const nsGraphics::Vec2D &thirdPosition)
+{
+    m_thirdPosition = thirdPosition;
+} // setThirdPosition()

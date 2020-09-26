@@ -126,10 +126,60 @@ void nsGui::Text::setContent(const std::string &content)
     m_content = content;
 } // setContent()
 
+nsGui::Text::VerticalAlignment nsGui::Text::getVerticalAlignment() const
+{
+    return m_verticalAlignment;
+} // getVerticalAlignment()
+
+void nsGui::Text::setVerticalAlignment(const VerticalAlignment &verticalAlignment)
+{
+    m_verticalAlignment = verticalAlignment;
+} // setVerticalAlignment()
+
+nsGui::Text::HorizontalAlignment nsGui::Text::getHorizontalAlignment() const
+{
+    return m_horizontalAlignment;
+} // getHorizontalAlignment()
+
+void nsGui::Text::setHorizontalAlignment(const HorizontalAlignment &horizontalAlignment)
+{
+    m_horizontalAlignment = horizontalAlignment;
+} // setHorizontalAlignment()
+
+const nsGui::GlutFont& nsGui::Text::getTextFont() const
+{
+    return m_textFont;
+} // getTextFont()
+
+void nsGui::Text::setTextFont(const GlutFont &textFont)
+{
+    m_textFont = textFont;
+} // setTextFont()
+
+const nsGraphics::Vec2D& nsGui::Text::getPosition() const
+{
+    return m_position;
+} // getPosition()
+
+void nsGui::Text::setPosition(const nsGraphics::Vec2D &position)
+{
+    m_position = position;
+} // setPosition()
+
+const nsGraphics::RGBAcolor& nsGui::Text::getTextColor() const
+{
+    return m_textColor;
+} // getTextColor()
+
+void nsGui::Text::setTextColor(const nsGraphics::RGBAcolor &textColor)
+{
+    m_textColor = textColor;
+} // setTextColor()
+
 void nsGui::Text::draw(MinGL& window) const
 {
     UNUSED(window);
-
+    
     // Draw the text with the right color using Glut
     glColor4ub(m_textColor.getRed(), m_textColor.getGreen(), m_textColor.getBlue(), m_textColor.getAlpha());
 

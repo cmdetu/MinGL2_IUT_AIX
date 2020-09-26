@@ -32,7 +32,7 @@ public:
      * @param[in] borderColor : Couleur de bord
      * @fn Circle(const nsGraphics::Vec2D& position, const unsigned& radius, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
      */
-    Circle(const nsGraphics::Vec2D& position, const unsigned& radius, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
+    Circle(const nsGraphics::Vec2D& getPosition, const unsigned& getRadius, const nsGraphics::RGBAcolor& fillColor, const nsGraphics::RGBAcolor& borderColor = nsGraphics::KTransparent);
 
     /**
      * @brief Destructeur virtuel pour la classe Circle
@@ -47,7 +47,7 @@ public:
      * @param[in] position : Position a additionner
      * @fn Circle operator+(const nsGraphics::Vec2D& position) const
      */
-    Circle operator+(const nsGraphics::Vec2D& position) const;
+    Circle operator+(const nsGraphics::Vec2D& getPosition) const;
 
     /**
      * @brief Opérateur de réduction
@@ -55,6 +55,32 @@ public:
      * @fn Circle operator*(const float& f) const
      */
     Circle operator*(const float& f) const;
+
+    /**
+     * @brief Récupère la position du cercle
+     * @fn const nsGraphics::Vec2D& getPosition() const;
+     */
+    const nsGraphics::Vec2D& getPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du cercle
+     * @param[in] position : Nouvelle position
+     * @fn void setPosition(const nsGraphics::Vec2D &position);
+     */
+    void setPosition(const nsGraphics::Vec2D &position);
+
+    /**
+     * @brief Récupère le rayon du cercle
+     * @fn unsigned getRadius() const;
+     */
+    unsigned getRadius() const;
+
+    /**
+     * @brief Définit le nouveau rayon du cercle
+     * @param[in] radius : Nouveau rayon
+     * @fn void setRadius(const unsigned &radius);
+     */
+    void setRadius(const unsigned &radius);
 
 private:
     /**

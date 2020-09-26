@@ -71,6 +71,32 @@ public:
      */
     Rectangle operator*(const float& f) const;
 
+    /**
+     * @brief Récupère la position du coin haut-gauche du rectangle
+     * @fn const nsGraphics::Vec2D& getFirstPosition() const;
+     */
+    const nsGraphics::Vec2D& getFirstPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du coin haut-gauche du rectangle
+     * @param[in] firstPosition : Nouvelle position du coin haut-gauche
+     * @fn void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+     */
+    void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+
+    /**
+     * @brief Récupère la position du coin bas-droit du rectangle
+     * @fn const nsGraphics::Vec2D& getSecondPosition() const;
+     */
+    const nsGraphics::Vec2D& getSecondPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du coin bas-droit du rectangle
+     * @param[in] secondPosition : Nouvelle position du coin bas-droit
+     * @fn void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+     */
+    void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+
 private:
     /**
      * @brief m_firstPosition : Position du premier sommet

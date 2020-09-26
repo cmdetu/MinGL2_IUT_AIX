@@ -56,6 +56,45 @@ public:
      */
     Line operator*(const float& f) const;
 
+    /**
+     * @brief Récupère la position du premier point de la ligne
+     * @fn const nsGraphics::Vec2D& getFirstPosition() const;
+     */
+    const nsGraphics::Vec2D& getFirstPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du premier point de la ligne
+     * @param[in] firstPosition : Nouvelle position du premier point
+     * @fn void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+     */
+    void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+
+    /**
+     * @brief Récupère la position du second point de la ligne
+     * @fn const nsGraphics::Vec2D& getSecondPosition() const;
+     */
+    const nsGraphics::Vec2D& getSecondPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du second point de la ligne
+     * @param[in] secondPosition : Nouvelle position du second point
+     * @fn void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+     */
+    void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+
+    /**
+     * @brief Récupère l'épaisseur de la ligne
+     * @fn float getLineWidth() const;
+     */
+    float getLineWidth() const;
+
+    /**
+     * @brief Définit la nouvelle épaisseur de la ligne
+     * @param[in] lineWidth : Nouvelle épaisseur
+     * @fn void setLineWidth(float lineWidth);
+     */
+    void setLineWidth(float lineWidth);
+
 private:
     /**
      * @brief m_firstPosition : Position du premier sommet

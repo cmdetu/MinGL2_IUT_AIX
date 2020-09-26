@@ -57,3 +57,23 @@ nsShape::Rectangle nsShape::Rectangle::operator*(const float& f) const
 {
     return Rectangle(m_firstPosition * f, m_secondPosition * f, getFillColor(), getBorderColor());
 } // operator*()
+
+const nsGraphics::Vec2D& nsShape::Rectangle::getFirstPosition() const
+{
+    return m_firstPosition;
+} // getFirstPosition()
+
+void nsShape::Rectangle::setFirstPosition(const nsGraphics::Vec2D &firstPosition)
+{
+    m_firstPosition = firstPosition;
+} // setFirstPosition()
+
+const nsGraphics::Vec2D& nsShape::Rectangle::getSecondPosition() const
+{
+    return m_secondPosition;
+} // getSecondPosition()
+
+void nsShape::Rectangle::setSecondPosition(const nsGraphics::Vec2D &secondPosition)
+{
+    m_secondPosition = secondPosition;
+} // setSecondPosition()

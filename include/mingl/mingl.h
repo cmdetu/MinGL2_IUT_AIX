@@ -58,10 +58,15 @@ public:
      * @brief Constructeur pour la classe MinGL
      * @param[in] name : Nom de la fenêtre
      * @param[in] windowSize : Taille de la fenêtre
+     * @param[in] windowPosition : Position de la fenêtre
      * @param[in] backgroundColor : Couleur de fond de la fenêtre
-     * @fn MinGL(const std::string& name, const nsGraphics::Vec2D& windowSize = nsGraphics::Vec2D(640, 480), const nsGraphics::RGBAcolor& backgroundColor = nsGraphics::KWhite);
+     * @fn MinGL(const std::string& name, const nsGraphics::Vec2D& windowSize = nsGraphics::Vec2D(640, 480),
+     *    const nsGraphics::Vec2D& windowPosition = nsGraphics::Vec2D(128, 128),
+     *    const nsGraphics::RGBAcolor& backgroundColor = nsGraphics::KWhite);
      */
-    MinGL(const std::string& name, const nsGraphics::Vec2D& windowSize = nsGraphics::Vec2D(640, 480), const nsGraphics::RGBAcolor& backgroundColor = nsGraphics::KWhite);
+    MinGL(const std::string& name, const nsGraphics::Vec2D& windowSize = nsGraphics::Vec2D(640, 480),
+          const nsGraphics::Vec2D& windowPosition = nsGraphics::Vec2D(128, 128),
+          const nsGraphics::RGBAcolor& backgroundColor = nsGraphics::KWhite);
 
     /**
      * @brief Destructeur de la classe MinGL
@@ -137,9 +142,42 @@ public:
 
     /**
      * @brief Récupère la taille de la fenêtre
-     * @fn const nsGraphics::Vec2D getWindowSize() const;
+     * @fn nsGraphics::Vec2D getWindowSize() const;
      */
-    const nsGraphics::Vec2D getWindowSize() const;
+    nsGraphics::Vec2D getWindowSize() const;
+
+    /**
+     * @brief Règle la taille de la fenêtre
+     * @param[in] windowSize : Nouvelle taille
+     * @fn void setWindowSize(const nsGraphics::Vec2D& windowSize);
+     */
+    void setWindowSize(const nsGraphics::Vec2D& windowSize);
+
+    /**
+     * @brief Récupère la position de la fenêtre
+     * @fn nsGraphics::Vec2D getWindowPosition() const;
+     */
+    nsGraphics::Vec2D getWindowPosition() const;
+
+    /**
+     * @brief Règle la position de la fenêtre
+     * @param[in] windowPosition : Nouvelle position
+     * @fn void setWindowPosition(const nsGraphics::Vec2D &windowPosition);
+     */
+    void setWindowPosition(const nsGraphics::Vec2D &windowPosition);
+
+    /**
+     * @brief Récupère le nom de la fenêtre
+     * @fn const std::string& getWindowName() const;
+     */
+    const std::string& getWindowName() const;
+
+    /**
+     * @brief Règle le nom de la fenêtre
+     * @param[in] windowName : Nouveau nom
+     * @fn void setWindowName(const std::string &windowName);
+     */
+    void setWindowName(const std::string &windowName);
 
     /**
      * @brief Retourne si la fenêtre est ouverte
@@ -151,39 +189,34 @@ private:
     // Les données membres en tant que tel
 
     /**
-     * @brief windowSize : Taille de la fenêtre
+     * @brief m_windowName : Nom de la fenêtre
      */
-    const nsGraphics::Vec2D windowSize;
+    std::string m_windowName;
 
     /**
-     * @brief windowName : Nom de la fenêtre
+     * @brief m_bgColor : Couleur de fond de la fenêtre
      */
-    const std::string windowName;
+    nsGraphics::RGBAcolor m_bgColor;
 
     /**
-     * @brief bgColor : Couleur de fond de la fenêtre
+     * @brief m_keyboardMap : Map de l'état des touches du clavier
      */
-    nsGraphics::RGBAcolor bgColor;
+    KeyMap_t m_keyboardMap;
 
     /**
-     * @brief keyboardMap : Map de l'état des touches du clavier
+     * @brief m_glutWindowId : Identifiant de la fenêtre freeglut
      */
-    KeyMap_t keyboardMap;
+    short m_glutWindowId = 0;
 
     /**
-     * @brief glutWindowId : Identifiant de la fenêtre freeglut
+     * @brief m_eventManager : Gestionnaire d'évènements
      */
-    short glutWindowId = 0;
+    nsEvent::EventManager m_eventManager;
 
     /**
-     * @brief eventManager : Gestionnaire d'évènements
+     * @brief m_windowIsOpen : Etat de la fenêtre
      */
-    nsEvent::EventManager eventManager;
-
-    /**
-     * @brief windowIsOpen : Etat de la fenêtre
-     */
-    bool windowIsOpen;
+    bool m_windowIsOpen;
 
     // Les handlers
 

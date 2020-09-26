@@ -70,3 +70,23 @@ nsShape::Circle nsShape::Circle::operator*(const float& f) const
 {
     return Circle(m_position * f, m_radius, getFillColor(), getBorderColor());
 } // operator*()
+
+unsigned nsShape::Circle::getRadius() const
+{
+    return m_radius;
+} // getRadius()
+
+void nsShape::Circle::setRadius(const unsigned &radius)
+{
+    m_radius = radius;
+} // setRadius()
+
+const nsGraphics::Vec2D& nsShape::Circle::getPosition() const
+{
+    return m_position;
+} // getPosition()
+
+void nsShape::Circle::setPosition(const nsGraphics::Vec2D &position)
+{
+    m_position = position;
+} // setPosition()

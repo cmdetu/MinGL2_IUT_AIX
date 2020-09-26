@@ -59,6 +59,45 @@ public:
      */
     Triangle operator*(const float& f) const;
 
+    /**
+     * @brief Récupère la position du premier point du triangle
+     * @fn const nsGraphics::Vec2D& getFirstPosition() const;
+     */
+    const nsGraphics::Vec2D& getFirstPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du premier point du triangle
+     * @param[in] firstPosition : Nouvelle position du premier point
+     * @fn void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+     */
+    void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+
+    /**
+     * @brief Récupère la position du second point du triangle
+     * @fn const nsGraphics::Vec2D& getSecondPosition() const;
+     */
+    const nsGraphics::Vec2D& getSecondPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du second point du triangle
+     * @param[in] secondPosition : Nouvelle position du second point
+     * @fn void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+     */
+    void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+
+    /**
+     * @brief Récupère la position du troisième point du triangle
+     * @fn const nsGraphics::Vec2D& getThirdPosition() const;
+     */
+    const nsGraphics::Vec2D& getThirdPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du troisième point du triangle
+     * @param[in] thirdPosition : Nouvelle position du troisième point
+     * @fn void setThirdPosition(const nsGraphics::Vec2D &thirdPosition);
+     */
+    void setThirdPosition(const nsGraphics::Vec2D &thirdPosition);
+
 private:
     /**
      * @brief m_firstPosition : Position du premier sommet

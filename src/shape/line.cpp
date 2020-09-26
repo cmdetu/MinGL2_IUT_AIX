@@ -47,3 +47,33 @@ nsShape::Line nsShape::Line::operator*(const float& f) const
 {
     return Line(m_firstPosition * f, m_secondPosition * f, getFillColor());
 } // operator*()
+
+float nsShape::Line::getLineWidth() const
+{
+    return m_lineWidth;
+} // getLineWidth()
+
+void nsShape::Line::setLineWidth(float lineWidth)
+{
+    m_lineWidth = lineWidth;
+} // setLineWidth()
+
+const nsGraphics::Vec2D& nsShape::Line::getFirstPosition() const
+{
+    return m_firstPosition;
+} // getFirstPosition()
+
+void nsShape::Line::setFirstPosition(const nsGraphics::Vec2D &firstPosition)
+{
+    m_firstPosition = firstPosition;
+} // setFirstPosition()
+
+const nsGraphics::Vec2D& nsShape::Line::getSecondPosition() const
+{
+    return m_secondPosition;
+} // getSecondPosition()
+
+void nsShape::Line::setSecondPosition(const nsGraphics::Vec2D &secondPosition)
+{
+    m_secondPosition = secondPosition;
+} // setSecondPosition()
