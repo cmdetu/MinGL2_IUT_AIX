@@ -17,6 +17,7 @@
 #include "../graphics/idrawable.h"
 #include "../graphics/rgbacolor.h"
 #include "../graphics/vec2d.h"
+#include "../transition/itransitionable.h"
 
 namespace nsGui {
 
@@ -24,9 +25,16 @@ namespace nsGui {
  * @class Sprite
  * @brief Permet de charger une image depuis un format créé pour l'occasion, le .si2
  */
-class Sprite : public nsGraphics::IDrawable
+class Sprite : public nsGraphics::IDrawable, public nsTransition::ITransitionable
 {
 public:
+    /**
+     * @brief TransitionIds : Liste de toutes les transitions que cet élément peut exécuter
+     */
+    enum TransitionIds {
+        TRANSITION_POSITION, /**< Transition pour la position */
+    };
+
     /**
      * @brief Constructeur pour la classe Sprite, charge les données depuis un fichier
      * @param[in] filename : Chemin d'accès vers le fichier image
@@ -45,6 +53,9 @@ public:
     Sprite(const std::vector<nsGraphics::RGBAcolor>& pixelData, const uint32_t& rowSize, const nsGraphics::Vec2D& position = nsGraphics::Vec2D());
 
     virtual void draw(MinGL& window) const override;
+
+    virtual void getValues(const int &id, std::vector<float> &values) override;
+    virtual void setValues(const int &id, const std::vector<float> &values) override;
 
     /**
      * @brief Récupère le nombre de pixels par ligne

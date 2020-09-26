@@ -68,7 +68,7 @@ public:
      */
     void setBorderColor(nsGraphics::RGBAcolor& borderColor);
 
-private:
+protected:
     /**
      * @brief m_fillColor : Couleur de remplissage
      */

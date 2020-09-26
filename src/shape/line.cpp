@@ -38,6 +38,98 @@ void nsShape::Line::draw(MinGL& window) const
     glEnd();
 } // draw()
 
+void nsShape::Line::getValues(const int &id, std::vector<float> &values)
+{
+    switch (id) {
+        case TRANSITION_FILL_COLOR_RGB:
+            values[0] = m_fillColor.getRed();
+            values[1] = m_fillColor.getGreen();
+            values[2] = m_fillColor.getBlue();
+
+            break;
+
+        case TRANSITION_FILL_COLOR_ALPHA:
+            values[0] = m_fillColor.getAlpha();
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_RGB:
+            values[0] = m_borderColor.getRed();
+            values[1] = m_borderColor.getGreen();
+            values[2] = m_borderColor.getBlue();
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_ALPHA:
+            values[0] = m_borderColor.getAlpha();
+
+            break;
+
+        case TRANSITION_FIRST_POSITION:
+            values[0] = m_firstPosition.getX();
+            values[1] = m_firstPosition.getY();
+
+            break;
+
+        case TRANSITION_SECOND_POSITION:
+            values[0] = m_secondPosition.getX();
+            values[1] = m_secondPosition.getY();
+
+            break;
+
+        case TRANSITION_LINE_WIDTH:
+            values[0] = m_lineWidth;
+
+            break;
+    }
+} // getValues()
+
+void nsShape::Line::setValues(const int &id, const std::vector<float> &values)
+{
+    switch (id) {
+        case TRANSITION_FILL_COLOR_RGB:
+            m_fillColor.setRed(values[0]);
+            m_fillColor.setGreen(values[1]);
+            m_fillColor.setBlue(values[2]);
+
+            break;
+
+        case TRANSITION_FILL_COLOR_ALPHA:
+            m_fillColor.setAlpha(values[0]);
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_RGB:
+            m_borderColor.setRed(values[0]);
+            m_borderColor.setGreen(values[1]);
+            m_borderColor.setBlue(values[2]);
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_ALPHA:
+            m_borderColor.setAlpha(values[0]);
+
+            break;
+
+        case TRANSITION_FIRST_POSITION:
+            m_firstPosition.setX(values[0]);
+            m_firstPosition.setY(values[1]);
+
+            break;
+
+        case TRANSITION_SECOND_POSITION:
+            m_secondPosition.setX(values[0]);
+            m_secondPosition.setY(values[1]);
+
+            break;
+
+        case TRANSITION_LINE_WIDTH:
+            m_lineWidth = values[0];
+
+            break;
+    }
+} // setValues()
+
 nsShape::Line nsShape::Line::operator+(const nsGraphics::Vec2D& position) const
 {
     return Line(m_firstPosition + position, m_secondPosition + position, getFillColor());

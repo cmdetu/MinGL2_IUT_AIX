@@ -33,10 +33,12 @@ void nsGui::Text::getValues(const int &id, std::vector<float> &values)
             values[2] = m_textColor.getBlue();
 
             break;
+
         case TRANSITION_COLOR_ALPHA:
             values[0] = m_textColor.getAlpha();
 
             break;
+
         case TRANSITION_POSITION:
             values[0] = m_position.getX();
             values[1] = m_position.getY();
@@ -54,10 +56,12 @@ void nsGui::Text::setValues(const int &id, const std::vector<float> &values)
             m_textColor.setBlue(values[2]);
 
             break;
+
         case TRANSITION_COLOR_ALPHA:
             m_textColor.setAlpha(values[0]);
 
             break;
+
         case TRANSITION_POSITION:
             m_position.setX(values[0]);
             m_position.setY(values[1]);

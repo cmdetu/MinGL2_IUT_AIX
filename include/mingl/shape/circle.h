@@ -13,6 +13,8 @@
 
 #include "shape.h"
 
+#include "../transition/itransitionable.h"
+
 namespace nsShape
 {
 
@@ -20,10 +22,22 @@ namespace nsShape
  * @class Circle
  * @brief Classe représentant un cercle
  */
-class Circle : public Shape
+class Circle : public Shape, public nsTransition::ITransitionable
 {
 
 public:
+    /**
+     * @brief TransitionIds : Liste de toutes les transitions que cet élément peut exécuter
+     */
+    enum TransitionIds {
+        TRANSITION_FILL_COLOR_RGB, /**< Transition pour la couleur de remplissage */
+        TRANSITION_FILL_COLOR_ALPHA, /**< Transition pour la transparence de remplissage */
+        TRANSITION_BORDER_COLOR_RGB, /**< Transition pour la couleur de bord */
+        TRANSITION_BORDER_COLOR_ALPHA, /**< Transition pour la transparence de bord */
+        TRANSITION_POSITION, /**< Transition pour la position */
+        TRANSITION_RADIUS, /**< Transition pour le rayon */
+    };
+
     /**
      * @brief Constructeur pour la classe Circle
      * @param[in] firstPosition : Position du centre
@@ -41,6 +55,9 @@ public:
     virtual ~Circle() override = default;
 
     virtual void draw(MinGL& window) const override;
+
+    virtual void getValues(const int &id, std::vector<float> &values) override;
+    virtual void setValues(const int &id, const std::vector<float> &values) override;
 
     /**
      * @brief Opérateur de décalage

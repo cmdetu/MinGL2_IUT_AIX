@@ -61,6 +61,86 @@ void nsShape::Circle::draw(MinGL& window) const
     }
 } // draw()
 
+void nsShape::Circle::getValues(const int &id, std::vector<float> &values)
+{
+    switch (id) {
+        case TRANSITION_FILL_COLOR_RGB:
+            values[0] = m_fillColor.getRed();
+            values[1] = m_fillColor.getGreen();
+            values[2] = m_fillColor.getBlue();
+
+            break;
+
+        case TRANSITION_FILL_COLOR_ALPHA:
+            values[0] = m_fillColor.getAlpha();
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_RGB:
+            values[0] = m_borderColor.getRed();
+            values[1] = m_borderColor.getGreen();
+            values[2] = m_borderColor.getBlue();
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_ALPHA:
+            values[0] = m_borderColor.getAlpha();
+
+            break;
+
+        case TRANSITION_POSITION:
+            values[0] = m_position.getX();
+            values[1] = m_position.getY();
+
+            break;
+
+        case TRANSITION_RADIUS:
+            values[0] = m_radius;
+
+            break;
+    }
+} // getValues()
+
+void nsShape::Circle::setValues(const int &id, const std::vector<float> &values)
+{
+    switch (id) {
+        case TRANSITION_FILL_COLOR_RGB:
+            m_fillColor.setRed(values[0]);
+            m_fillColor.setGreen(values[1]);
+            m_fillColor.setBlue(values[2]);
+
+            break;
+
+        case TRANSITION_FILL_COLOR_ALPHA:
+            m_fillColor.setAlpha(values[0]);
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_RGB:
+            m_borderColor.setRed(values[0]);
+            m_borderColor.setGreen(values[1]);
+            m_borderColor.setBlue(values[2]);
+
+            break;
+
+        case TRANSITION_BORDER_COLOR_ALPHA:
+            m_borderColor.setAlpha(values[0]);
+
+            break;
+
+        case TRANSITION_POSITION:
+            m_position.setX(values[0]);
+            m_position.setY(values[1]);
+
+            break;
+
+        case TRANSITION_RADIUS:
+            m_radius = values[0];
+
+            break;
+    }
+} // setValues()
+
 nsShape::Circle nsShape::Circle::operator+(const nsGraphics::Vec2D& position) const
 {
     return Circle(m_position + position, m_radius, getFillColor(), getBorderColor());

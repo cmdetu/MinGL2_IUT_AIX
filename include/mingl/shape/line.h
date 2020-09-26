@@ -13,6 +13,8 @@
 
 #include "shape.h"
 
+#include "../transition/itransitionable.h"
+
 namespace nsShape
 {
 
@@ -20,10 +22,23 @@ namespace nsShape
  * @class Line
  * @brief Classe représentant une ligne
  */
-class Line : public Shape
+class Line : public Shape, public nsTransition::ITransitionable
 {
 
 public:
+    /**
+     * @brief TransitionIds : Liste de toutes les transitions que cet élément peut exécuter
+     */
+    enum TransitionIds {
+        TRANSITION_FILL_COLOR_RGB, /**< Transition pour la couleur de remplissage */
+        TRANSITION_FILL_COLOR_ALPHA, /**< Transition pour la transparence de remplissage */
+        TRANSITION_BORDER_COLOR_RGB, /**< Transition pour la couleur de bord */
+        TRANSITION_BORDER_COLOR_ALPHA, /**< Transition pour la transparence de bord */
+        TRANSITION_FIRST_POSITION, /**< Transition pour la position du premier sommet */
+        TRANSITION_SECOND_POSITION, /**< Transition pour la position du second sommet */
+        TRANSITION_LINE_WIDTH, /**< Transition pour l'épaisseur de la ligne */
+    };
+
     /**
      * @brief Constructeur pour la classe Line
      * @param[in] firstPosition : Position du premier sommet
@@ -42,6 +57,9 @@ public:
 
     virtual void draw(MinGL& window) const override;
 
+    virtual void getValues(const int &id, std::vector<float> &values) override;
+    virtual void setValues(const int &id, const std::vector<float> &values) override;
+
     /**
      * @brief Opérateur de décalage
      * @param[in] position : Position a additionner
@@ -57,27 +75,27 @@ public:
     Line operator*(const float& f) const;
 
     /**
-     * @brief Récupère la position du premier point de la ligne
+     * @brief Récupère la position du premier sommet de la ligne
      * @fn const nsGraphics::Vec2D& getFirstPosition() const;
      */
     const nsGraphics::Vec2D& getFirstPosition() const;
 
     /**
-     * @brief Définit la nouvelle position du premier point de la ligne
-     * @param[in] firstPosition : Nouvelle position du premier point
+     * @brief Définit la nouvelle position du premier sommet de la ligne
+     * @param[in] firstPosition : Nouvelle position du premier sommet
      * @fn void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
      */
     void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
 
     /**
-     * @brief Récupère la position du second point de la ligne
+     * @brief Récupère la position du second sommet de la ligne
      * @fn const nsGraphics::Vec2D& getSecondPosition() const;
      */
     const nsGraphics::Vec2D& getSecondPosition() const;
 
     /**
-     * @brief Définit la nouvelle position du second point de la ligne
-     * @param[in] secondPosition : Nouvelle position du second point
+     * @brief Définit la nouvelle position du second sommet de la ligne
+     * @param[in] secondPosition : Nouvelle position du second sommet
      * @fn void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
      */
     void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
