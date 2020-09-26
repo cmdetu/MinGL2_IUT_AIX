@@ -1,6 +1,6 @@
 # Exemples minGL 2
 Ce répertoire contient divers exemples dont le but est de vous aider a utiliser minGL 2.  
-Il est conseillé de **bien** lire les commentaires qui sont éparpillés dans le code de ces exemples.
+Il est conseillé de **bien** lire les commentaires qui sont éparpillés dans le code de ces exemples, et de lire la documentation des différentes classes qui vous sont introduites en même temps.
 
 ## ``00-Boilerplate/``
 L'exemple n°00 Boilerplate contient le strict minimum pour démarrer un projet sous minGL 2.
@@ -30,3 +30,8 @@ Le carré bleu peut être déplacé a l'aide du curseur de la souris. Sa couleur
 ```C++
 window.getEventManager().clearEvents();
 ```
+
+## ``05-Transition/``
+L'exemple n°5 Transition vous montre comment se servir du gestionnaire de transition.
+
+Plusieurs formes géométriques ont des transitions qui sont appliquées sur leur différentes propriétés, avec des paramètres qui diffèrent afin que vous puissiez voir ses possibilités.
