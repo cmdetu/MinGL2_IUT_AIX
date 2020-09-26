@@ -9,7 +9,6 @@ SOURCES += \
     $$PWD/src/audio/audioengine.cpp \
     $$PWD/src/exception/cexception.cpp \
     $$PWD/src/mingl.cpp \
-    $$PWD/src/audio/fonctoroldsound.cpp \
     $$PWD/src/event/event_manager.cpp \
     $$PWD/src/shape/circle.cpp \
     $$PWD/src/shape/line.cpp \
@@ -32,7 +31,6 @@ HEADERS += \
     $$PWD/include/mingl/exception/errcode.h \
     $$PWD/include/mingl/macros.h \
     $$PWD/include/mingl/mingl.h \
-    $$PWD/include/mingl/audio/fonctoroldsound.h \
     $$PWD/include/mingl/event/event.hpp \
     $$PWD/include/mingl/event/event_manager.h \
     $$PWD/include/mingl/shape/circle.h \
