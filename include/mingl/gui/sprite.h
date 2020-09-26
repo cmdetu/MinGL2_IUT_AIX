@@ -12,8 +12,11 @@
 #define DISPLAY_SPRITE_H
 
 #include <cstdint>
+#include <vector>
 
-#include "../graphics/iminglinjectable.h"
+#include "../graphics/idrawable.h"
+#include "../graphics/rgbacolor.h"
+#include "../graphics/vec2d.h"
 
 namespace nsGui {
 
@@ -21,7 +24,7 @@ namespace nsGui {
  * @class Sprite
  * @brief Permet de charger une image depuis un format créé pour l'occasion, le .si2
  */
-class Sprite : public nsGraphics::IminGLInjectable
+class Sprite : public nsGraphics::IDrawable
 {
 public:
     /**

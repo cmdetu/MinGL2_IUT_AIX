@@ -11,7 +11,9 @@
 #ifndef FIG2_H
 #define FIG2_H
 
-#include "../graphics/iminglinjectable.h"
+#include "../graphics/idrawable.h"
+#include "../graphics/rgbacolor.h"
+#include "../graphics/vec2d.h"
 
 /**
  * @namespace nsShape
@@ -24,7 +26,7 @@ namespace nsShape
  * @class Shape
  * @brief Classe de base pour une forme
  */
-class Shape: public nsGraphics::IminGLInjectable
+class Shape: public nsGraphics::IDrawable
 {
 
 public:

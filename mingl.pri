@@ -41,7 +41,6 @@ HEADERS += \
     $$PWD/include/mingl/shape/triangle.h \
     $$PWD/include/mingl/shape/shape.h \
     $$PWD/include/mingl/graphics/idrawable.h \
-    $$PWD/include/mingl/graphics/iminglinjectable.h \
     $$PWD/include/mingl/graphics/rgbacolor.h \
     $$PWD/include/mingl/graphics/vec2d.h \
     $$PWD/include/mingl/gui/glut_font.h \

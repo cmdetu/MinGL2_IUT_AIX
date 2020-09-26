@@ -12,7 +12,9 @@
 #define TEXT_H
 
 #include "glut_font.h"
-#include "../graphics/iminglinjectable.h"
+#include "../graphics/idrawable.h"
+#include "../graphics/rgbacolor.h"
+#include "../graphics/vec2d.h"
 #include "../transition/itransitionable.h"
 
 /**
@@ -25,7 +27,7 @@ namespace nsGui {
  * @class Text
  * @brief Gère l'affichage d'un texte
  */
-class Text : public nsGraphics::IminGLInjectable, public nsTransition::ITransitionable
+class Text : public nsGraphics::IDrawable, public nsTransition::ITransitionable
 {
 public:
     /**
