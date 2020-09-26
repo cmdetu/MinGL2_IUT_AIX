@@ -41,3 +41,34 @@ L'exemple n°6 Sprite vous montre comment charger une image externe au format .s
 
 Cet exemple stocke les ressources dans le répertoire ``res/``, qui comprend actuellement une unique image.  
 Afin que le programme puisse retrouver ses ressources, ce répertoire doit **impérativement** être copié dans le même répertoire où se trouve l'exécutable.
+
+## ``07-Audio/``
+L'exemple n°7 Audio vous montre comment utiliser le sous-système audio afin de jouer de la musique et des effets sonores.
+
+Même remarque que l'exemple précédent, le répertoire ``res/`` doit être copié dans le même répertoire que celui où se trouve l'exécutable.
+
+### Remerciements
+- **music.wav**  
+    The Entertainer by Kevin MacLeod  
+    Link: https://incompetech.filmmusic.io/song/5765-the-entertainer  
+    License: http://creativecommons.org/licenses/by/4.0/  
+
+- **sound1.wav**  
+    snr_bod.wav by DWSD  
+    Link: https://freesound.org/people/DWSD/sounds/183111  
+    License: https://creativecommons.org/licenses/by/3.0/
+
+- **sound2.wav**  
+    metalbang0.wav by SamsterBirdies  
+    Link: https://freesound.org/people/SamsterBirdies/sounds/435699  
+    License: https://creativecommons.org/publicdomain/zero/1.0/  
+
+## ``08-CustomDrawable/``
+L'exemple n°8 Custom Drawable vous montre comment créer vos propres objets affichables.
+
+Une classe d'exemple ``BgText``, affichant un texte avec une couleur de fond, est créé comme exemple.
+
+## ``09-CustomTransitionable/``
+L'exemple n°9 Custom Transitionable vous montre comment créer vos propres objets compatible avec le gestionnaire de transition.
+
+Cet exemple reprend la classe ``BgText`` créé lors de l'exemple précédent, afin de lui ajouter le support de la transition pour sa couleur de texte et de fond.
