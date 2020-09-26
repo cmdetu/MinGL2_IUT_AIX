@@ -43,12 +43,15 @@ int main()
         window << nsGui::Text(nsGraphics::Vec2D(16, 24), "Appuyez sur ESPACE pour mettre en pause/lecture la musique.", nsGraphics::KPurple);
         window << nsGui::Text(nsGraphics::Vec2D(16, 40), "Appuyez sur S pour jouer un effet sonore.", nsGraphics::KPurple);
 
+        window << nsGui::Text(nsGraphics::Vec2D(320, 320), audioEngine.isMusicPlaying() ? "LECTURE" : "PAUSE", audioEngine.isMusicPlaying() ? nsGraphics::KLime : nsGraphics::KRed,
+                              nsGui::GlutFont::BITMAP_9_BY_15, nsGui::Text::HorizontalAlignment::ALIGNH_CENTER);
+
         // On vérifie les touches
         if (window.isPressed({' ', false}))
         {
             // Espace a été pressé, on bascule la musique
             window.resetKey({' ', false});
-            audioEngine.toggleMusic();
+            audioEngine.toggleMusicPlaying();
         }
         if (window.isPressed({'s', false}))
         {

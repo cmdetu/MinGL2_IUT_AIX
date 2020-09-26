@@ -21,13 +21,23 @@ void nsAudio::AudioEngine::setMusic(const std::string& fileName, bool loop /* = 
     m_music.setLoop(loop);
 } // setMusic()
 
-void nsAudio::AudioEngine::toggleMusic()
+void nsAudio::AudioEngine::toggleMusicPlaying()
 {
-    if (m_music.getStatus() != sf::Music::Status::Playing)
+    setMusicPlaying(m_music.getStatus() != sf::Music::Status::Playing);
+} // toggleMusic()
+
+void nsAudio::AudioEngine::setMusicPlaying(bool playing)
+{
+    if (playing)
         m_music.play();
     else
         m_music.pause();
-} // toggleMusic()
+} // setMusicPlaying()
+
+bool nsAudio::AudioEngine::isMusicPlaying() const
+{
+    return m_music.getStatus() == sf::Music::Status::Playing;
+} // isMusicPlaying()
 
 void nsAudio::AudioEngine::loadSound(const std::string & fileName)
 {
@@ -38,7 +48,7 @@ void nsAudio::AudioEngine::loadSound(const std::string & fileName)
     if(!sb.loadFromFile(fileName))
         throw nsException::CException(fileName + " cannot be loaded", nsException::KFileError);
     m_buffers.push_front(make_pair(fileName, sb));
-} // loadSound
+} // loadSound()
 
 void nsAudio::AudioEngine::removeBuffer(const std::string & fileName)
 {
@@ -51,12 +61,12 @@ void nsAudio::AudioEngine::removeBuffer(const std::string & fileName)
         }
     }
     throw nsException::CException(fileName + " does not exist", nsException::KErrArg);
-} // removeBuffer
+} // removeBuffer()
 
 void nsAudio::AudioEngine::emptyBufferList()
 {
     m_buffers.clear();
-} // emptyBufferList
+} // emptyBufferList()
 
 void nsAudio::AudioEngine::startMusicFromBeginning()
 {
@@ -80,7 +90,7 @@ void nsAudio::AudioEngine::playSoundFromBuffer(const std::string& fileName)
         throw nsException::CException(fileName + " buffer not found", nsException::KErrArg);
 
     removeOldSounds();
-} // playSoundFromBuffer
+} // playSoundFromBuffer()
 
 void nsAudio::AudioEngine::playSoundFromFile(const std::string& fileName)
 {

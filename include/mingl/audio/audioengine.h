@@ -39,9 +39,22 @@ public:
 
     /**
      * @brief Met en pause ou relance la musique
-     * @fn void toggleMusic();
+     * @fn void toggleMusicPlaying();
      */
-    void toggleMusic();
+    void toggleMusicPlaying();
+
+    /**
+     * @brief Règle l'état de lecture de la musique
+     * @param[in] playing : Nouvel état de lecture
+     * @fn void setMusicPlaying(bool playing);
+     */
+    void setMusicPlaying(bool playing);
+
+    /**
+     * @brief Récupère l'état de lecture de la musique
+     * @fn bool isMusicPlaying() const;
+     */
+    bool isMusicPlaying() const;
 
     /**
      * @brief Charge un fichier audio dans un buffer
