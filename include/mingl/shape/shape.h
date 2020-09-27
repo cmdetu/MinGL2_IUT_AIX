@@ -11,7 +11,9 @@
 #ifndef FIG2_H
 #define FIG2_H
 
-#include "../graphics/iminglinjectable.h"
+#include "../graphics/idrawable.h"
+#include "../graphics/rgbacolor.h"
+#include "../graphics/vec2d.h"
 
 /**
  * @namespace nsShape
@@ -24,7 +26,7 @@ namespace nsShape
  * @class Shape
  * @brief Classe de base pour une forme
  */
-class Shape: public nsGraphics::IminGLInjectable
+class Shape: public nsGraphics::IDrawable
 {
 
 public:
@@ -50,9 +52,9 @@ public:
 
     /**
      * @brief Règle la couleur de remplissage
-     * @fn cvoid setFillColor(nsGraphics::RGBAcolor& fillColor);
+     * @fn cvoid setFillColor(const nsGraphics::RGBAcolor& fillColor);
      */
-    void setFillColor(nsGraphics::RGBAcolor& fillColor);
+    void setFillColor(const nsGraphics::RGBAcolor& fillColor);
 
     /**
      * @brief Retourne la couleur de bord
@@ -62,11 +64,11 @@ public:
 
     /**
      * @brief Règle la couleur de bord
-     * @fn void setBorderColor(RGBAcolor& borderColor);
+     * @fn void setBorderColor(const RGBAcolor& borderColor);
      */
-    void setBorderColor(nsGraphics::RGBAcolor& borderColor);
+    void setBorderColor(const nsGraphics::RGBAcolor& borderColor);
 
-private:
+protected:
     /**
      * @brief m_fillColor : Couleur de remplissage
      */

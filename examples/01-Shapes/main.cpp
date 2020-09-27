@@ -40,7 +40,7 @@ void dessiner(MinGL &window)
 int main()
 {
     // Initialise le système
-    MinGL window("01 - Shapes", nsGraphics::Vec2D(640, 640), nsGraphics::KBlack);
+    MinGL window("01 - Shapes", nsGraphics::Vec2D(640, 640), nsGraphics::Vec2D(128, 128), nsGraphics::KBlack);
     window.initGlut();
     window.initGraphic();
 

@@ -12,7 +12,9 @@
 #define TEXT_H
 
 #include "glut_font.h"
-#include "../graphics/iminglinjectable.h"
+#include "../graphics/idrawable.h"
+#include "../graphics/rgbacolor.h"
+#include "../graphics/vec2d.h"
 #include "../transition/itransitionable.h"
 
 /**
@@ -25,7 +27,7 @@ namespace nsGui {
  * @class Text
  * @brief Gère l'affichage d'un texte
  */
-class Text : public nsGraphics::IminGLInjectable, public nsTransition::ITransitionable
+class Text : public nsGraphics::IDrawable, public nsTransition::ITransitionable
 {
 public:
     /**
@@ -95,14 +97,14 @@ public:
     /**
      * @brief Calcule la position visible du texte, calculée avec l'alignement vertical et horizontal
      * @return La position visible, en haut a gauche
-     * @fn Vec2D computeVisibleposition() const;
+     * @fn nsGraphics::Vec2D computeVisiblePosition() const;
      */
     nsGraphics::Vec2D computeVisiblePosition() const;
 
     /**
      * @brief Calcule la position de fin visible du texte, calculée avec l'alignement vertical et horizontal
      * @return La position visible, en bas a droite
-     * @fn Vec2D computeVisibleEndPosition() const;
+     * @fn nsGraphics::Vec2D computeVisibleEndPosition() const;
      */
     nsGraphics::Vec2D computeVisibleEndPosition() const;
 
@@ -119,6 +121,71 @@ public:
      * @fn void setContent(const std::string &content);
      */
     void setContent(const std::string &content);
+
+    /**
+     * @brief Récupère la position du texte
+     * @fn const nsGraphics::Vec2D& getPosition() const;
+     */
+    const nsGraphics::Vec2D& getPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du texte
+     * @param[in] position : Nouvelle position
+     * @fn void setPosition(const nsGraphics::Vec2D &position);
+     */
+    void setPosition(const nsGraphics::Vec2D &position);
+
+    /**
+     * @brief Récupère la couleur du texte
+     * @fn const nsGraphics::RGBAcolor& getTextColor() const;
+     */
+    const nsGraphics::RGBAcolor& getTextColor() const;
+
+    /**
+     * @brief Définit la nouvelle couleur du texte
+     * @param[in] textColor : Nouvelle couleur
+     * @fn void setTextColor(const nsGraphics::RGBAcolor &textColor);
+     */
+    void setTextColor(const nsGraphics::RGBAcolor &textColor);
+
+    /**
+     * @brief Récupère la police du texte
+     * @fn const GlutFont& getTextFont() const;
+     */
+    const GlutFont& getTextFont() const;
+
+    /**
+     * @brief Définit la nouvelle police du texte
+     * @param[in] textFont : Nouvelle police
+     * @fn void setTextFont(const GlutFont &textFont);
+     */
+    void setTextFont(const GlutFont &textFont);
+
+    /**
+     * @brief Récupère l'alignement horizontal du texte
+     * @fn HorizontalAlignment getHorizontalAlignment() const;
+     */
+    HorizontalAlignment getHorizontalAlignment() const;
+
+    /**
+     * @brief Définit le nouvel alignement horizontal du texte
+     * @param[in] horizontalAlignment : Nouvel alignement horizontal
+     * @fn void setHorizontalAlignment(const HorizontalAlignment &horizontalAlignment);
+     */
+    void setHorizontalAlignment(const HorizontalAlignment &horizontalAlignment);
+
+    /**
+     * @brief Récupère l'alignement vertical du texte
+     * @fn VerticalAlignment getVerticalAlignment() const;
+     */
+    VerticalAlignment getVerticalAlignment() const;
+
+    /**
+     * @brief Définit le nouvel alignement vertical du texte
+     * @param[in] verticalAlignment : Nouvel alignement vertical
+     * @fn void setVerticalAlignment(const VerticalAlignment &verticalAlignment);
+     */
+    void setVerticalAlignment(const VerticalAlignment &verticalAlignment);
 
 private:
     /**

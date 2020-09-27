@@ -42,6 +42,19 @@ public:
      */
     virtual void draw(MinGL& window) const = 0;
 
+    /**
+     * @brief Surcharge de l'opérateur d'injection
+     * @param[in] window : Fenêtre dans laquelle injecter l'élément
+     * @param[in] drawable : Elément a injecter
+     * @fn friend MinGL& operator<<(MinGL& window, const IminGLInjectable& drawable)
+     */
+    friend MinGL& operator<<(MinGL& window, const IDrawable& drawable)
+    {
+        drawable.draw(window);
+
+        return window;
+    }
+
 }; // class IDrawable
 
 } // namespace nsGraphics

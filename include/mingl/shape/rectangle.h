@@ -13,6 +13,8 @@
 
 #include "shape.h"
 
+#include "../transition/itransitionable.h"
+
 namespace nsShape
 {
 
@@ -20,10 +22,22 @@ namespace nsShape
  * @class Rectangle
  * @brief Classe représentant un rectangle
  */
-class Rectangle : public Shape
+class Rectangle : public Shape, public nsTransition::ITransitionable
 {
 
 public:
+    /**
+     * @brief TransitionIds : Liste de toutes les transitions que cet élément peut exécuter
+     */
+    enum TransitionIds {
+        TRANSITION_FILL_COLOR_RGB, /**< Transition pour la couleur de remplissage */
+        TRANSITION_FILL_COLOR_ALPHA, /**< Transition pour la transparence de remplissage */
+        TRANSITION_BORDER_COLOR_RGB, /**< Transition pour la couleur de bord */
+        TRANSITION_BORDER_COLOR_ALPHA, /**< Transition pour la transparence de bord */
+        TRANSITION_FIRST_POSITION, /**< Transition pour la position du coin haut-gauche */
+        TRANSITION_SECOND_POSITION, /**< Transition pour la position du coin bas-droit */
+    };
+
     /**
      * @brief Constructeur pour la classe Rectangle
      * @param[in] firstPosition : Position du coin haut-gauche
@@ -57,6 +71,9 @@ public:
 
     virtual void draw(MinGL& window) const override;
 
+    virtual void getValues(const int &id, std::vector<float> &values) override;
+    virtual void setValues(const int &id, const std::vector<float> &values) override;
+
     /**
      * @brief Opérateur de décalage
      * @param[in] position : Position a additionner
@@ -70,6 +87,32 @@ public:
      * @fn Rectangle operator*(const float& f) const
      */
     Rectangle operator*(const float& f) const;
+
+    /**
+     * @brief Récupère la position du coin haut-gauche du rectangle
+     * @fn const nsGraphics::Vec2D& getFirstPosition() const;
+     */
+    const nsGraphics::Vec2D& getFirstPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du coin haut-gauche du rectangle
+     * @param[in] firstPosition : Nouvelle position du coin haut-gauche
+     * @fn void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+     */
+    void setFirstPosition(const nsGraphics::Vec2D &firstPosition);
+
+    /**
+     * @brief Récupère la position du coin bas-droit du rectangle
+     * @fn const nsGraphics::Vec2D& getSecondPosition() const;
+     */
+    const nsGraphics::Vec2D& getSecondPosition() const;
+
+    /**
+     * @brief Définit la nouvelle position du coin bas-droit du rectangle
+     * @param[in] secondPosition : Nouvelle position du coin bas-droit
+     * @fn void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
+     */
+    void setSecondPosition(const nsGraphics::Vec2D &secondPosition);
 
 private:
     /**

@@ -20,7 +20,17 @@ const nsGraphics::RGBAcolor &nsShape::Shape::getFillColor() const
     return m_fillColor;
 } // getFillColor()
 
+void nsShape::Shape::setFillColor(const nsGraphics::RGBAcolor &fillColor)
+{
+    m_fillColor = fillColor;
+} // setFillColor()
+
 const nsGraphics::RGBAcolor &nsShape::Shape::getBorderColor() const
 {
     return m_borderColor;
 } // getBorderColor()
+
+void nsShape::Shape::setBorderColor(const nsGraphics::RGBAcolor &borderColor)
+{
+    m_borderColor = borderColor;
+} // setBorderColor()

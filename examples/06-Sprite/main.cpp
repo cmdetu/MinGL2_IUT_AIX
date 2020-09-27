@@ -5,37 +5,19 @@
 
 #include "mingl/mingl.h"
 
-#include "mingl/shape/rectangle.h"
+#include "mingl/gui/sprite.h"
 
 using namespace std;
-
-nsGraphics::Vec2D rectPos;
-
-void clavier(MinGL &window)
-{
-    // On vérifie si ZQSD est pressé, et met a jour la position
-    if (window.isPressed({'z', false}))
-        rectPos.setY(rectPos.getY() - 1);
-    if (window.isPressed({'s', false}))
-        rectPos.setY(rectPos.getY() + 1);
-    if (window.isPressed({'q', false}))
-        rectPos.setX(rectPos.getX() - 1);
-    if (window.isPressed({'d', false}))
-        rectPos.setX(rectPos.getX() + 1);
-}
-
-void dessiner(MinGL &window)
-{
-    // On dessine le rectangle
-    window << nsShape::Rectangle(rectPos, rectPos + nsGraphics::Vec2D(20, 20), nsGraphics::KCyan);
-}
 
 int main()
 {
     // Initialise le système
-    MinGL window("03 - Clavier", nsGraphics::Vec2D(640, 640), nsGraphics::Vec2D(128, 128), nsGraphics::KBlack);
+    MinGL window("06 - Sprite", nsGraphics::Vec2D(640, 640), nsGraphics::Vec2D(128, 128), nsGraphics::KBlack);
     window.initGlut();
     window.initGraphic();
+
+    // Instancie le sprite
+    nsGui::Sprite doggo("res/doggo.si2", nsGraphics::Vec2D(195, 195));
 
     // Variable qui tient le temps de frame
     chrono::microseconds frameTime = chrono::microseconds::zero();
@@ -49,9 +31,8 @@ int main()
         // On efface la fenêtre
         window.clearScreen();
 
-        // On fait tourner les procédures
-        clavier(window);
-        dessiner(window);
+        // On affiche l'image
+        window << doggo;
 
         // On finit la frame en cours
         window.finishFrame();

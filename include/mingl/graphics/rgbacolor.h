@@ -45,7 +45,7 @@ public:
     /**
      * @brief Opérateur d'égalité
      * @param[in] col : Couleur a vérifier
-     * @fn Circle operator+(const nsGraphics::Vec2D& position) const
+     * @fn bool operator==(const RGBAcolor& col) const;
      */
     bool operator==(const RGBAcolor& col) const;
 

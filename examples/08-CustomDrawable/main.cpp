@@ -5,35 +5,15 @@
 
 #include "mingl/mingl.h"
 
-#include "mingl/shape/rectangle.h"
+// On inclut l'en-tête de notre objet custom
+#include "bgtext.h"
 
 using namespace std;
-
-nsGraphics::Vec2D rectPos;
-
-void clavier(MinGL &window)
-{
-    // On vérifie si ZQSD est pressé, et met a jour la position
-    if (window.isPressed({'z', false}))
-        rectPos.setY(rectPos.getY() - 1);
-    if (window.isPressed({'s', false}))
-        rectPos.setY(rectPos.getY() + 1);
-    if (window.isPressed({'q', false}))
-        rectPos.setX(rectPos.getX() - 1);
-    if (window.isPressed({'d', false}))
-        rectPos.setX(rectPos.getX() + 1);
-}
-
-void dessiner(MinGL &window)
-{
-    // On dessine le rectangle
-    window << nsShape::Rectangle(rectPos, rectPos + nsGraphics::Vec2D(20, 20), nsGraphics::KCyan);
-}
 
 int main()
 {
     // Initialise le système
-    MinGL window("03 - Clavier", nsGraphics::Vec2D(640, 640), nsGraphics::Vec2D(128, 128), nsGraphics::KBlack);
+    MinGL window("08 - Custom Drawable", nsGraphics::Vec2D(640, 640), nsGraphics::Vec2D(128, 128), nsGraphics::KBlack);
     window.initGlut();
     window.initGraphic();
 
@@ -49,9 +29,8 @@ int main()
         // On efface la fenêtre
         window.clearScreen();
 
-        // On fait tourner les procédures
-        clavier(window);
-        dessiner(window);
+        // On affiche notre objet
+        window << BgText(nsGraphics::Vec2D(64, 64), "Hello, World!", nsGraphics::KBlue, nsGraphics::KRed);
 
         // On finit la frame en cours
         window.finishFrame();

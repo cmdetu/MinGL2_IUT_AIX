@@ -71,6 +71,28 @@ void nsGui::Sprite::draw(MinGL& window) const
     glEnd();
 } // draw()
 
+void nsGui::Sprite::getValues(const int &id, std::vector<float> &values)
+{
+    switch (id) {
+        case TRANSITION_POSITION:
+            values[0] = m_position.getX();
+            values[1] = m_position.getY();
+
+            break;
+    }
+} // getValues()
+
+void nsGui::Sprite::setValues(const int &id, const std::vector<float> &values)
+{
+    switch (id) {
+        case TRANSITION_POSITION:
+            m_position.setX(values[0]);
+            m_position.setY(values[1]);
+
+            break;
+    }
+} // setValues()
+
 const uint32_t& nsGui::Sprite::getRowSize() const
 {
     return m_rowSize;
