@@ -56,7 +56,7 @@ MinGL::~MinGL()
     if (it != anyWindow.end())
         anyWindow.erase(it);
 
-    stopGaphic();
+    stopGraphic();
 } //~MinGL()
 
 void MinGL::finishFrame()
@@ -124,7 +124,7 @@ void MinGL::initGraphic()
     m_windowIsOpen = true;
 } // initGraphic()
 
-void MinGL::stopGaphic()
+void MinGL::stopGraphic()
 {
     glutDestroyWindow(m_glutWindowId);
     glutMainLoopEvent();

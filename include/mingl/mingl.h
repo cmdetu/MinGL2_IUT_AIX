@@ -92,9 +92,9 @@ public:
 
     /**
      * @brief Ferme la fenêtre et minGL proprement
-     * @fn void stopGaphic();
+     * @fn void stopGraphic();
      */
-    void stopGaphic();
+    void stopGraphic();
 
     /**
      * @brief Renvoie l'état d'une touche du clavier (pressée ou non)
