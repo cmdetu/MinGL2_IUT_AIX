@@ -3,10 +3,12 @@
  * @file    vec2d.cpp
  * @author  Alexandre Sollier
  * @date    Septembre 2020
- * @version 1.2
+ * @version 1.3
  * @brief   Représente un vecteur sur deux dimensions
  *
  **/
+
+#include <cmath>
 
 #include "mingl/graphics/vec2d.h"
 
@@ -20,40 +22,80 @@ nsGraphics::Vec2D::Vec2D(const Vec2D& pos)
     , m_y(pos.getY())
 {} // Vec2D()
 
+nsGraphics::Vec2D nsGraphics::Vec2D::operator+() const
+{
+    return Vec2D(+m_x, +m_y);
+} // operator+()
+
+nsGraphics::Vec2D nsGraphics::Vec2D::operator-() const
+{
+    return Vec2D(-m_x, -m_y);
+} // operator-()
+
 nsGraphics::Vec2D nsGraphics::Vec2D::operator+(const Vec2D& pos) const
 {
     return Vec2D(m_x + pos.getX(), m_y + pos.getY());
 } // operator+()
 
-nsGraphics::Vec2D nsGraphics::Vec2D::operator*(const float& reductionRation) const
+nsGraphics::Vec2D nsGraphics::Vec2D::operator-(const Vec2D &pos) const
 {
-    return Vec2D(m_x * reductionRation, m_y * reductionRation);
+    return Vec2D(m_x - pos.getX(), m_y - pos.getY());
+} // operator-()
+
+nsGraphics::Vec2D nsGraphics::Vec2D::operator*(const Vec2D& pos) const
+{
+    return Vec2D(m_x * pos.getX(), m_y * pos.getY());
 } // operator*()
+
+nsGraphics::Vec2D nsGraphics::Vec2D::operator*(const float& n) const
+{
+    return Vec2D(m_x * n, m_y * n);
+} // operator*()
+
+nsGraphics::Vec2D nsGraphics::Vec2D::operator/(const Vec2D &pos) const
+{
+    return Vec2D(m_x / pos.getX(), m_y / pos.getY());
+} // operator/()
+
+nsGraphics::Vec2D nsGraphics::Vec2D::operator/(const float &n) const
+{
+    return Vec2D(m_x / n, m_y / n);
+} // operator/()
+
+nsGraphics::Vec2D nsGraphics::Vec2D::operator%(const Vec2D &pos) const
+{
+    return Vec2D(m_x % pos.getX(), m_y % pos.getY());
+} // operator%()
 
 bool nsGraphics::Vec2D::operator==(const Vec2D& pos) const
 {
     return m_x == pos.getX() && m_y == pos.getY();
 } // operator==()
 
-bool nsGraphics::Vec2D::operator>(const Vec2D& pos) const
+bool nsGraphics::Vec2D::operator!=(const Vec2D &pos) const
 {
-    return m_x > pos.getX() && m_y > pos.getY();
-} // operator>()
+    return m_x != pos.getX() || m_y != pos.getY();
+} // operator!=()
 
 bool nsGraphics::Vec2D::operator<(const Vec2D& pos) const
 {
-    return m_x < pos.getX() && m_y < pos.getY();
+    return computeMagnitude() < pos.computeMagnitude();
 } // operator<()
 
-bool nsGraphics::Vec2D::operator>=(const Vec2D& pos) const
+bool nsGraphics::Vec2D::operator>(const Vec2D& pos) const
 {
-    return m_x >= pos.getX() && m_y >= pos.getY();
-} // operator>=()
+    return computeMagnitude() > pos.computeMagnitude();
+} // operator>()
 
 bool nsGraphics::Vec2D::operator<=(const Vec2D& pos) const
 {
-    return m_x <= pos.getX() && m_y <= pos.getY();
+    return computeMagnitude() <= pos.computeMagnitude();
 } // operator<=()
+
+bool nsGraphics::Vec2D::operator>=(const Vec2D& pos) const
+{
+    return computeMagnitude() >= pos.computeMagnitude();
+} // operator>=()
 
 nsGraphics::Vec2D& nsGraphics::Vec2D::operator=(const Vec2D& pos)
 {
@@ -70,6 +112,38 @@ nsGraphics::Vec2D& nsGraphics::Vec2D::operator+=(const Vec2D& pos)
 
     return *this;
 } // operator+=()
+
+nsGraphics::Vec2D &nsGraphics::Vec2D::operator-=(const nsGraphics::Vec2D &pos)
+{
+    m_x -= pos.getX();
+    m_y -= pos.getY();
+
+    return *this;
+} // operator-=()
+
+nsGraphics::Vec2D &nsGraphics::Vec2D::operator*=(const nsGraphics::Vec2D &pos)
+{
+    m_x *= pos.getX();
+    m_y *= pos.getY();
+
+    return *this;
+} // operator*=()
+
+nsGraphics::Vec2D &nsGraphics::Vec2D::operator/=(const nsGraphics::Vec2D &pos)
+{
+    m_x /= pos.getX();
+    m_y /= pos.getY();
+
+    return *this;
+} // operator/=()
+
+nsGraphics::Vec2D &nsGraphics::Vec2D::operator%=(const nsGraphics::Vec2D &pos)
+{
+    m_x %= pos.getX();
+    m_y %= pos.getY();
+
+    return *this;
+} // operator%=()
 
 nsGraphics::Vec2D nsGraphics::Vec2D::min(const Vec2D& p1, const Vec2D& p2)
 {
@@ -95,6 +169,11 @@ bool nsGraphics::Vec2D::isColliding(Vec2D firstCorner, Vec2D secondCorner) const
     // On retourne si notre vecteur est entre ces deux coins
     return (operator>=(firstCorner) && operator<=(secondCorner));
 } // isColliding()
+
+double nsGraphics::Vec2D::computeMagnitude() const
+{
+    return sqrt(m_x * m_x + m_y * m_y);
+} // getMagnitude()
 
 int nsGraphics::Vec2D::getX() const
 {
