@@ -2,13 +2,19 @@
  *
  * @file    cexception.h
  *
- * @authors M. Laporte, D. Mathieu, Alexandre Sollier
+ * @authors M. Laporte, D. Mathieu
  *
  * @date    23/03/2010
  *
- * @version V1.1
+ * @version V1.0
  *
  * @brief   Declaration de la classe CException
+ *
+ * @version V1.1
+ *
+ * @author Alexandre Sollier
+ *
+ * @brief Ajout de la documentation
  *
  **/
 

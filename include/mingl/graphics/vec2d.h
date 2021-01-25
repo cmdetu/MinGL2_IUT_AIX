@@ -3,7 +3,7 @@
  * @file    vec2d.h
  * @author  Alexandre Sollier
  * @date    Janvier 2020
- * @version 1.2
+ * @version 1.3
  * @brief   Représente un vecteur sur deux dimensions
  *
  **/
@@ -42,18 +42,65 @@ public:
     Vec2D(const Vec2D& pos);
 
     /**
-     * @brief Opérateur de décalage
+     * @brief Opérateur unaire plus
+     * @fn Vec2D operator+() const;
+     */
+    Vec2D operator+() const;
+
+    /**
+     * @brief Opérateur unaire moins
+     * @fn Vec2D operator-() const;
+     */
+    Vec2D operator-() const;
+
+    /**
+     * @brief Opérateur d'addition
      * @param[in] pos : Vecteur a additionner
      * @fn Vec2D operator+(const Vec2D& pos) const;
      */
     Vec2D operator+(const Vec2D& pos) const;
 
     /**
-     * @brief Opérateur de réduction
-     * @param[in] reductionRation : Nombre avec lequel multiplier le vecteur actuel
-     * @fn Vec2D operator*(const float& reductionRation) const;
+     * @brief Opérateur de soustraction
+     * @param[in] pos : Vecteur a soustraire
+     * @fn Vec2D operator-(const Vec2D& pos) const;
      */
-    Vec2D operator*(const float& reductionRation) const;
+    Vec2D operator-(const Vec2D& pos) const;
+
+    /**
+     * @brief Opérateur de multiplication
+     * @param[in] pos : Vecteur a multiplier
+     * @fn Vec2D operator*(const Vec2D& pos) const;
+     */
+    Vec2D operator*(const Vec2D& pos) const;
+
+    /**
+     * @brief Opérateur de multiplication
+     * @param[in] n : Nombre avec lequel multiplier le vecteur actuel
+     * @fn Vec2D operator*(const float& n) const;
+     */
+    Vec2D operator*(const float& n) const;
+
+    /**
+     * @brief Opérateur de division
+     * @param[in] pos : Vecteur a diviser
+     * @fn Vec2D operator/(const Vec2D& pos) const;
+     */
+    Vec2D operator/(const Vec2D& pos) const;
+
+    /**
+     * @brief Opérateur de division
+     * @param[in] n : Nombre avec lequel diviser le vecteur actuel
+     * @fn Vec2D operator/(const float& n) const;
+     */
+    Vec2D operator/(const float& n) const;
+
+    /**
+     * @brief Opérateur modulo
+     * @param[in] pos : Vecteur avec lequel faire un modulo
+     * @fn Vec2D operator%(const Vec2D& pos) const;
+     */
+    Vec2D operator%(const Vec2D& pos) const;
 
     /**
      * @brief Opérateur d'égalité
@@ -63,32 +110,43 @@ public:
     bool operator==(const Vec2D& pos) const;
 
     /**
-     * @brief Opérateur de stricte supériorité
-     * @param[in] pos : Vecteur avec lequel vérifier la stricte supériorité
-     * @fn bool operator>(const Vec2D& pos) const;
+     * @brief Opérateur d'inégalité
+     * @param[in] pos : Vecteur avec lequel vérifier l'inégalité
+     * @fn bool operator!=(const Vec2D& pos) const;
      */
-    bool operator>(const Vec2D& pos) const;
+    bool operator!=(const Vec2D& pos) const;
 
     /**
      * @brief Opérateur de stricte infériorité
+     * (Vérifie la stricte infériorité de la magnitude des deux vecteurs)
      * @param[in] pos : Vecteur avec lequel vérifier la stricte infériorité
      * @fn bool operator<(const Vec2D& pos) const;
      */
     bool operator<(const Vec2D& pos) const;
 
     /**
-     * @brief Opérateur de supériorité
-     * @param[in] pos : Vecteur avec lequel vérifier la supériorité
-     * @fn bool operator>=(const Vec2D& pos) const;
+     * @brief Opérateur de stricte supériorité
+     * (Vérifie la stricte supériorité de la magnitude des deux vecteurs)
+     * @param[in] pos : Vecteur avec lequel vérifier la stricte supériorité
+     * @fn bool operator>(const Vec2D& pos) const;
      */
-    bool operator>=(const Vec2D& pos) const;
+    bool operator>(const Vec2D& pos) const;
 
     /**
      * @brief Opérateur d'infériorité
+     * (Vérifie l'infériorité de la magnitude des deux vecteurs)
      * @param[in] pos : Vecteur avec lequel vérifier l'infériorité
      * @fn bool operator<=(const Vec2D& pos) const;
      */
     bool operator<=(const Vec2D& pos) const;
+
+    /**
+     * @brief Opérateur de supériorité
+     * (Vérifie la supériorité de la magnitude des deux vecteurs)
+     * @param[in] pos : Vecteur avec lequel vérifier la supériorité
+     * @fn bool operator>=(const Vec2D& pos) const;
+     */
+    bool operator>=(const Vec2D& pos) const;
 
     /**
      * @brief Opérateur d'assignement
@@ -98,11 +156,39 @@ public:
     Vec2D& operator=(const Vec2D& pos);
 
     /**
-     * @brief Opérateur d'incrémentation
-     * @param[in] pos : Vecteur avec lequel incrémenter le vecteur actuel
+     * @brief Opérateur d'addition avec assignement
+     * @param[in] pos : Vecteur avec lequel additionner le vecteur actuel
      * @fn Vec2D& operator+=(const Vec2D& pos);
      */
     Vec2D& operator+=(const Vec2D& pos);
+
+    /**
+     * @brief Opérateur de soustraction avec assignement
+     * @param[in] pos : Vecteur avec lequel soustraire le vecteur actuel
+     * @fn Vec2D& operator-=(const Vec2D& pos);
+     */
+    Vec2D& operator-=(const Vec2D& pos);
+
+    /**
+     * @brief Opérateur de multiplication avec assignement
+     * @param[in] pos : Vecteur avec lequel multiplier le vecteur actuel
+     * @fn Vec2D& operator*=(const Vec2D& pos);
+     */
+    Vec2D& operator*=(const Vec2D& pos);
+
+    /**
+     * @brief Opérateur de division avec assignement
+     * @param[in] pos : Vecteur avec lequel diviser le vecteur actuel
+     * @fn Vec2D& operator/=(const Vec2D& pos);
+     */
+    Vec2D& operator/=(const Vec2D& pos);
+
+    /**
+     * @brief Opérateur modulo avec assignement
+     * @param[in] pos : Vecteur avec lequel faire un modulo sur le vecteur actuel
+     * @fn Vec2D& operator%=(const Vec2D& pos);
+     */
+    Vec2D& operator%=(const Vec2D& pos);
 
     /**
      * @brief Retourne le vecteur le plus petit entre les deux passés en argument
@@ -127,6 +213,13 @@ public:
      * @fn bool isColliding(Vec2D firstCorner, Vec2D secondCorner) const;
      */
     bool isColliding(Vec2D firstCorner, Vec2D secondCorner) const;
+
+    /**
+     * @brief Calcule la magnitude de ce vecteur
+     * @return Magnitude du vecteur
+     * @fn double computeMagnitude() const;
+     */
+    double computeMagnitude() const;
 
     /**
      * @brief Récupère la position X (abscisse)

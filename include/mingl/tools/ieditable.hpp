@@ -2,11 +2,11 @@
  *
  * @file    ieditable.hpp
  *
- * @authors D. Mathieu, M. Laporte, Alexandre Sollier
+ * @authors D. Mathieu, M. Laporte
  *
  * @date    17/03/2010
  *
- * @version V2.1
+ * @version V2.0
  *
  **/
 

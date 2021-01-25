@@ -2,11 +2,11 @@
  *
  * @file    cexception.cpp
  *
- * @authors M. Laporte, D. Mathieu, Alexandre Sollier
+ * @authors M. Laporte, D. Mathieu
  *
  * @date    23/03/2010
  *
- * @version V1.1
+ * @version V1.0
  *
  * @brief  classe CException
  *

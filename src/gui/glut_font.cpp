@@ -1,7 +1,7 @@
 /**
  * @file glut_font.cpp
  * @brief Classe utilitaire pour utiliser facilement les polices de Glut
- * @author SOLLIER Alexandre
+ * @author Alexandre Sollier
  * @version 1.1
  * @date 28 décembre 2019
  */

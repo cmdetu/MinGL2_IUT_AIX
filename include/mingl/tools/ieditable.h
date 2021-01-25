@@ -2,13 +2,19 @@
  *
  * @file    ieditable.h
  *
- * @authors D. Mathieu, M. Laporte, Alexandre Sollier
+ * @authors D. Mathieu, M. Laporte
  *
  * @date    16/03/2009
  *
- * @version V2.1
+ * @version V2.0
  *
  * @brief   declaration de la classe CEditable dans nsUtil
+ *
+ * @version V2.1
+ *
+ * @author Alexandre Sollier
+ *
+ * @brief Ajout de la documentation
  *
  **/
 

@@ -2,13 +2,19 @@
  *
  * @file    errcode.h
  *
- * @authors D. Mathieu, Alexandre Sollier
+ * @authors D. Mathieu
  *
  * @date    28/08/2010
  *
- * @version V2.1
+ * @version V2.0
  *
  * @brief   Codes d'erreurs
+ *
+ * @version V2.1
+ *
+ * @author Alexandre Sollier
+ *
+ * @brief Ajout de la documentation, renommage du fichier
  *
  **/
 
