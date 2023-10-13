@@ -167,7 +167,8 @@ bool nsGraphics::Vec2D::isColliding(Vec2D firstCorner, Vec2D secondCorner) const
         std::swap(secondCorner.m_y, firstCorner.m_y);
 
     // On retourne si notre vecteur est entre ces deux coins
-    return (operator>=(firstCorner) && operator<=(secondCorner));
+    return (firstCorner.getX() <= m_x && m_x <= secondCorner.getX()
+         && firstCorner.getY() <= m_y && m_y <= secondCorner.getY());
 } // isColliding()
 
 double nsGraphics::Vec2D::computeMagnitude() const
